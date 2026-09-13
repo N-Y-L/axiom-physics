@@ -332,7 +332,7 @@ theorem rieszProjection_eq_rational (hH : domain.IsSelfAdjoint H)
   congr 1
   ring
 
-/-- A genuine common-domain spectral gap gives an actual orthogonal projection. -/
+/-- A common-domain spectral gap gives an orthogonal projection. -/
 theorem rieszProjection_isStarProjection (hH : domain.IsSelfAdjoint H)
     {c : ℂ} {r : ℝ} (hr : 0 < r)
     (hgap : ∀ z ∈ sphere c r, z ∈ domain.resolventSet H) :

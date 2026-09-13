@@ -4,7 +4,7 @@ import Adiabatic.Propagator
 import Adiabatic.Transport
 
 /-!
-# Adiabatic estimate from a smooth commutator solution
+# Adiabatic estimate from a C¹ commutator solution
 
 This theorem constructs the comparison propagator and derives its unitarity
 and intertwining. Its remaining spectral input is a differentiable `X` solving
@@ -24,8 +24,7 @@ theorem norm_inv_schrodinger_parameter {T : ℝ} (hT : 0 < T) :
     ‖(-Complex.I * (T : ℂ))⁻¹‖ = 1 / T := by
   simp [norm_inv, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hT, one_div]
 
-/-- A smooth commutator solution gives a uniform adiabatic leakage bound.
-No evolution or estimate is assumed for the auxiliary Kato dynamics. -/
+/-- A C¹ commutator solution gives a uniform adiabatic leakage bound. -/
 theorem exists_adiabatic_bound_of_commutator
     (H P dP X dX : ℝ → A)
     (hHcont : ContinuousOn H (Icc (0 : ℝ) 1))

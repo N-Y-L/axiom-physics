@@ -41,8 +41,8 @@ theorem GappedHamiltonian.exists_local_fixed_contour
   · intro u hu
     exact (hsub ⟨hu.2, hu.1⟩).2
 
-/-- The actual spectral gap constructs a global smooth domain-valued
-commutator solution; no solution is assumed as an input. -/
+/-- The spectral gap constructs a global C¹ domain-valued
+commutator solution. -/
 theorem GappedHamiltonian.exists_contDiffOn_commutatorLift
     (data : GappedHamiltonian domain) :
     ∃ L : ℝ → E →L[ℂ] D, ContDiffOn ℝ 1 L (Icc (0 : ℝ) 1) ∧

@@ -4,7 +4,7 @@ import Adiabatic.Unbounded.ResolventSpectrum
 # Independence of the enclosing spectral circle
 
 Two resolvent circles select the same projection whenever they enclose the
-same points of the actual unbounded spectrum. This permits local fixed
+same points of the unbounded spectrum. This permits local fixed
 contours for a band described by continuous moving endpoints.
 -/
 
@@ -85,7 +85,7 @@ variable {D E : Type*} [NormedAddCommGroup D] [NormedSpace ℂ D] [CompleteSpace
   [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
   (domain : CommonDomain D E) (H : D →L[ℂ] E)
 
-/-- Contours enclosing the same actual spectrum define the same spectral projection. -/
+/-- Contours enclosing the same spectrum define the same spectral projection. -/
 theorem rieszProjection_eq_of_spectral_membership (hH : domain.IsSelfAdjoint H)
     {c₁ c₂ : ℂ} {r₁ r₂ : ℝ} (hr₁ : 0 < r₁) (hr₂ : 0 < r₂)
     (gap₁ : ∀ z ∈ sphere c₁ r₁, z ∈ domain.resolventSet H)

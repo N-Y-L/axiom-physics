@@ -1,7 +1,7 @@
 # Proof modules
 
-The public import is `import Adiabatic`. It includes all checked project
-modules. The principal result is
+The public import is `import Adiabatic`. It includes all proof modules.
+The principal result is
 [`Unbounded.common_domain_adiabatic_theorem`](Unbounded/MainTheorem.lean);
 read its [statement](Unbounded/Statement.lean) before the supporting proofs.
 
@@ -24,8 +24,8 @@ may be unbounded in the physical norm.
 
 ## Bounded Hamiltonians in arbitrary dimension
 
-`Infinite/` is the bounded-Hamiltonian construction in arbitrary dimension.
-Its [SpectralTheorem](Infinite/SpectralTheorem.lean) assembles
+For bounded Hamiltonians in arbitrary dimension,
+[SpectralTheorem](Infinite/SpectralTheorem.lean) combines
 [RieszProjection](Infinite/RieszProjection.lean),
 [RieszCommutator](Infinite/RieszCommutator.lean),
 [Unitary](Infinite/Unitary.lean), and
@@ -33,17 +33,17 @@ Its [SpectralTheorem](Infinite/SpectralTheorem.lean) assembles
 
 ## Original finite-dimensional theorem
 
-The files directly under `Adiabatic/` retain their original import paths and
-public declarations. Start with [Statement](Statement.lean),
+For the original finite-dimensional theorem, start with
+[Statement](Statement.lean),
 [MainTheorem](MainTheorem.lean), [Schrodinger](Schrodinger.lean), and the
 [two-level example](Examples.lean).
 
-The remaining files provide the original projection, spectral-gap,
-regularity, propagator, transport, and comparison arguments.
+The remaining files prove projection, spectral-gap, regularity, propagator,
+transport, and comparison results.
 [ReducedResolvent](ReducedResolvent.lean) gives a separate algebraic special
 case. [ProjectionDistance](ProjectionDistance.lean) is shared by the broader
 theorems.
 
-For the mathematical argument and reading order, see the
-[proof guide](../docs/proof-guide.md). Research, verification, and proposed
-extensions have separate entries in the [documentation index](../docs/README.md).
+See the [proof guide](../docs/proof-guide.md) for the mathematical argument
+and the [documentation index](../docs/README.md) for research, verification,
+and proposed extensions.

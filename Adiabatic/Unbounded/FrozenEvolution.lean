@@ -194,7 +194,7 @@ structure FrozenFamily (domain : CommonDomain D E) (H : ℝ → D →L[ℂ] E)
     (z : ℂ) (n : ℕ) where
   propagator : ∀ k, domain.AutonomousGroup (H (gridSample n k)) z
 
-/-- Genuine self-adjointness supplies all frozen autonomous factors. -/
+/-- Self-adjointness supplies all frozen autonomous factors. -/
 theorem exists_frozenFamily (domain : CommonDomain D E) (H : ℝ → D →L[ℂ] E)
     (hH : ∀ t ∈ Icc (0 : ℝ) 1, domain.IsSelfAdjoint (H t))
     (z : ℂ) (hz : star z = -z) (n : ℕ) : Nonempty (FrozenFamily domain H z n) := by
@@ -321,7 +321,7 @@ theorem lift_eq_cell {j : ℕ} (hj : j < n + 1) {t : ℝ}
   timeOrderedProduct_grid_eq _ V.factor_lift_zero hj ht ht'
 
 omit [CompleteSpace D] in
-/-- Frozen evolution satisfies the actual right strong Schrödinger equation. -/
+/-- Frozen evolution satisfies the right strong Schrödinger equation. -/
 theorem strong_right_derivative (x : D) {t : ℝ} (ht : t ∈ Ico (0 : ℝ) 1) :
     HasDerivWithinAt (fun u => V.evolution u (domain.inclusion x))
       (z • stepHamiltonian H n t (V.lift t x)) (Ici t) t := by

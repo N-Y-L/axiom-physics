@@ -4,7 +4,7 @@ import Adiabatic.Evolution
 /-!
 # The commutator argument on a common domain
 
-These differential identities allow genuinely unbounded Hamiltonians:
+These differential identities allow unbounded Hamiltonians:
 `H : D →L[ℂ] E` acts on a separate domain, included by `j : D →L[ℂ] E`.
 The evolution equations are strong vector derivatives. The commutator
 solution is bounded on the physical space and maps it into the domain.

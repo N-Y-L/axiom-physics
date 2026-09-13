@@ -9,7 +9,7 @@ import Adiabatic.Unbounded.GraphLimit
 Finite products of the constructed autonomous groups approximate the
 Hamiltonian uniformly in the domain-to-physical operator norm. Uniform
 domain bounds make both the forward and adjoint products strongly Cauchy,
-so their limits form an actual unitary evolution. Maximal self-adjointness
+so their limits form a unitary evolution. Maximal self-adjointness
 recovers domain invariance, and sharp shifted graph estimates give strong
 continuity in the common Banach domain.
 
@@ -17,7 +17,7 @@ A local comparison with the frozen autonomous group has quadratic error
 in the time increment. This proves the time-dependent strong Schrödinger
 equation, including the derivatives within the interval at both endpoints.
 The final theorem constructs a `StrongPropagator` from C¹ regularity and
-self-adjointness; no existence or domain-preservation hypothesis is added.
+self-adjointness.
 -/
 
 namespace Adiabatic.Unbounded
@@ -152,7 +152,7 @@ theorem cauchySeq_adjoint_restricted_of_cauchy
   nlinarith [hnorm m n, norm_nonneg ((A n - A m).comp j)]
 
 /-- Cauchy restricted unitary operators with controlled inverse-domain
-maps have an actual unitary strong limit on the physical Hilbert space. -/
+maps have a unitary strong limit on the physical Hilbert space. -/
 theorem exists_unitary_strong_limit_of_restricted_cauchy
     (domain : CommonDomain D E) (A : ℕ → E →L[ℂ] E) (V : ℕ → D →L[ℂ] D)
     (hA : ∀ n, A n ∈ unitary (E →L[ℂ] E))
@@ -205,8 +205,8 @@ theorem exists_unitary_strong_limit_of_restricted_cauchy
   · simpa only [hZeq] using hright
   · simpa only [hZeq] using hZ
 
-/-- Actual right strong approximations with vanishing coefficient error
-and uniform forward/inverse domain bounds construct normalized unitary
+/-- Right strong approximations with vanishing coefficient error
+and uniform forward and inverse domain bounds construct normalized unitary
 physical limits. Both the propagators and their adjoints converge strongly. -/
 theorem exists_unitary_limit_of_right_approximations
     {domain : CommonDomain D E} {H : ℝ → D →L[ℂ] E} {Hn : ℕ → ℝ → D →L[ℂ] E} {z : ℂ}
@@ -534,7 +534,7 @@ theorem hasDerivWithinAt_of_quadratic_error
     module
   · simp
 
-/-- The strong limit satisfies the actual time-dependent Schrödinger
+/-- The strong limit satisfies the time-dependent Schrödinger
 equation on every common-domain vector. -/
 theorem hasDerivWithinAt_right_approximation_limit [CompleteSpace D]
     {domain : CommonDomain D E} {H : ℝ → D →L[ℂ] E} {Hn : ℕ → ℝ → D →L[ℂ] E} {z : ℂ}
@@ -566,9 +566,9 @@ theorem hasDerivWithinAt_right_approximation_limit [CompleteSpace D]
   exact norm_limit_sub_frozen_le V ha hL hLip happrox hB U hlim ht F hs x
 
 /-- Every C¹ self-adjoint family on a fixed complete common domain has
-an actual normalized unitary strong propagator. The domain is preserved in
+a normalized unitary strong propagator. The domain is preserved in
 both directions, and the evolution is strongly continuous in its Banach
-norm. No propagator existence or domain invariance is assumed. -/
+norm. -/
 theorem exists_nonautonomous_strongPropagator [CompleteSpace D]
     (domain : CommonDomain D E) (H : ℝ → D →L[ℂ] E)
     (hc : ContDiffOn ℝ 1 H (Icc (0 : ℝ) 1))

@@ -142,7 +142,7 @@ theorem rieszProjection_commutes (hH : domain.IsSelfAdjoint H)
   rw [domain.inclusion_rieszProjectionLift H hH hr hgap] at ht
   exact sub_eq_zero.mp ht
 
-/-- The contour construction solves the actual unbounded commutator equation on D. -/
+/-- The contour construction solves the unbounded commutator equation on D. -/
 theorem contourCommutator_commutator (hH : domain.IsSelfAdjoint H)
     (B : E →L[ℂ] E) {c : ℂ} {r : ℝ} (hr : 0 ≤ r)
     (hgap : ∀ z ∈ sphere c r, z ∈ domain.resolventSet H) (x : D) :

@@ -69,7 +69,7 @@ theorem transport_mem_unitary
   Unitary.mem_iff.mpr ⟨transport_star_mul_self hV hB hV0 ht,
     transport_mul_star_self hBc hV hB hV0 ht⟩
 
-/-- Continuous skew-adjoint bounded generators admit an actual normalized
+/-- Continuous skew-adjoint bounded generators admit a normalized
 unitary propagator on the entire unit interval. -/
 theorem exists_unitary_propagator_unitInterval [CompleteSpace A]
     (hBc : ContinuousOn B (Icc (0 : ℝ) 1))

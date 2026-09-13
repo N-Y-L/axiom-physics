@@ -9,7 +9,7 @@ import Mathlib.Analysis.Normed.Group.Bounded
 # Regularity and bounds for inverse commutator constructions
 
 Smooth inversion is used only where invertibility has been established.
-Compactness supplies uniform constants for an actual continuously
+Compactness supplies uniform constants for a continuously
 differentiable path and its derivative.
 -/
 
@@ -91,7 +91,7 @@ theorem contDiffOn_gapSuperoperator {n : WithTop ℕ∞} {H P : ℝ → A} {s : 
       (hleft.sub hright) (contDiffOn_offDiagonalSuperoperator hP)
   exact (contDiffOn_diagonalSuperoperator hP).add hcomp
 
-/-- A `C²` projection path has a `C¹` Kato generator using its actual derivative. -/
+/-- A `C²` projection path has a `C¹` Kato generator using its derivative. -/
 theorem contDiffOn_katoGenerator_derivWithin {P : ℝ → A} {s : Set ℝ}
     (hP : ContDiffOn ℝ 2 P s) (hs : UniqueDiffOn ℝ s) :
     ContDiffOn ℝ 1 (fun t => katoGenerator (P t) (derivWithin P s t)) s := by
@@ -113,7 +113,7 @@ theorem contDiffOn_gapInverse_katoGenerator {H P : ℝ → A} {s : Set ℝ}
   contDiffOn_inverse_apply (contDiffOn_gapSuperoperator hH (hP.of_le (by norm_num)))
     (contDiffOn_katoGenerator_derivWithin hP hs) hunit
 
-/-- A smooth invertible gap superoperator gives an actual smooth commutator
+/-- A C¹ invertible gap superoperator gives a C¹ commutator
 solution, with the projection derivative taken within the stated domain. -/
 theorem exists_contDiffOn_commutator_of_isUnit {H P : ℝ → A} {s : Set ℝ}
     (hH : ContDiffOn ℝ 1 H s) (hP : ContDiffOn ℝ 2 P s)
@@ -161,7 +161,7 @@ section CompactBounds
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
 
 /-- On the unit interval, a `C¹` path and a continuous generator have finite
-nonnegative bounds, including a bound on the actual within-interval derivative. -/
+nonnegative bounds, including a bound on the within-interval derivative. -/
 theorem exists_uniform_bounds {X K : ℝ → E}
     (hX : ContDiffOn ℝ 1 X (Set.Icc 0 1))
     (hK : ContinuousOn K (Set.Icc 0 1)) :

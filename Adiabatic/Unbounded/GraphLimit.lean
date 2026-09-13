@@ -20,7 +20,7 @@ variable {D E : Type*} [NormedAddCommGroup D] [NormedSpace ℂ D]
 namespace CommonDomain
 
 /-- Variable graph upper bounds pass to physical limits with their exact
-limiting constant, tested on the actual dense self-adjoint domain. -/
+limiting constant, tested on the dense self-adjoint domain. -/
 theorem norm_shift_le_of_tendsto_inclusion_of_bound_tendsto
     (domain : CommonDomain D E) (H : D →L[ℂ] E) (hH : domain.IsSelfAdjoint H)
     {ι : Type*} {l : Filter ι} [l.NeBot] (x : ι → D) (y : D) (w : ℂ)
@@ -91,7 +91,7 @@ theorem norm_shift_limit_transition_le
   exact (A.family n).norm_shift_transition_le A.graph_constant A.graph_constant_nonneg
     A.graph_change hs ht x
 
-/-- The actual domain lift of the strong physical limit is strongly
+/-- The domain lift of the strong physical limit is strongly
 continuous, using the graph estimate derived from the frozen evolutions. -/
 theorem continuousOn_limit_lift
     (hH : ∀ t ∈ Icc (0 : ℝ) 1, domain.IsSelfAdjoint (H t))

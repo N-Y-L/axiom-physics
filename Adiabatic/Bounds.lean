@@ -6,9 +6,8 @@ import Mathlib.Tactic
 /-!
 # Bounds for the corrected comparison evolution
 
-The mean-value estimate is the analytic step in the commutator proof of the
-adiabatic theorem. This file does not assume an adiabatic error estimate.
-It derives one from the derivative of the corrected comparison curve.
+A mean-value estimate for the corrected comparison curve gives the
+adiabatic error bound.
 -/
 
 namespace Adiabatic

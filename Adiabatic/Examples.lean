@@ -6,7 +6,7 @@ import Mathlib.Tactic
 # A nontrivial two-level gapped Hamiltonian
 
 The constant Hamiltonian `diag(0, 1)` on `ℂ²`, with the first coordinate
-selected, satisfies all target assumptions with gap one. The selected
+selected, satisfies the theorem's assumptions with gap one. The selected
 projection is neither zero nor the identity, so the example checks joint
 satisfiability with nonzero selected and complementary subspaces.
 -/
@@ -112,12 +112,12 @@ theorem groundProjection_ne_one : groundProjection ≠ 1 := by
   change (1 - groundProjection) excitedVector = excitedVector
   simp
 
-/-- A unit spectral gap holds for the complete target structure. -/
+/-- The example has a unit spectral gap. -/
 theorem twoLevel_hasUniformSpectralGap :
     HasUniformSpectralGap TwoLevelSpace twoLevel.H twoLevel.P 1 :=
   twoLevel.spectral_gap
 
-/-- The target assumptions are jointly satisfiable with a proper, nonzero
+/-- The theorem's assumptions hold for a proper, nonzero
 selected projection on a two-dimensional space. -/
 theorem exists_nontrivial_gappedHamiltonian :
     ∃ data : GappedHamiltonian TwoLevelSpace, data.P 0 ≠ 0 ∧ data.P 0 ≠ 1 :=

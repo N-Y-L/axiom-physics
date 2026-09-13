@@ -8,7 +8,7 @@ import Mathlib.Tactic
 
 For a self-adjoint operator, a physical-space limit of domain vectors whose
 Hamiltonian images stay bounded belongs to the domain. The proof uses the
-actual maximal adjoint domain: the limiting sesquilinear form is bounded in
+maximal adjoint domain: the limiting sesquilinear form is bounded in
 the physical norm and therefore defines a continuous functional. No weak
 subsequence or finite-dimensional compactness is assumed.
 -/
@@ -39,7 +39,7 @@ theorem norm_le_of_inner_bound_on_domain (v : E) {M : ℝ} (hM : 0 ≤ M)
   nlinarith [norm_nonneg v]
 
 /-- A form bound on the dense common domain determines membership in the
-actual self-adjoint operator domain, with the same Hamiltonian norm bound. -/
+self-adjoint operator domain, with the same Hamiltonian norm bound. -/
 theorem exists_domain_vector_of_form_bound (v : E) {M : ℝ} (hM : 0 ≤ M)
     (hbound : ∀ y : D, ‖inner ℂ v (H y)‖ ≤ M * ‖domain.inclusion y‖) :
     ∃ x : D, domain.inclusion x = v ∧ ‖H x‖ ≤ M := by
@@ -64,7 +64,7 @@ theorem exists_domain_vector_of_form_bound (v : E) {M : ℝ} (hM : 0 ≤ M)
   exact hbound a
 
 /-- Physical convergence and a uniform bound on Hamiltonian images suffice
-to recover an actual domain vector. -/
+to recover a domain vector. -/
 theorem exists_domain_vector_of_tendsto_of_bound
     {ι : Type*} {l : Filter ι} [l.NeBot] (x : ι → D) (v : E) {M : ℝ}
     (hM : 0 ≤ M) (hv : Tendsto (fun n => domain.inclusion (x n)) l (𝓝 v))

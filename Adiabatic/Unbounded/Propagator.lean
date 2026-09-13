@@ -9,8 +9,7 @@ import Mathlib.Analysis.Calculus.MeanValue
 
 This file specifies the evolution required for a common-domain unbounded
 Hamiltonian and proves the inverse evolution equation from its forward
-equation. Construction of such a propagator is a separate analytic theorem.
-In particular, this structure is not itself an existence assertion.
+equation. `Adiabatic.Unbounded.Nonautonomous` constructs such propagators.
 -/
 
 namespace Adiabatic.Unbounded
@@ -82,7 +81,7 @@ theorem lift_inverseLift {t : ℝ} (ht : t ∈ Icc (0 : ℝ) 1) (x : D) :
   exact congrArg (fun B : E →L[ℂ] E => B (domain.inclusion x))
     (Unitary.mul_star_self_of_mem (U.isUnitary t ht))
 
-/-- The strong adjoint equation follows from actual inverse differentiation
+/-- The strong adjoint equation follows from inverse differentiation
 and domain preservation. -/
 theorem adjoint_strong_derivative (x : D) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) 1) :
     HasDerivWithinAt (fun a => star (U.evolution a) (domain.inclusion x))

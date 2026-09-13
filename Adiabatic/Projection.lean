@@ -10,7 +10,7 @@ family of projections: differentiating `P² = P` makes `P'` off diagonal, and th
 `K = P' P - P P'` satisfies `K P - P K = P'`.
 
 The algebraic statements apply to arbitrary rings. The analytic statements derive their
-hypotheses from actual derivatives in normed real algebras, including endpoint derivatives
+hypotheses from derivatives in normed real algebras, including endpoint derivatives
 within a set. This file does not construct spectral projections or a transport propagator.
 
 Mathematical source: T. Kato, *On the adiabatic theorem of quantum mechanics* (1950).
@@ -81,7 +81,7 @@ theorem projection_derivative_sandwich (hP : ∀ u, P u * P u = P u)
     (hderiv : HasDerivAt P dP t) : P t * dP * P t = 0 :=
   projection_sandwich_eq_zero (hP t) (projection_derivative hP hderiv)
 
-/-- The commutator identity derived from differentiability, rather than assumed algebraically. -/
+/-- Differentiating the projection identity gives Kato's commutator identity. -/
 theorem katoGenerator_commutator_of_hasDerivAt (hP : ∀ u, P u * P u = P u)
     (hderiv : HasDerivAt P dP t) :
     katoGenerator (P t) dP * P t - P t * katoGenerator (P t) dP = dP :=

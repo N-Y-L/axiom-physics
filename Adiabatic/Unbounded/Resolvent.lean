@@ -6,8 +6,8 @@ import Mathlib.Tactic
 /-!
 # Nonreal resolvents of self-adjoint common-domain operators
 
-The nonreal resolvent is constructed from unbounded self-adjointness. It is a
-bounded map into the common Banach domain, not merely into the physical space.
+Unbounded self-adjointness gives a nonreal resolvent that maps boundedly
+into the common Banach domain.
 -/
 
 noncomputable section
@@ -276,7 +276,7 @@ theorem norm_regularization_sub_le (z : ℂ) (hz : z.im ≠ 0) (x : D) :
 
 omit hH
 
-/-- The actual resolvent set, using bijectivity on the full common domain. -/
+/-- The resolvent set, using bijectivity on the full common domain. -/
 def resolventSet : Set ℂ := {z | Function.Bijective (domain.shift H z)}
 
 /-- The unbounded spectrum is the complement of the resolvent set. -/
@@ -288,7 +288,7 @@ theorem mem_resolventSet_of_im_ne_zero (z : ℂ) (hz : z.im ≠ 0) :
     z ∈ domain.resolventSet H := domain.shift_bijective H hH z hz
 
 include hH in
-/-- The spectrum of the genuine unbounded self-adjoint operator is real. -/
+/-- The spectrum of the unbounded self-adjoint operator is real. -/
 theorem spectrum_im_eq_zero {z : ℂ} (hz : z ∈ domain.spectrum H) : z.im = 0 := by
   by_contra h
   exact hz (domain.mem_resolventSet_of_im_ne_zero H hH z h)
@@ -301,7 +301,8 @@ def resolventAtEquiv (z : ℂ) (hz : z ∈ domain.resolventSet H) : D ≃L[ℂ] 
 /-- A total inverse function, with zero at noninvertible pencils, for calculus. -/
 def inverseShift (z : ℂ) : E →L[ℂ] D := (domain.shift H z).inverse
 
-/-- On the actual resolvent set, the total inverse is the genuine inverse. -/
+/-- At resolvent points, the total inverse agrees with the continuous
+linear inverse. -/
 theorem inverseShift_eq (z : ℂ) (hz : z ∈ domain.resolventSet H) :
     domain.inverseShift H z = (domain.resolventAtEquiv H z hz).symm.toContinuousLinearMap :=
   ContinuousLinearMap.inverse_equiv (domain.resolventAtEquiv H z hz)
@@ -410,7 +411,7 @@ theorem isOpen_resolventSet : IsOpen (domain.resolventSet H) := by
     unfold shift
     fun_prop)
 
-/-- The actual unbounded spectrum is closed. -/
+/-- The unbounded spectrum is closed. -/
 theorem isClosed_spectrum : IsClosed (domain.spectrum H) :=
   (domain.isOpen_resolventSet H).isClosed_compl
 

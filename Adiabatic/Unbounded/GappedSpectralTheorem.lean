@@ -6,9 +6,9 @@ import Adiabatic.ProjectionDistance
 /-!
 # The spectral adiabatic estimate for unbounded Hamiltonians
 
-The Hamiltonian's actual spectral gap constructs every spectral input to
+The Hamiltonian's spectral gap constructs every spectral input to
 the estimate: the orthogonal band projection, its common-domain lift, and
-the smooth commutator solution. The only remaining inputs in this module
+the C¹ commutator solution. The only remaining inputs in this module
 are the physical and Kato strong propagators themselves.
 -/
 

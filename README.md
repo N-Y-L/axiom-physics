@@ -2,8 +2,8 @@
 
 A Lean 4 formalization of the uniformly gapped quantum adiabatic theorem,
 including unbounded self-adjoint Hamiltonians on a common domain in an
-arbitrary complex Hilbert space. The proof constructs the spectral
-projection and Schrödinger evolution, then proves uniform error bounds.
+arbitrary complex Hilbert space. It constructs the spectral projection and
+Schrödinger evolution and proves uniform error bounds.
 
 ## The result
 
@@ -12,10 +12,9 @@ complex Hilbert space $E$. Assume $H:D\to E$ is $C^2$ in the graph norm for
 $0\le s\le1$. Choose continuous real endpoints $a(s)<b(s)$ whose distances
 from the spectrum are at least a fixed $g>0$.
 
-The formalization constructs the orthogonal spectral projection $P(s)$ for
-the spectrum between these endpoints and proves that it is $C^2$. Neither
-the Hilbert space nor the selected spectral subspace needs to have finite
-dimension. The Hamiltonian need not be bounded in the physical norm.
+The orthogonal spectral projection $P(s)$ onto this band is constructed and
+proved to be $C^2$. The space and band may have infinite dimension, and $H(s)$
+may be unbounded in the Hilbert-space norm.
 
 With $\hbar=1$, it constructs domain-preserving unitary evolution satisfying
 
@@ -23,7 +22,7 @@ $$
 U_T'(s)\psi=-iT H(s)U_T(s)\psi,\qquad U_T(0)=I,\qquad\psi\in D.
 $$
 
-There is a constant $C\ge0$, chosen before the runtime $T$, such that for
+There is a constant $C\ge0$, independent of the runtime $T$, such that for
 every $T>0$ and every $s\in[0,1]$,
 
 $$
@@ -41,14 +40,13 @@ The main declaration is
 [`Adiabatic.Unbounded.common_domain_adiabatic_theorem`](Adiabatic/Unbounded/MainTheorem.lean).
 Its complete hypotheses and conclusion are in
 [Unbounded/Statement.lean](Adiabatic/Unbounded/Statement.lean).
-The original [finite-dimensional theorem](Adiabatic/MainTheorem.lean) remains
-available unchanged.
+The [finite-dimensional theorem](Adiabatic/MainTheorem.lean) is also included.
 
 ## Read the proof
 
 | File | Contents |
 |---|---|
-| [Documentation index](docs/README.md) | Reading paths for the theorem, research, verification, and publication |
+| [Documentation index](docs/README.md) | Theorem, research, verification, and publication notes |
 | [Proof guide](docs/proof-guide.md) | Mathematical argument and Lean dependencies |
 | [Common-domain research](docs/unbounded-research.md) | Literature, assumptions, spectral calculus, and evolution construction |
 | [Verification](docs/verification.md) | Exact scope and mechanical checks |
@@ -56,9 +54,9 @@ available unchanged.
 | [Module map](Adiabatic/README.md) | Source organization and all public proof modules |
 | [Unbounded/MainTheorem.lean](Adiabatic/Unbounded/MainTheorem.lean) | Full theorem and evolution uniqueness |
 | [Unbounded/Nonautonomous.lean](Adiabatic/Unbounded/Nonautonomous.lean) | Evolution existence from common-domain self-adjointness |
-| [Examples.lean](Adiabatic/Examples.lean) | A nontrivial two-level example for the original finite theorem |
+| [Examples.lean](Adiabatic/Examples.lean) | A two-level example of the finite-dimensional theorem |
 
-The result gives an existential constant. Gapless evolution, changing
+The constant is existential. Gapless evolution, changing
 operator domains, explicit optimal gap dependence, and higher-order or
 exponentially small error estimates are outside this statement. The
 prior-work search found no complete publicly inspectable formalization in
@@ -81,14 +79,12 @@ set `LEAN_NUM_THREADS` using the conventions of your shell for the last
 command. The compiler and dependency revisions are pinned in
 `lean-toolchain` and `lake-manifest.json`.
 
-The integrity check rejects unfinished proofs and added axioms, and checks
-the transitive dependencies of every declaration from a project proof module,
-including private declarations and declarations in other namespaces. Only Lean's
-standard `propext`, `Classical.choice`, and `Quot.sound` are permitted.
-The final command rechecks the compiled project proofs with Lean's bundled
-checker. The [verification record](docs/verification.md) distinguishes these
-mechanical checks from the review of the mathematical statement.
-Regression tests for the integrity checker are documented in [checks/](checks/README.md).
+The integrity check rejects unfinished proofs and added axioms. It audits
+the dependencies of every project declaration, including private declarations
+and names in other namespaces. Only Lean's standard `propext`, `Classical.choice`,
+and `Quot.sound` are permitted. The final command rechecks compiled proofs with
+Lean's bundled checker. See the [verification record](docs/verification.md)
+for scope review and [checks/](checks/README.md) for checker regression tests.
 
 ## References and license
 

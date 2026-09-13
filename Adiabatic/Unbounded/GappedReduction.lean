@@ -8,8 +8,7 @@ The Kato correction is continuously differentiable and skew-adjoint.
 It therefore gives a bounded self-adjoint perturbation of the original
 Hamiltonian. Existence for continuously differentiable common-domain
 self-adjoint Hamiltonians supplies both evolutions needed by the spectral
-estimate. This module states the dependence on that existence theorem
-explicitly.
+estimate.
 -/
 
 noncomputable section
@@ -22,7 +21,7 @@ variable {D E : Type*} [NormedAddCommGroup D] [NormedSpace ℂ D] [CompleteSpace
   [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
   {domain : CommonDomain D E}
 
-/-- The bounded Kato correction constructed from the actual spectral band. -/
+/-- The bounded Kato correction constructed from the spectral band. -/
 def GappedHamiltonian.katoCorrection (data : GappedHamiltonian domain) (t : ℝ) : E →L[ℂ] E :=
   katoGenerator (data.spectralProjection t)
     (derivWithin data.spectralProjection (Icc (0 : ℝ) 1) t)
@@ -67,8 +66,8 @@ def StrongPropagator.of_bounded_correction
       ContinuousLinearMap.smul_apply, ContinuousLinearMap.zero_apply, add_zero,
       smul_add, smul_smul, mul_inv_cancel₀ hz, one_smul] using hd
 
-/-- The general evolution-existence result needed by the spectral theorem.
-This is an explicit proposition, not an assumed axiom or a proof of existence. -/
+/-- The evolution-existence statement used by the spectral theorem.
+Proved in `Adiabatic.Unbounded.MainTheorem`. -/
 def CommonDomainEvolutionExistence (domain : CommonDomain D E) : Prop :=
   ∀ H : ℝ → D →L[ℂ] E, ContDiffOn ℝ 1 H (Icc (0 : ℝ) 1) →
     (∀ t ∈ Icc (0 : ℝ) 1, domain.IsSelfAdjoint (H t)) →

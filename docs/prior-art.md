@@ -1,18 +1,18 @@
 # Prior-art assessment: quantum adiabatic theorem in Lean
 
-Search date: **13 September 2026**. This report records a bounded public-source search, including direct inspection of source archives at the revisions listed below. It does not establish worldwide priority.
+Search date: 13 September 2026. The search covered the public sources and source revisions listed below. It does not establish worldwide priority.
 
-## Finding and decision
+## Finding
 
-**No complete, publicly inspectable formalization of a quantum adiabatic theorem was found in the sources searched.** There is relevant prior work: a PhysAtlas page reports checked Lean projection-calculus identities, and a public Lean project studies the dark state of a spatial adiabatic passage Hamiltonian. Neither provides a checked adiabatic convergence or error theorem in the evidence inspected. This supports pursuing a carefully scoped formalization, with explicit credit for existing mathematics and formal infrastructure. It does not support claiming that nobody has done the work.
+No complete, publicly inspectable formalization of a quantum adiabatic theorem was found in the sources searched. A PhysAtlas page reports checked Lean projection-calculus identities, and a public Lean project studies the dark state of a spatial adiabatic passage Hamiltonian. Neither provides a checked adiabatic convergence or error theorem in the evidence inspected.
 
-Two catalogs independently leave the target unlinked. The David–Palsberg *Top 100 Quantum Theorems* lists the adiabatic theorem as item 22 without a formal-proof link; its page reports an update on 10 September 2026. Mathlib's theorem catalog contains `Q356895: title: Adiabatic theorem` without a `decl` field at the inspected revision. Catalog omissions are supporting evidence, not exhaustive searches of completed or ongoing research. [1, 2]
+The David–Palsberg *Top 100 Quantum Theorems* lists the adiabatic theorem as item 22 without a formal-proof link; its page reports an update on 10 September 2026. Mathlib's theorem catalog contains `Q356895: title: Adiabatic theorem` without a `decl` field at the inspected revision. These omissions are supporting evidence with limited coverage. [1, 2]
 
-The useful research objective is a kernel-checked theorem connecting a slowly varying Hamiltonian's Schrödinger evolution to its instantaneous spectral subspace. A matrix identity, an assumed estimate, or a convergence theorem derived from an assumed adiabatic bound is a building block. The final achievement must identify which analytic assumptions and existence results are proved and which are supplied.
+For this search, an adiabatic theorem means a checked result controlling a slowly varying Hamiltonian's Schrödinger evolution relative to its instantaneous spectral subspace. Matrix identities and consequences of an assumed adiabatic bound are recorded as supporting results. Propagator existence and other supplied analytic assumptions must be identified.
 
-## Evidence matrix
+## Evidence
 
-| Source | Evidence inspected | Actual status relevant to this project |
+| Source | Evidence inspected | Result |
 | --- | --- | --- |
 | Mathlib 4 | Complete source archive; theorem catalog; ODE and spectral documentation | No quantum adiabatic theorem found; substantial reusable analysis and linear algebra |
 | Physlib, including PhyslibAlpha and QuantumInfo | Complete source archive at one immutable revision | No adiabatic or Kato theorem found by the recorded lexical scan; thermodynamic adiabatic relations and Berry references are unrelated matches |
@@ -26,11 +26,11 @@ The useful research objective is a kernel-checked theorem connecting a slowly va
 
 ### PhysAtlas: Kato projection calculus
 
-The public page *Finite-Dimensional Kato Projection Calculus Seed* reports the declarations `idempotentDerivative_add`, `idempotentDerivative_sandwich_zero`, and `katoGenerator_commutator_projection_eq_derivative` in the namespace `PhysAtlasFormalizations.Quantum.KatoProjectionCalculus`. These concern differentiating an idempotent operator path and recovering its derivative through a double commutator. This is directly adjacent to the proposed Kato proof route. [3]
+The public page *Finite-Dimensional Kato Projection Calculus Seed* reports the declarations `idempotentDerivative_add`, `idempotentDerivative_sandwich_zero`, and `katoGenerator_commutator_projection_eq_derivative` in the namespace `PhysAtlasFormalizations.Quantum.KatoProjectionCalculus`. They concern differentiating an idempotent operator path and recovering its derivative through a double commutator, as in the Kato proof used here. [3]
 
-The page expressly excludes spectral-projection construction, isolated eigenvalue branches, gap estimates, transport ODEs, propagator intertwining, and adjointness side conditions. It also expressly excludes an adiabatic theorem. The provider labels the Lean result checked, but the page does not expose proof bodies, checker logs, or an immutable source revision. The defensible classification is **reported checked preliminary identities, not independently rebuilt here**. No publication or first-proof date was established. Its search-engine crawl time is not a publication date. [3]
+The page excludes spectral-projection construction, isolated eigenvalue branches, gap estimates, transport ODEs, propagator intertwining, adjointness conditions, and an adiabatic theorem. The provider labels the identities checked, but does not expose proof bodies, checker logs, or an immutable source revision. They were not independently rebuilt here. No publication or first-proof date was established; the search-engine crawl date does not establish either. [3]
 
-Credit this work when describing overlapping formal projection identities. Independently proving elementary identities from standard mathematical sources is reasonable, but their existence should not be presented as a new discovery. The review has not obtained reusable licensed source from PhysAtlas; no such code is incorporated into this repository.
+This is prior formal work on the overlapping projection identities. No reusable licensed source was obtained from PhysAtlas, and no PhysAtlas code is incorporated here.
 
 ### Spatial adiabatic passage: a narrower and incomplete Lean project
 
@@ -38,19 +38,19 @@ The repository `zuwasi/Spatial-Adiabatic-Passage-Ultracold-Atoms` was created on
 
 The second file discusses a positive spectral-gap condition, but its adiabatic section explicitly states that the theorem has not been proved. Although comments describe an axiom, the inspected section actually supplies prose and a positive-gap predicate, not a complete formal adiabatic statement. A later, separate endpoint mixing-angle proof contains `sorry`. There is no proof of an adiabatic error bound, limiting evolution, or quantitative population transfer. [5]
 
-The complete 26-file tree contains no `lakefile.lean`, `lakefile.toml`, `lake-manifest.json`, or `lean-toolchain`, despite README build instructions. The README also identifies demonstration terminal logs as simulated. We did not rebuild these proof scripts and therefore do not endorse a reproducible verification claim. Their relevant status is **public preliminary source with an explicitly missing adiabatic theorem**. [4, 5]
+The complete 26-file tree contains no `lakefile.lean`, `lakefile.toml`, `lake-manifest.json`, or `lean-toolchain`, despite README build instructions. The README identifies demonstration terminal logs as simulated. These proof scripts were inspected but not rebuilt. [4, 5]
 
 ### Existing physics and quantum-information libraries
 
-Physlib is now the combined repository for the former PhysLean and Lean-QuantumInfo projects. Its primary README distinguishes a curated core, a lighter-review PhyslibAlpha, and the QuantumInfo codebase. The inspected tree includes Hilbert-space, spectral-theory, self-adjoint operator, and Hermitian-matrix material. A proposed dependency should be assessed module by module and pinned to a tested revision; the name of a library is not sufficient evidence that all intended analytic bridges already exist. [6]
+At the inspected revision, Physlib combines the former PhysLean and Lean-QuantumInfo projects. Its README distinguishes a curated core, a lighter-review PhyslibAlpha, and the QuantumInfo codebase. The tree includes Hilbert-space, spectral-theory, self-adjoint operator, and Hermitian-matrix material. [6]
 
-Isabelle's AFP already contains a finite-dimensional simultaneous diagonalization result, projective measurements and CHSH, the uncertainty principle, quantum and classical registers, and related quantum-information developments. These demonstrate substantial formal quantum mathematics, but the inspected entry descriptions and subject catalogs did not identify the target theorem. This review did not scan every AFP theory or all private Isabelle work. [7–9]
+Isabelle's AFP contains finite-dimensional simultaneous diagonalization, projective measurements and CHSH, the uncertainty principle, and quantum and classical registers. No adiabatic theorem was identified in the inspected entry descriptions and subject catalogs. The review did not scan every AFP theory or private Isabelle work. [7–9]
 
 QWIRE and SQIR provide established Rocq/Coq quantum-programming infrastructure. Their source scans produced no recorded adiabatic/Kato matches. An additional public project, `ethanlee515/Hamiltonian-simulation-formalization`, explicitly limits its stated scope to time-independent Hamiltonians and proposes symbolic matrix-exponential semantics. It is relevant background, not a located proof of the slowly varying Hamiltonian theorem. [10–12]
 
 ## Search coverage and reproducibility
 
-The strongest negative evidence is the direct archive scan below. GitHub recursive trees for mathlib, Physlib, and the SAP repository reported `truncated: false`. Archive contents were inspected without executing repository code or adding third-party source to this project.
+The following archives were scanned directly. GitHub recursive trees for mathlib, Physlib, and the SAP repository reported `truncated: false`. Repository code was not executed or incorporated into this project.
 
 | Repository | Immutable revision | Files scanned | Result |
 | --- | --- | ---: | --- |
@@ -75,27 +75,21 @@ GitHub's public repository-metadata search returned:
 | `quantum adiabatic theorem` | 3 | Educational/simulation repositories; no complete formal proof identified |
 | `PhysAtlas` | 0 | No repository metadata match; public website nevertheless found |
 
-All these API responses reported `incomplete_results: false`. That flag describes the query response, not the completeness of the research. **Repository search is not global code search.** The SAP and PhysAtlas positives illustrate why zero-result language or repository queries are insufficient.
+All API responses reported `incomplete_results: false`. This describes the query response only. Repository-metadata search does not search all code; SAP and PhysAtlas illustrate the limits of zero-result language or repository queries.
 
 Web searches included exact phrases combining “adiabatic theorem” or “quantum adiabatic” with “Lean,” “Lean4,” “Mathlib,” “formalization,” “formalisation,” “formalized,” “proof assistant,” “machine-checked,” “Isabelle,” “Coq,” “Rocq,” “HOL Light,” and “HOL4.” Domain-specific searches covered GitHub, the Lean community documentation and public Zulip index, and `isa-afp.org`. Hits were followed to primary pages or source where relevant. Many “formalization” hits meant ordinary mathematical formulation; many “adiabatic” hits concerned thermodynamics, numerical simulation, or unrelated names.
 
 The search is strongest for the inspected Lean libraries. It is weaker for HOL4, non-GitHub repositories, unpublished work, unindexed branches, recent pull requests, and proofs using different vocabulary. The third-party projects were not compiled. These limits prevent a universal absence or priority claim.
 
-## Consequences for the formalization
+## Relation to this formalization
 
-The initial finite-dimensional gapped theorem is now proved in this repository. The selected starting point used mathlib's spectral theorem for symmetric operators, including an orthonormal eigenvector basis. Public ODE documentation also exposes existence and uniqueness results based on Picard–Lindelöf and Grönwall, while distinguishing local existence from uniqueness on larger intervals. The implementation constructs global propagators explicitly rather than treating an ODE import as an existence proof. [14, 15]
+The finite-dimensional theorem uses mathlib's spectral theorem for symmetric operators and its orthonormal eigenvector basis. Mathlib also provides ODE existence and uniqueness results based on Picard–Lindelöf and Grönwall; local existence alone does not supply a global propagator. This repository constructs the required global propagators. [14, 15]
 
-The implementation uses operator-product calculus, interval integration, spectral theory, and operator-norm estimates. The pinned mathlib revision governs which declarations are available; current online documentation can describe a later module layout. The [proof guide](proof-guide.md) records the actual dependencies and identifies the distinction between source inspection and checked project declarations.
+The common-domain extension constructs differentiable spectral projections for a continuously moving isolated band, a global $C^1$ commutator solution, and nonautonomous strong evolution. `Adiabatic.Unbounded.common_domain_adiabatic_theorem` derives uniform projection-distance and leakage estimates from the Hamiltonian and gap assumptions. See the [proof guide](proof-guide.md), [common-domain research report](unbounded-research.md), and [verification record](verification.md) for dependencies, mathematical details, and build evidence. The pinned mathlib revision determines the available declarations; online documentation may describe a later module layout.
 
-The completed extension constructs differentiable spectral projections from an actual unbounded common-domain Hamiltonian and a continuously moving isolated band. It derives the global smooth commutator solution and constructs nonautonomous strong evolution from $C^1$ common-domain regularity and self-adjointness. The declaration `Adiabatic.Unbounded.common_domain_adiabatic_theorem` then proves uniform projection-distance and leakage estimates from the Hamiltonian and gap assumptions. The [common-domain research report](unbounded-research.md) explains the Kato–Yosida foundations and full proof chain; [verification.md](verification.md) records the mechanical audit. This mathematical extension does not strengthen the prior-art search into a worldwide absence claim.
+Jansen–Ruskai–Seiler provide quantitative estimates with explicit gap dependence, while Avron–Elgart give a gapless theorem with different hypotheses and no general rate in its basic conclusion. They are distinct mathematical targets. This repository proves a common-domain uniformly gapped band theorem with an existential constant, as specified in its statement and proof guide; it does not claim every version of “the quantum adiabatic theorem.” [16, 17]
 
-Jansen–Ruskai–Seiler provide conventional quantitative estimates with explicit gap dependence, while Avron–Elgart give a gapless theorem with different hypotheses and no general rate in its basic conclusion. They are distinct mathematical targets. This repository proves a common-domain uniformly gapped band theorem with an existential constant, as specified in its statement and proof guide; it does not claim every version of “the quantum adiabatic theorem.” [16, 17]
-
-Suggested public novelty wording:
-
-> This repository formalizes a uniformly gapped quantum adiabatic theorem for possibly unbounded self-adjoint Hamiltonians on a fixed common domain. Our public-source review of 13 September 2026 did not locate a complete existing formalization of the quantum adiabatic theorem in the sources searched. Related projection-calculus and quantum-information formalizations already exist. This is a bounded prior-art assessment, not a claim of worldwide priority.
-
-Before making any stronger publication claim, repeat the search and seek community confirmation through the relevant maintainers or formalization communities. No outreach was sent during this review. A final release should link the exact theorem statement, tested toolchain, immutable source, build evidence, and axiom audit, and clearly distinguish the target theorem from supporting lemmas.
+No community outreach was conducted. Any stronger priority claim would require a renewed search and community review.
 
 ## Primary sources
 

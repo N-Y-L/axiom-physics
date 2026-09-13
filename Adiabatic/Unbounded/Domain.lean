@@ -8,7 +8,7 @@ import Mathlib.Analysis.Normed.Operator.NormedSpace
 A dense injective map from a Banach space into the physical Hilbert space records
 one common operator domain. The Hamiltonian is bounded for the domain norm;
 its associated partially defined operator need not be bounded in the physical
-norm. Self-adjointness always means equality with the actual unbounded adjoint.
+norm. Self-adjointness always means equality with the unbounded adjoint.
 -/
 
 noncomputable section
@@ -41,7 +41,7 @@ def rangeEquiv : D ≃ₗ[ℂ] domain.inclusion.range :=
     domain.inclusion (domain.rangeEquiv.symm x) = x :=
   LinearEquiv.ofInjective_symm_apply domain.inclusion.toLinearMap x
 
-/-- The actual unbounded operator represented by a bounded domain map. -/
+/-- The unbounded operator represented by a bounded domain map. -/
 def operator (H : D →L[ℂ] E) : E →ₗ.[ℂ] E where
   domain := domain.inclusion.range
   toFun := H.toLinearMap.comp domain.rangeEquiv.symm.toLinearMap

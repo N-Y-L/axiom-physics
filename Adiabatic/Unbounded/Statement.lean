@@ -4,10 +4,10 @@ import Adiabatic.Unbounded.RieszProjection
 /-!
 # Statement of the common-domain unbounded adiabatic theorem
 
-This file defines the full theorem proved in `Adiabatic.Unbounded.MainTheorem`.
-The spectral band may move, need not have finite rank, and is separated
-from the actual unbounded spectrum. Its projection is defined by a
-resolvent integral, rather than supplied as a hypothesis.
+The hypotheses and conclusion of `Adiabatic.Unbounded.MainTheorem` are
+defined here. The spectral band may move and need not have finite rank.
+Its continuous boundaries remain a uniform positive distance from the
+spectrum, and its projection is defined by a resolvent integral.
 -/
 
 noncomputable section
@@ -19,8 +19,8 @@ open Set
 variable {D E : Type*} [NormedAddCommGroup D] [NormedSpace ℂ D] [CompleteSpace D]
   [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
 
-/-- A twice differentiable self-adjoint common-domain Hamiltonian with a
-uniformly isolated, possibly moving and infinite-rank spectral band. -/
+/-- A twice continuously differentiable self-adjoint common-domain Hamiltonian
+with a uniformly isolated, possibly moving and infinite-rank spectral band. -/
 structure GappedHamiltonian (domain : CommonDomain D E) where
   H : ℝ → D →L[ℂ] E
   smooth : ContDiffOn ℝ 2 H (Icc (0 : ℝ) 1)
@@ -44,7 +44,7 @@ def spectralProjection (data : GappedHamiltonian domain) (t : ℝ) : E →L[ℂ]
   domain.rieszProjection (data.H t) (((data.lower t + data.upper t) / 2 : ℝ) : ℂ)
     ((data.upper t - data.lower t) / 2)
 
-/-- The quantitative gap puts the enclosing circle in the actual resolvent
+/-- The quantitative gap puts the enclosing circle in the resolvent
 set, including its two real endpoints. -/
 theorem enclosing_circle_resolvent (data : GappedHamiltonian domain)
     {t : ℝ} (ht : t ∈ Icc (0 : ℝ) 1) :

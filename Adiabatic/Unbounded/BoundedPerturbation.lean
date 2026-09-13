@@ -4,9 +4,9 @@ import Mathlib.Analysis.Calculus.ContDiff.Operations
 /-!
 # Bounded self-adjoint perturbations on a common domain
 
-Adding a bounded self-adjoint operator preserves genuine unbounded
-self-adjointness and the original domain. The proof identifies adjoint domains,
-so it does not assume a resolvent or an evolution for the perturbed operator.
+Adding a bounded self-adjoint operator preserves unbounded
+self-adjointness and the original domain. The proof identifies the adjoint
+domain of the perturbed operator.
 -/
 
 noncomputable section

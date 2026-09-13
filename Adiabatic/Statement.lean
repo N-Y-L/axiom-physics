@@ -4,10 +4,9 @@ import Mathlib.Analysis.Calculus.ContDiff.Basic
 import Mathlib.Analysis.Calculus.Deriv.Basic
 
 /-!
-# Formal statement of the spectral-gap target
+# Statement of the finite-dimensional adiabatic theorem
 
-This file defines the intended hypotheses and conclusion. Definitions are
-specifications, not proofs. The uniform gapped estimate is not asserted here.
+The hypotheses and conclusion of `Adiabatic.MainTheorem` are defined here.
 Operators carry the Hilbert-space operator norm and time derivatives are real.
 -/
 
@@ -58,15 +57,15 @@ def IsSchrodingerEvolution (H : ℝ → Operator E) (T : ℝ)
 def HasSchrodingerEvolution (H : ℝ → Operator E) : Prop :=
   ∀ T : ℝ, 0 < T → ∃ U : ℝ → Operator E, IsSchrodingerEvolution E H T U
 
-/-- The target leakage estimate. The constant is chosen before the runtime
+/-- The leakage estimate. The constant is chosen before the runtime
 and the solution, so the quantifiers require a uniform adiabatic limit. -/
 def HasUniformAdiabaticEstimate (H P : ℝ → Operator E) : Prop :=
   ∃ C : ℝ, 0 ≤ C ∧ ∀ T : ℝ, 0 < T → ∀ U : ℝ → Operator E,
     IsSchrodingerEvolution E H T U → ∀ t ∈ Icc (0 : ℝ) 1,
       ‖(1 - P t) * U t * P 0‖ ≤ C / T
 
-/-- The full intended theorem is this proposition. No proof is supplied by
-declaring it: a separate theorem must construct both terms of the conjunction. -/
+/-- Existence of Schrödinger evolution and a uniform adiabatic leakage bound.
+Proved in `Adiabatic.MainTheorem`. -/
 def FiniteDimensionalAdiabaticTheorem : Prop :=
   ∀ data : GappedHamiltonian E,
     HasSchrodingerEvolution E data.H ∧ HasUniformAdiabaticEstimate E data.H data.P

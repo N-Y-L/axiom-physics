@@ -4,7 +4,7 @@ import Mathlib.Analysis.SpecificLimits.Basic
 /-!
 # A complete family of frozen common-domain approximations
 
-Continuous differentiability and genuine self-adjointness provide the
+Continuous differentiability and self-adjointness provide the
 frozen evolutions, a vanishing uniform coefficient error, and domain bounds
 independent of the number of time slices.
 -/

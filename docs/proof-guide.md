@@ -1,17 +1,13 @@
 # Proof guide: quantum adiabatic theorem
 
-The main result is the common-domain theorem for possibly unbounded
-self-adjoint Hamiltonians on an arbitrary complex Hilbert space. It
-constructs the spectral projection and strong Schrödinger evolution from
-Hamiltonian and spectral-gap assumptions, then proves uniform
-projection-distance and leakage bounds. Start with its statement and proof
-below.
+The common-domain theorem constructs spectral projections and strong
+Schrödinger evolution for possibly unbounded self-adjoint Hamiltonians on
+an arbitrary complex Hilbert space, then proves uniform projection-distance
+and leakage bounds.
 
-The original finite-dimensional theorem remains a separate result. It
-takes smooth Hamiltonian and projection paths as input, uses a gap between
-their spectral sectors, and proves a leakage bound. The bounded theorem
-with a fixed resolvent circle is an intermediate spectral construction.
-These declarations have different input structures.
+Two separate results treat bounded Hamiltonians with a fixed resolvent
+circle and finite-dimensional Hamiltonians with a supplied smooth
+projection path.
 
 | Result | Statement and proof | Guide section |
 | --- | --- | --- |
@@ -19,11 +15,10 @@ These declarations have different input structures.
 | Bounded theorem with a fixed circle | [Spectral theorem](../Adiabatic/Infinite/SpectralTheorem.lean) | [Bounded spectral argument](#bounded-spectral-theorem-in-arbitrary-dimension) |
 | Original finite-dimensional theorem | [Statement](../Adiabatic/Statement.lean), [main theorem](../Adiabatic/MainTheorem.lean) | [Finite-dimensional argument](#original-finite-dimensional-theorem) |
 
-See [Verification and scope](verification.md) for the verification record,
-[Common-domain research](unbounded-research.md) for the literature
-comparison, and [Possible extensions](extensions.md) for informal explicit
-estimates outside the proved declarations. The [documentation index](README.md)
-lists the other reading paths.
+The [verification record](verification.md) and
+[literature comparison](unbounded-research.md) accompany this guide.
+[Possible extensions](extensions.md) collects informal explicit estimates;
+the [documentation index](README.md) lists all guides.
 
 Throughout, $[A,B]=AB-BA$, products act on the rightmost vector first, and
 $\hbar=1$. Time is $s\in[0,1]$ and the runtime is $T>0$. The Hamiltonian
@@ -34,9 +29,9 @@ path and selected band are fixed independently of $T$.
 The input structure in
 [`Unbounded/Statement.lean`](../Adiabatic/Unbounded/Statement.lean) uses a
 dense injective continuous inclusion $j:D\to E$, a complete domain space,
-and a $C^2$ path $H:[0,1]\to B(D,E)$. Each represented unbounded operator is
-equal to its actual adjoint. Continuous endpoints $a<b$ select a bounded
-spectral band and stay a uniform positive distance from spectrum.
+and a $C^2$ path $H:[0,1]\to B(D,E)$. Each represented unbounded operator
+equals its adjoint. Continuous endpoints $a<b$ select a bounded spectral
+band and stay a uniform positive distance from spectrum.
 
 The theorem constructs a $C^2$ orthogonal spectral projection $P(s)$ and,
 for each runtime $T>0$, strong unitary evolution with
@@ -61,8 +56,8 @@ $$
 
 The selected band may have infinite rank. The bound is in the physical
 Hilbert-space operator norm; it does not require operator-norm continuity
-of the physical evolution. The constant is existential. The full theorem
-follows the dependency chain below.
+of the physical evolution. The constant is existential. The proof proceeds
+as follows.
 
 ```mermaid
 flowchart TD
@@ -82,9 +77,9 @@ flowchart TD
 ### Domain-valued resolvents and projections
 
 Write $R_D(z)=(H-zj)^{-1}:E\to D$ and $r(z)=jR_D(z)$. The two maps have
-different types and norms. Their cancellation and resolvent identities are
-proved in `Unbounded/Resolvent.lean`; `Domain.lean` proves equivalence with
-the graph norm and uses full unbounded self-adjointness.
+different types and norms. `Unbounded/Resolvent.lean` proves their
+cancellation and resolvent identities. `Domain.lean` uses self-adjointness
+to prove equivalence of the given domain norm with the graph norm.
 
 The physical projection and its lift are
 
@@ -128,22 +123,21 @@ $$
 `RieszCommutator.lean` proves this identity on every domain vector and
 establishes $C^1$ regularity. `SmoothGluing.lean` proves a finite smooth
 partition-of-unity theorem for linear equations. `GlobalCommutator.lean`
-applies it to the domain commutator; `GappedCommutator.lean` supplies the local
-contours from the moving-band hypotheses. This constructs a global smooth
-solution directly from the gap.
+applies it to the domain commutator, using local contours supplied by
+`GappedCommutator.lean`. The result is a global $C^1$ solution.
 
 ### Strong comparison and final reduction
 
 The comparison calculation is made after application to domain vectors.
-`StrongCalculus.lean` supplies the needed product rules under strong
-continuity and uniform boundedness. `StrongEstimate.lean` extends the
+`StrongCalculus.lean` proves product rules under strong continuity and
+uniform boundedness. `StrongEstimate.lean` extends the
 resulting norm bound from the dense domain to the physical Hilbert space.
 `Transport.lean` derives exact intertwining for the Kato evolution.
 
-`GappedSpectralTheorem.lean` constructs the spectral inputs and proves both
-projection distance and leakage with one constant $C$, conditional only on
-the two strong propagators. `GappedReduction.lean` proves that the Kato
-correction is $C^1$ and skew-adjoint. The bounded self-adjoint perturbation
+`GappedSpectralTheorem.lean` constructs the spectral projection and proves
+both estimates with one constant $C$, given the two strong propagators.
+`GappedReduction.lean` proves that the Kato correction is $C^1$ and
+skew-adjoint. The bounded self-adjoint perturbation
 $H+(i/T)Kj$ has the same full domain. Thus general $C^1$ common-domain
 evolution existence supplies both propagators.
 
@@ -159,9 +153,9 @@ propagators.
 ### Autonomous and nonautonomous evolution
 
 `ResolventApproximation.lean` constructs commuting bounded self-adjoint
-approximations from nonreal resolvents. `Autonomous.lean` proves convergence
-of their unitary exponentials to an actual autonomous group, including
-domain preservation and the strong equation. These results are checked.
+approximations from nonreal resolvents. `Autonomous.lean` proves that their
+unitary exponentials converge to an autonomous group preserving the domain
+and satisfying the strong equation.
 
 For time dependence, the construction composes autonomous groups for frozen
 Hamiltonians. `GraphBounds.lean` controls products in shifted graph norms.
@@ -171,20 +165,18 @@ Hamiltonians. `GraphBounds.lean` controls products in shifted graph norms.
 graph bounds, and `HilbertGraphConvergence.lean` upgrades the corresponding
 continuity.
 
-`FrozenApproximation.lean` assembles actual frozen evolutions, a vanishing
-uniform coefficient error, and forward/inverse domain bounds from $C^1$
-regularity and genuine self-adjointness. `GraphLimit.lean` transfers the
-sharp two-time graph bound to the physical limit and proves continuity of
-its domain lift. A local comparison with the autonomous group of $H(t)$
-has an $O(|s-t|^2)$ remainder on every initial domain vector. Consequently,
+`FrozenApproximation.lean` derives frozen evolutions, a vanishing uniform
+coefficient error, and forward/inverse domain bounds from $C^1$ regularity
+and self-adjointness. `GraphLimit.lean` transfers the sharp two-time graph
+bound to the physical limit and proves continuity of its domain lift.
+A local comparison with the autonomous group of $H(t)$ has an
+$O(|s-t|^2)$ remainder on every initial domain vector. Consequently,
 the limit satisfies the strong equation, including the appropriate
 one-sided derivatives at both endpoints.
 
-`exists_nonautonomous_strongPropagator` in `Nonautonomous.lean` packages
-these derived facts into the required strong propagator. It assumes no
-auxiliary evolution, domain invariance, or graph estimate. This completes
-the existence input used by the full adiabatic theorem. The final mechanical
-build and transitive axiom audit are recorded in
+`exists_nonautonomous_strongPropagator` in `Nonautonomous.lean` concludes
+the construction. Auxiliary evolution, domain invariance, and graph
+estimates are derived. Build and transitive axiom checks are recorded in
 [verification.md](verification.md).
 
 ## Bounded spectral theorem in arbitrary dimension
@@ -203,26 +195,21 @@ surjectivity. The final declaration is
 `bounded_adiabatic_theorem_of_resolvent_contour` in
 [`Infinite/SpectralTheorem.lean`](../Adiabatic/Infinite/SpectralTheorem.lean).
 It proves existence and uniform leakage for a bounded self-adjoint $C^2$
-Hamiltonian with one fixed isolating circle. A fixed circle is an explicit
-assumption of this particular theorem.
+Hamiltonian, assuming one fixed isolating circle.
 
 ## Original finite-dimensional theorem
 
 ### Statement and conventions
 
-Let $E$ be a finite-dimensional complex Hilbert space, and use the
-operator norm on $B(E)$. Time is the real variable $s\in[0,1]$; the runtime is
-$T>0$. Set $\hbar=1$ and use $[A,B]=AB-BA$. Products are compositions,
-with the rightmost operator acting first. The physical equation is
+Let $E$ be a finite-dimensional complex Hilbert space, with the operator
+norm on $B(E)$. The physical equation is
 
 $$
 U_T'(s)=-iT H(s)U_T(s),\qquad U_T(0)=I.
 $$
 
-The paths $H$ and $P$ are fixed independently of $T$.
-
-**Formalized hypotheses.** Let $H,P:\mathbb R\to B(E)$ be globally $C^2$ paths.
-For every real time, assume $H^*=H$, $P^*=P$, $P^2=P$, and $HP=PH$.
+Let $H,P:\mathbb R\to B(E)$ be globally $C^2$ paths, fixed independently
+of $T$. For every real time, assume $H^*=H$, $P^*=P$, $P^2=P$, and $HP=PH$.
 
 On $[0,1]$, assume a fixed $g>0$ separates every eigenvalue of $H$ in
 $\operatorname{range}P$ from every eigenvalue in $\ker P$. This eigenvalue
@@ -240,23 +227,21 @@ $$
 $$
 
 `Schrodinger.lean` separately proves uniqueness on $[0,1]$ and unitarity.
-The main theorem's conclusion is the operator leakage estimate above.
 
-**Consequences and separate declarations.** Informally, a normalized
-initial state in $\operatorname{range}P(0)$ has leakage probability at most
-$C^2/T^2$. The comparison proof also gives
+Informally, a normalized initial state in $\operatorname{range}P(0)$ has
+leakage probability at most $C^2/T^2$. The comparison proof also gives
 
 $$
 \|U_T(s)P(0)U_T(s)^*-P(s)\|\le 2C/T.
 $$
 
-Here $C$ may be taken to be the comparison constant constructed in the proof;
-the factor $2$ is not optimal. Formal probability and limit corollaries
-remain extensions of this theorem. The generic projection-distance estimate
-is proved in `ProjectionDistance.lean` and is used by the common-domain
-theorem described above. The finite-dimensional theorem supplies both
-smooth paths as input; contour construction of the projection is available
-in the spectral modules. Its global regularity assumptions are stronger
+Here $C$ is the comparison constant; the factor $2$ is not optimal.
+Formal probability and limit corollaries remain extensions of this theorem.
+The generic projection-distance estimate is proved in
+`ProjectionDistance.lean` and is used by the common-domain theorem. Both smooth
+paths are inputs to the finite-dimensional theorem;
+the spectral modules construct the projection from a contour. The
+finite-dimensional theorem assumes global regularity, which is stronger
 than regularity on a neighborhood of $[0,1]$.
 
 Jansen–Ruskai–Seiler state quantitative band versions and permit crossings
@@ -266,10 +251,10 @@ gap dependence than the elementary constants in
 Schrödinger evolution agrees with the one above.
 [Primary source, Sections II–III](https://arxiv.org/pdf/quant-ph/0603175).
 
-### First intermediate theorem: actual evolution plus a commutator solution
+### Comparison from a commutator solution
 
-The checked comparison estimate in `Comparison.lean` works in a complex
-operator algebra without finite dimensionality. Its inputs are:
+`Comparison.lean` works in a complex operator algebra of arbitrary
+dimension. It assumes:
 
 1. $U,V,X$ have real derivatives within the closed interval, including its
    endpoints.
@@ -280,7 +265,7 @@ operator algebra without finite dimensionality. Its inputs are:
    $\|K\|\le M_K$ hold. For a family of runtimes, these data and bounds
    are independent of $T$.
 
-The intermediate conclusion is
+It proves
 
 $$
 \|U(s)-V(s)\|
@@ -288,16 +273,14 @@ $$
 \le\frac{2M_X+M_D+M_KM_X}{T}.
 $$
 
-This intermediate theorem assumes the commutator solution and the two
-unitary evolutions. In the original finite-dimensional theorem,
-`SpectralGap.lean` and `Regularity.lean` construct the solution from the gap;
-`Propagator.lean` and `Transport.lean` construct the evolutions and derive
-unitarity. The final estimate is never assumed.
+For the finite-dimensional theorem, `SpectralGap.lean` and
+`Regularity.lean` construct the commutator solution from the gap;
+`Propagator.lean` and `Transport.lean` construct the evolutions and prove
+unitarity.
 
 #### Derivation with a corrected wave operator
 
-The following calculation spells out the sign choices and reduces the proof
-to ordinary derivative rules and a mean-value inequality. Define
+Define
 
 $$
 \Omega=V^*U,\qquad B=V^*XU,\qquad F=\Omega-\frac{i}{T}B.
@@ -335,15 +318,14 @@ $$
 The mean-value inequality bounds $\|F(s)-F(0)\|$ by $s$ times this quantity.
 Using $\Omega(0)=I$, $\|B(s)\|\le M_X$, and $\|B(0)\|\le M_X$ gives the
 estimate for $\Omega-I$; multiplication by $V$ gives the estimate for $U-V$.
-This is the implementation in `Evolution.lean` and `Bounds.lean`.
+`Evolution.lean` and `Bounds.lean` formalize this calculation.
 
-This argument is a mean-value implementation of the commutator method.
 Avron–Elgart's Lemma 1 allows an additional commutator residual and uses
 integration by parts to estimate the evolution difference. Its gap case has
 zero residual and yields inverse-runtime convergence.
 [Primary source, Section 4](https://arxiv.org/pdf/math-ph/9805022).
 
-### Second intermediate theorem: Kato transport
+### Kato transport
 
 Let $P$ be a differentiable orthogonal projection path, and write
 $D=P'$, $Q=I-P$, and $K=DP-PD$. Differentiating $P^2=P$ yields
@@ -366,8 +348,8 @@ $$
 Q(s)U(s)P(0)=Q(s)(U(s)-V(s))P(0).
 $$
 
-Orthogonal projections are contractions, giving the checked leakage bound
-in `Leakage.lean`. For the checked projection-distance estimate, expand the
+Orthogonal projections are contractions, giving the leakage bound in
+`Leakage.lean`. For the projection-distance estimate, expand the
 difference between $UP(0)U^*$ and $VP(0)V^*$ into two terms, each bounded by
 $\|U-V\|$.
 
@@ -420,15 +402,14 @@ Given the augmented inverse, `ReducedResolvent.lean` proves $RP=PR=0$ and
 $(H-eI)R=R(H-eI)=Q$. It also proves that
 
 $$
-X=RDP+PDR.
+X=RDP+PDR
 $$
 
 solves $[H,X]=DP-PD$. This algebraic special case is independent of the
 general-cluster proof used in the main theorem.
 
-The proposed derivative formula and explicit constants are collected in
-[Possible extensions](extensions.md#reduced-resolvent-estimates). They are
-separate from these algebraic declarations.
+The derivative formula and explicit constants remain
+[possible extensions](extensions.md#reduced-resolvent-estimates).
 
 ### Lean representation and proved modules
 
@@ -446,14 +427,12 @@ The finite-dimensional proof uses the following modules:
 | [Propagator.lean](../Adiabatic/Propagator.lean) | A factorial Picard-iterate estimate constructs evolution on the whole unit interval, without a smallness hypothesis. |
 | [Transport.lean](../Adiabatic/Transport.lean) | Skew-adjoint evolution is unitary in finite dimension and Kato evolution intertwines projections. |
 | [Evolution.lean](../Adiabatic/Evolution.lean), [Bounds.lean](../Adiabatic/Bounds.lean), [Comparison.lean](../Adiabatic/Comparison.lean) | Derivative cancellation and the mean-value inequality give the comparison bound. |
-| [Leakage.lean](../Adiabatic/Leakage.lean), [CommutatorTheorem.lean](../Adiabatic/CommutatorTheorem.lean) | Exact transport and contraction bounds give uniform leakage from a smooth commutator solution. |
+| [Leakage.lean](../Adiabatic/Leakage.lean), [CommutatorTheorem.lean](../Adiabatic/CommutatorTheorem.lean) | Exact transport and contraction bounds give uniform leakage from a $C^1$ commutator solution. |
 | [MainTheorem.lean](../Adiabatic/MainTheorem.lean) | The spectral assumptions imply existence of physical evolution and the uniform $C/T$ leakage estimate. |
 | [Schrodinger.lean](../Adiabatic/Schrodinger.lean), [Examples.lean](../Adiabatic/Examples.lean) | Explicit existence, uniqueness, and unitarity statements; a nontrivial two-level gapped example. |
 
-The mathlib foundations below were inspected at the pinned commit
-`8f9d9cff6bd728b17a24e163c9402775d9e6a365`.
-
-Pinned primary sources:
+Mathlib sources at the pinned commit
+`8f9d9cff6bd728b17a24e163c9402775d9e6a365`:
 [derivative multiplication](https://github.com/leanprover-community/mathlib4/blob/8f9d9cff6bd728b17a24e163c9402775d9e6a365/Mathlib/Analysis/Calculus/Deriv/Mul.lean),
 [adjoint differentiation](https://github.com/leanprover-community/mathlib4/blob/8f9d9cff6bd728b17a24e163c9402775d9e6a365/Mathlib/Analysis/Calculus/Deriv/Star.lean),
 [mean value inequality](https://github.com/leanprover-community/mathlib4/blob/8f9d9cff6bd728b17a24e163c9402775d9e6a365/Mathlib/Analysis/Calculus/MeanValue.lean),
@@ -472,9 +451,6 @@ separation on a domain with unique derivatives.
 
 ### Verification of the finite-dimensional proof
 
-The completed main proof derives the commutator solution, both evolutions,
-unitarity, exact transport, and the leakage estimate. The source and axiom
-checks are described in [verification.md](verification.md). Formal
-probability corollaries and explicit gap-dependent constants remain
-[possible extensions](extensions.md). The spectral constructions described
-earlier derive the projection from a band rule and treat arbitrary dimension.
+Source and axiom checks are recorded in [verification.md](verification.md).
+Formal probability corollaries and explicit gap-dependent constants remain
+[possible extensions](extensions.md).

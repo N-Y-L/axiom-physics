@@ -8,8 +8,8 @@ import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 
 A supplied solution of `V' = B V`, where `B` is skew-adjoint and `[B, P] = P'`, has
 constant transported projection `V* P V`. If `V` is unitary, this gives the exact
-intertwining identity `P(t) V(t) = V(t) P(0)`. In finite dimension, unitarity is itself
-derived from the supplied evolution equation and initial value.
+intertwining identity `P(t) V(t) = V(t) P(0)`. In finite dimension, the evolution
+equation and initial value also imply unitarity.
 
 The Kato specialization derives the commutator and skew-adjointness conditions from a
 differentiable orthogonal projection and a commuting skew-adjoint Hamiltonian term.

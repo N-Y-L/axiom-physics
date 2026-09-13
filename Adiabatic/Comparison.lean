@@ -18,7 +18,7 @@ variable {A : Type*} [NormedRing A] [NormedAlgebra ℂ A]
   [StarRing A] [CStarRing A] [StarModule ℂ A]
   [Nontrivial A]
 
-/-- A quantitative comparison derived from actual evolution equations.
+/-- A quantitative comparison derived from evolution equations.
 `X`, `dX`, `K`, and their bounds must be fixed independently of `z` when this
 theorem is used for a family of runtimes. -/
 theorem adiabatic_comparison

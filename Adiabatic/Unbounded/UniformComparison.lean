@@ -3,7 +3,7 @@ import Adiabatic.Unbounded.Comparison
 /-!
 # A runtime-independent comparison bound for strong evolution
 
-Compactness bounds the smooth commutator solution and its derivative before
+Compactness bounds the C¹ commutator solution and its derivative before
 the runtime is chosen. This gives a uniform operator-norm comparison for
 any supplied pair of strong propagators.
 -/

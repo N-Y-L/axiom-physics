@@ -6,7 +6,7 @@ import Mathlib.Tactic
 /-!
 # Existence, unitarity, and uniqueness of physical evolution
 
-Continuous Hamiltonians generate actual propagators on the unit interval.
+Continuous Hamiltonians generate propagators on the unit interval.
 Self-adjoint Hamiltonians give unitary evolution, and two solutions with the
 same normalized initial value agree throughout that interval. Values outside
 the interval are unconstrained, so uniqueness is stated as equality on it.
@@ -54,8 +54,7 @@ theorem schrodingerEvolution_unitary {H : ℝ → Operator E} {T : ℝ}
   simpa only [smul_mul_assoc] using hU.2 s hs
 
 /-- Two physical propagators for the same self-adjoint Hamiltonian and runtime
-coincide throughout the unit interval. No extra assumption on the solution norm
-or approximation error is used. -/
+coincide throughout the unit interval. -/
 theorem schrodingerEvolution_unique {H : ℝ → Operator E} {T : ℝ}
     {U V : ℝ → Operator E}
     (hH : ∀ t ∈ Icc (0 : ℝ) 1, star (H t) = H t)
@@ -88,8 +87,8 @@ theorem schrodingerEvolution_unique {H : ℝ → Operator E} {T : ℝ}
     _ = V t * (star (V t) * U t) := mul_assoc _ _ _
     _ = V t := by rw [hprod, mul_one]
 
-/-- The target's hypotheses provide a unique unitary physical evolution on
-the unit interval for every runtime. Uniqueness concerns this interval only. -/
+/-- The gapped Hamiltonian has a unique unitary physical evolution on
+the unit interval for every runtime. -/
 theorem GappedHamiltonian.exists_unique_unitary_evolution (data : GappedHamiltonian E) (T : ℝ) :
     ∃ U : ℝ → Operator E,
       IsSchrodingerEvolution E data.H T U ∧

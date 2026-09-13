@@ -1,7 +1,6 @@
 # Proof checks
 
-The build, source scan, axiom audit, and compiled-proof checker serve
-different purposes. Run them from the repository root:
+Run from the repository root:
 
 ```sh
 lake --wfail build
@@ -42,7 +41,7 @@ full dependency audit.
 ## Verification record
 
 [results.json](results.json) records completed checks, the pinned toolchain,
-public theorem names, and source hashes. It is a saved verification record,
-not a substitute for rerunning the checks after a mathematical change.
+public theorem names, and source hashes. Rerun the checks after mathematical
+changes.
 The [verification note](../docs/verification.md) describes the exact theorem
 scope and the separate semantic review.

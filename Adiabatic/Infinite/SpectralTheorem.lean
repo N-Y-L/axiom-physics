@@ -5,14 +5,13 @@ import Adiabatic.Infinite.CommutatorTheorem
 # Quantum adiabatic theorem in arbitrary dimension with a fixed spectral contour
 
 A twice continuously differentiable bounded self-adjoint Hamiltonian and a
-fixed circle in its resolvent set determine their own smooth orthogonal spectral
+fixed circle in its resolvent set determine a smooth orthogonal spectral
 projection. The resolvent contour constructs the commutator solution, and the
 Schrödinger and Kato propagators are constructed from their equations.
 
 The resulting operator-norm leakage bound is uniform in time and is `C / T`,
 with the constant chosen before the runtime. There is no dimension or rank
-assumption. A common fixed isolating circle is an explicit hypothesis; this
-file does not assert the unbounded or arbitrary moving-contour theorem.
+assumption. The same fixed isolating circle is required at every time.
 -/
 
 noncomputable section
@@ -24,7 +23,7 @@ open Set Metric
 variable {A : Type*} [CStarAlgebra A] [Nontrivial A]
 
 omit [Nontrivial A] in
-/-- A fixed resolvent contour supplies the smooth Kato commutator solution. -/
+/-- A fixed resolvent contour supplies the C¹ Kato commutator solution. -/
 theorem exists_contDiffOn_contour_commutator {H : ℝ → A} {s : Set ℝ}
     (hH : ContDiffOn ℝ 2 H s) (hs : UniqueDiffOn ℝ s) {c : ℂ} {r : ℝ} (hr : 0 ≤ r)
     (hgap : ∀ t ∈ s, ∀ z ∈ sphere c r, z ∉ spectrum ℂ (H t)) :
@@ -69,7 +68,7 @@ theorem bounded_adiabatic_estimate_of_resolvent_contour
     (fun t ht => ((hp.differentiableOn (by norm_num)) t ht).hasDerivWithinAt)
     (fun t ht => ((hx.differentiableOn (by norm_num)) t ht).hasDerivWithinAt) hcomm
 
-/-- The bounded spectral-gap theorem in arbitrary dimension: actual unitary
+/-- The bounded spectral-gap theorem in arbitrary dimension: unitary
 Schrödinger propagators and a uniform `C / T` estimate for every solution. -/
 theorem bounded_adiabatic_theorem_of_resolvent_contour
     (H : ℝ → A) (hH : ContDiffOn ℝ 2 H (Icc (0 : ℝ) 1))

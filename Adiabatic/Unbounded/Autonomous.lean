@@ -17,12 +17,11 @@ import Mathlib.Tactic
 Bounded skew-adjoint operators have explicit unitary exponential groups.
 For commuting generators the difference between their evolutions on a
 vector is controlled by the difference of the generators on that vector,
-with no operator-norm bound on either generator. This is the estimate needed
-to pass from bounded resolvent approximations to unbounded autonomous
-evolution. Strong limits give an actual continuous unitary group and its
-domain derivative; commutation with a fixed resolvent supplies domain lifts.
-The approximation hypotheses are instantiated by the self-adjoint resolvent
-construction to obtain autonomous evolution from self-adjointness alone.
+independently of the generator norms. This estimate gives strong convergence
+of bounded resolvent approximations. Their limit is a strongly continuous
+unitary group with a domain derivative; commutation with a fixed resolvent
+supplies domain lifts. The self-adjoint resolvent construction supplies the
+required approximations.
 -/
 
 noncomputable section
@@ -215,8 +214,7 @@ theorem strong_autonomous_limit_add (s t : ℝ) : U (s + t) = U s * U t := by
   apply tendsto_nhds_unique (hlim (s + t) x)
   simpa only [boundedAutonomous_add, ContinuousLinearMap.mul_apply] using hprod
 
-/-- Both inverse identities survive in the strong limit, so the limit is
-unitary, rather than merely an isometry. -/
+/-- Both inverse identities pass to the strong limit, proving unitarity. -/
 theorem strong_autonomous_limit_mem_unitary (t : ℝ) : U t ∈ unitary (E →L[ℂ] E) := by
   have hleft : star (U t) * U t = 1 :=
     (U t).norm_map_iff_adjoint_comp_self.mp (strong_autonomous_limit_norm hB hlim t)
@@ -492,7 +490,7 @@ def AutonomousGroup.toStrongPropagator {z : ℂ} (U : domain.AutonomousGroup H z
 
 variable (domain H)
 
-/-- Construct a global autonomous group from actual commuting bounded
+/-- Construct a global autonomous group from commuting bounded
 approximations and their domain-generator limit. -/
 theorem exists_autonomousGroup_of_approximations
     (z : ℂ) (B : ℕ → E →L[ℂ] E)
@@ -543,7 +541,7 @@ theorem exists_autonomousGroup (z : ℂ) (hz : star z = -z) :
     exact (domain.regularizedHamiltonian_commute_physicalResolvent H hH n Complex.I
       (by simp)).smul_left z
 
-/-- Commuting bounded approximations construct an actual strong propagator
+/-- Commuting bounded approximations construct a strong propagator
 for an unbounded autonomous Hamiltonian. The approximations, their generator
 limit and their resolvent commutation remain explicit in this intermediate theorem. -/
 theorem exists_autonomous_evolution_of_approximations
@@ -589,10 +587,9 @@ theorem exists_autonomous_evolution (z : ℂ) (hz : star z = -z) :
       (by simp)).smul_left z
 
 include hH in
-/-- Every self-adjoint common-domain Hamiltonian generates an actual
-domain-preserving unitary strong evolution. In particular `z = -i T` gives
-Schrödinger evolution for every real runtime. No propagator, spectral
-decomposition or evolution estimate is assumed. -/
+/-- Every self-adjoint common-domain Hamiltonian generates a domain-preserving
+unitary strong evolution. In particular `z = -i T` gives Schrödinger evolution
+for every real runtime. -/
 theorem exists_autonomous_strongPropagator (z : ℂ) (hz : star z = -z) :
     Nonempty (StrongPropagator domain (fun _ => H) (fun _ => 0) z) := by
   obtain ⟨V, _, _⟩ := domain.exists_autonomous_evolution H hH z hz

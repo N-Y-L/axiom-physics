@@ -92,7 +92,7 @@ theorem reducedCommutator_commutator {H R P dP : A}
       unfold katoGenerator
       noncomm_ring
 
-/-- An actual augmented inverse supplies the algebraic commutator solution. -/
+/-- An augmented inverse supplies the algebraic commutator solution. -/
 theorem reducedResolvent_commutator {H P dP Ainv : A}
     (hP : P * P = P) (hHP : H * P = 0) (hPH : P * H = 0)
     (hleft : Ainv * (H + P) = 1) (hright : (H + P) * Ainv = 1) :

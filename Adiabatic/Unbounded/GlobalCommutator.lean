@@ -2,7 +2,7 @@ import Adiabatic.Unbounded.RieszCommutator
 import Adiabatic.Unbounded.SmoothGluing
 
 /-!
-# A global smooth domain commutator solution
+# A global C¹ domain commutator solution
 
 Local spectral contours provide domain-valued commutator solutions. A finite
 smooth partition of unity combines them on the compact time interval. The
@@ -27,7 +27,7 @@ def commutatorLinearMap (H : D →L[ℂ] E) : (E →L[ℂ] D) →ₗ[ℝ] D →L
   map_add' L M := by ext x; simp; abel
   map_smul' a L := by ext x; simp [smul_sub]
 
-/-- Local resolvent circles construct a global smooth solution of the actual
+/-- Local resolvent circles construct a global C¹ solution of the
 unbounded Kato commutator equation. -/
 theorem exists_contDiffOn_commutatorLift_of_local_contours
     {H : ℝ → D →L[ℂ] E} {P : ℝ → E →L[ℂ] E} {s : Set ℝ}

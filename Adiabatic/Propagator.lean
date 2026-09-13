@@ -13,8 +13,8 @@ import Mathlib.Tactic
 
 For a vector field globally Lipschitz in the state, Picard iteration acts on
 all continuous curves on `[0, 1]`. Its iterates have factorially decaying
-Lipschitz constants. A contracting iterate supplies an actual fixed point,
-without assuming an evolution or requiring a small coefficient norm.
+Lipschitz constants. A contracting iterate supplies a fixed point,
+with no smallness condition on the coefficient norm.
 -/
 
 namespace Adiabatic
@@ -143,7 +143,7 @@ theorem exists_fixedPoint (x₀ : E) : ∃ α : Curve E, IsFixedPt (next hf x₀
 end PropagatorConstruction
 
 /-- A continuous vector field uniformly globally Lipschitz in the state has
-an actual solution on the entire unit interval. -/
+a solution on the entire unit interval. -/
 theorem exists_solution_unitInterval
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
     {f : ℝ → E → E} {K : ℝ≥0}

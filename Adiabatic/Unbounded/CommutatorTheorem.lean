@@ -6,10 +6,9 @@ import Adiabatic.Leakage
 # Uniform unbounded adiabatic estimate from strong propagators
 
 The constant is chosen before the runtime, using compactness and the
-commutator solution. This theorem permits genuinely unbounded Hamiltonians.
-It remains conditional on the physical and Kato propagators and on the
-spectral projection and commutator constructions. No existence claim for
-these inputs is hidden in the conclusion.
+commutator solution. This theorem permits unbounded Hamiltonians.
+The physical and Kato propagators, spectral projection, and commutator
+solution are supplied as hypotheses.
 -/
 
 namespace Adiabatic.Unbounded
@@ -19,7 +18,7 @@ open Set
 variable {D E : Type*} [NormedAddCommGroup D] [NormedSpace ℂ D]
   [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
 
-/-- Strong common-domain evolution and a smooth commutator solution imply
+/-- Strong common-domain evolution and a C¹ commutator solution imply
 a runtime-independent `C / T` bound for leakage. -/
 theorem exists_adiabatic_bound_of_strong_commutator
     (domain : CommonDomain D E) (H : ℝ → D →L[ℂ] E)

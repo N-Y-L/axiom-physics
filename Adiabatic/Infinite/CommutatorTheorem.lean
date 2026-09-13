@@ -5,14 +5,13 @@ import Adiabatic.Infinite.Unitary
 /-!
 # Bounded adiabatic commutator theorem in arbitrary dimension
 
-The bounded physical and comparison generators produce actual unitary
+The bounded physical and comparison generators produce unitary
 propagators, including on infinite-dimensional Hilbert spaces. A continuously
 differentiable solution `X` of `[H,X] = [P',P]` gives uniform `C / T` leakage.
 All coefficient paths are fixed before the runtime is chosen.
 
-This theorem concerns bounded Hamiltonians and a supplied commutator solution.
-It does not construct that solution from a spectral gap, and does not assert
-an adiabatic theorem for unbounded Hamiltonians.
+The Hamiltonians are bounded and the commutator solution is supplied.
+`Adiabatic.Infinite.SpectralTheorem` constructs that solution from a spectral gap.
 -/
 
 namespace Adiabatic.Infinite
@@ -28,8 +27,7 @@ theorem norm_inv_schrodinger_parameter {T : ℝ} (hT : 0 < T) :
     ‖(-Complex.I * (T : ℂ))⁻¹‖ = 1 / T := by
   simp [norm_inv, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hT, one_div]
 
-/-- A smooth commutator solution gives a uniform adiabatic leakage bound.
-No evolution or estimate is assumed for the auxiliary Kato dynamics. -/
+/-- A C¹ commutator solution gives a uniform adiabatic leakage bound. -/
 theorem exists_adiabatic_bound_of_commutator
     (H P dP X dX : ℝ → A)
     (hHcont : ContinuousOn H (Icc (0 : ℝ) 1))
@@ -108,7 +106,7 @@ theorem exists_adiabatic_bound_of_commutator
     _ = (2 * M + D + L * M) / T := by ring
 
 omit [Nontrivial A] in
-/-- A continuous bounded self-adjoint Hamiltonian has an actual normalized
+/-- A continuous bounded self-adjoint Hamiltonian has a normalized
 unitary Schrödinger propagator for every runtime, in arbitrary
 dimension. The derivative is in operator norm. -/
 theorem exists_unitary_schrodinger_propagator
@@ -129,9 +127,9 @@ theorem exists_unitary_schrodinger_propagator
     exists_unitary_propagator_unitInterval (continuousOn_const.smul hHcont) hGstar
   exact ⟨U, hU0, fun t ht => by simpa only [smul_mul_assoc] using hU t ht, hUunitary⟩
 
-/-- For bounded Hamiltonians in arbitrary dimension, a smooth commutator
+/-- For bounded Hamiltonians in arbitrary dimension, a C¹ commutator
 solution gives both unitary Schrödinger evolution and a uniform adiabatic
-leakage estimate. Neither evolution nor the estimate is assumed. -/
+leakage estimate. -/
 theorem exists_unitary_adiabatic_evolution_of_commutator
     (H P dP X dX : ℝ → A)
     (hHcont : ContinuousOn H (Icc (0 : ℝ) 1))

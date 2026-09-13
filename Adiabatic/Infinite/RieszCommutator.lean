@@ -75,7 +75,8 @@ def contourSandwich (a b : A) (c : ℂ) (r : ℝ) : C(sphere c r, A) :=
 def contourCommutator (a b : A) (c : ℂ) (r : ℝ) (hr : 0 ≤ r) : A :=
   (-contourNormalization) • circleIntegralCLM c r hr (contourSandwich a b c r)
 
-/-- A genuine resolvent gap supplies the inverse commutator needed for adiabatic transport. -/
+/-- A resolvent gap supplies the inverse commutator needed for
+adiabatic transport. -/
 theorem contourCommutator_commutator {a : A} (b : A) {c : ℂ} {r : ℝ} (hr : 0 ≤ r)
     (hgap : ∀ z ∈ sphere c r, z ∉ spectrum ℂ a) :
     a * contourCommutator a b c r hr - contourCommutator a b c r hr * a =

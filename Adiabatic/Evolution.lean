@@ -6,9 +6,8 @@ import Mathlib.Tactic
 /-!
 # Differential identities for adiabatic comparison
 
-These identities follow from the evolution equations and the commutator
-equation. They do not assume an error estimate. The parameter `z` specializes
-to `-Complex.I * T` for the physical Schrödinger equation. The path `W` then
+The evolution and commutator equations give the comparison identities.
+For the physical Schrödinger equation, `z = -Complex.I * T` and `W`
 represents the adjoint of the adiabatic evolution.
 -/
 

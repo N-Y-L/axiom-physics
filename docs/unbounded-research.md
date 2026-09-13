@@ -1,19 +1,17 @@
 # Common-domain quantum adiabatic theorem
 
-The extension proves the gapped adiabatic theorem for a possibly unbounded
-self-adjoint Hamiltonian on an arbitrary complex Hilbert space. It
-constructs the moving spectral projection and the nonautonomous strong
-evolution from the common-domain hypotheses, then proves uniform
-inverse-runtime estimates for projection distance and leakage. The main
-declaration is `Adiabatic.Unbounded.common_domain_adiabatic_theorem` in
+`Adiabatic.Unbounded.common_domain_adiabatic_theorem` proves the gapped
+adiabatic theorem for a possibly unbounded self-adjoint Hamiltonian on an
+arbitrary complex Hilbert space. It constructs the spectral projection and
+strong evolution from common-domain hypotheses and proves uniform $C/T$
+bounds on projection distance and leakage. The declaration is in
 [`Unbounded/MainTheorem.lean`](../Adiabatic/Unbounded/MainTheorem.lean).
 
-This report describes the mathematical scope, the relationship to the
-literature, and the verified dependencies. The separate
-[prior-art assessment](prior-art.md) records the public-source search and its
-limits. No claim of worldwide priority follows from that search.
+This report describes its scope, proof, and mathematical sources. The
+[prior-art assessment](prior-art.md) records the separate public-source
+search and its limits.
 
-## Results and proof status
+## Checked results
 
 | Result | Status | Principal declaration |
 | --- | --- | --- |
@@ -27,11 +25,9 @@ limits. No claim of worldwide priority follows from that search.
 | Full unbounded common-domain adiabatic theorem | Proved, including spectral and evolution constructions | `common_domain_adiabatic_theorem` |
 | Uniqueness of physical strong evolution on the unit interval | Proved | `GappedHamiltonian.exists_unique_unitary_evolution` in `Unbounded/MainTheorem.lean` |
 
-The intermediate declarations keep their supplied-propagator hypotheses
-visible. The final theorem discharges them using the independently proved
-nonautonomous existence theorem. The concluding statement assumes neither a
-propagator nor a commutator solution. The mechanical build and axiom audit
-are recorded in [verification.md](verification.md).
+The final theorem derives propagator existence and the commutator solution.
+Intermediate results state their supplied-propagator hypotheses explicitly.
+The build and axiom audit are recorded in [verification.md](verification.md).
 
 ## Mathematical scope
 
@@ -41,12 +37,10 @@ $H(s):D\to E$ is bounded in the domain norm; the corresponding operator on
 $E$ has domain $j(D)$ and sends $jx$ to $H(s)x$. This operator may be
 unbounded in the physical Hilbert-space norm.
 
-Self-adjointness means equality with the actual unbounded adjoint, including
-equality of domains. The formal definition uses mathlib's partially defined
-linear maps. Symmetry of the inner product alone would be insufficient.
-The checked graph equivalence identifies the chosen complete norm on $D$
-with the graph norm of each self-adjoint $H(s)$, so introducing an abstract
-domain space does not silently assume bounded physical Hamiltonians.
+Self-adjointness means equality with the unbounded adjoint, including its
+domain; the definition uses mathlib's partially defined linear maps.
+The proof establishes equivalence of the given norm on $D$ with the graph
+norm of each $H(s)$. Boundedness in the physical norm is not assumed.
 
 On $I=[0,1]$, the input supplies $H\in C^2(I,B(D,E))$, continuous real
 functions $a<b$, and $g>0$. Every spectral point $\lambda$ satisfies
@@ -62,10 +56,10 @@ inverse theorem. It is the spectrum of the unbounded operator represented
 by the common domain. Self-adjointness proves it is real.
 
 The selected region is the bounded interval between $a(s)$ and $b(s)$.
-No finite rank, eigenbasis, compact-resolvent, or discreteness assumption is
+No finite-rank, eigenbasis, compact-resolvent, or discreteness assumption is
 made. Crossings and continuous spectrum inside the selected band are
-allowed. Empty bands are included; nontrivial applications require an
-independent example showing that the constructed projection is nonzero.
+allowed. Empty bands are included; nonzero projections must be established in
+applications.
 Moving operator domains, unbounded selected half-lines, and gapless
 evolution are outside this statement.
 
@@ -81,8 +75,8 @@ Both forward and inverse evolution preserve $j(D)$, and the domain lift is
 strongly continuous in the norm of $D$. Operator-norm differentiation of
 $U_T$ is neither required nor asserted.
 
-The spectral theorem chooses a single finite $C\ge0$ before $T$, the physical
-solution, and $s$. It bounds both
+The adiabatic theorem gives a constant $C\ge0$, independent of $T>0$, the
+physical solution, and $s\in[0,1]$, such that
 
 $$
 \|U_T(s)P(0)U_T(s)^*-P(s)\|\le C/T,
@@ -113,12 +107,11 @@ unbounded formalization follows the general Theorem 1 setting.[^1]
 | Time interval | Normalized to $[0,1]$ |
 | Constant | Existential; no sharp dependence on gap or derivatives claimed |
 
-Kato's 1953 evolution paper supplies the historical common-domain route:
-construct evolution from contraction generators and control changes of graph
-coordinates. Its Theorem 4 gives strong differentiability under regularity
-conditions on the relative operators; the proof controls ordered products
-and their domain action. This is a source of the analytic strategy, not a
-Lean dependency or an imported existence axiom.[^2]
+Kato's 1953 evolution paper constructs evolution from contraction generators
+by controlling changes of graph coordinates. Its Theorem 4 gives strong
+differentiability under regularity conditions on the relative operators;
+the proof controls ordered products and their domain action. It supplies
+the analytic strategy used here.[^2]
 
 Schmid and Griesemer prove equivalence between the older Kato and Yosida
 regularity conditions and strong continuous differentiability of $A(t)x$
@@ -128,11 +121,9 @@ step. The formal theorem uses the stronger, directly usable operator-norm
 $C^1$ condition in $B(D,E)$. The Kato-corrected Hamiltonian has this
 regularity when the original spectral data are $C^2$.[^3]
 
-Avron and Elgart address a different question: adiabatic convergence without
-a spectral gap. Their basic conclusion has no general rate without further
-information. That result does not justify replacing the uniform gap in the
-present theorem with mere smoothness. The common-domain evolution theorem
-used here is proved separately in Lean.[^4]
+Avron and Elgart prove adiabatic convergence without a spectral gap, with
+no general rate in the basic conclusion. That theorem has different
+hypotheses and is outside this formalization.[^4]
 
 ## Spectral construction without an eigenbasis
 
@@ -144,10 +135,9 @@ R_D(z)=(H-zj)^{-1}:E\to D,
 $$
 
 The code proves the resolvent identities, the adjoint relation, smooth
-dependence on $H$ and $z$, and nonreal invertibility directly from genuine
-self-adjointness. The distinction between $R_D$ and $r$ is retained
-throughout the proof. It ensures that contour operators can subsequently
-be composed with the unbounded Hamiltonian.
+dependence on $H$ and $z$, and nonreal invertibility from self-adjointness.
+Keeping the domain-valued resolvent $R_D$ allows contour operators to be
+composed with $H:D\to E$.
 
 For a positively oriented circle $\Gamma$ in the resolvent set, define
 
@@ -158,8 +148,7 @@ P_D=-\frac{1}{2\pi i}\oint_\Gamma R_D(z)\,dz.
 $$
 
 The minus sign corresponds to the convention $(H-zj)^{-1}$. The code proves
-$jP_D=P$, $P^2=P=P^*$, and $HP_Dj=PH$. These are derived properties of the
-integral, not assumptions attached to a projection symbol.
+$jP_D=P$, $P^2=P=P^*$, and $HP_Dj=PH$.
 
 To use mathlib's continuous functional calculus, the proof works with the
 bounded normal operator $b=r(i)$. The rational expression
@@ -184,9 +173,9 @@ spectral subspace has infinite dimension.
 ## Moving bands and differentiability
 
 The endpoints $a,b$ need not be differentiable. At each time, choose the
-circle with center $(a+b)/2$ and radius $(b-a)/2$. A self-adjoint spectrum
-meets the real line, and the only real points on this circle are its two
-endpoints. The gap therefore puts the whole circle in the resolvent set.
+circle with center $(a+b)/2$ and radius $(b-a)/2$. The self-adjoint spectrum
+is real, and the only real points on this circle are its two endpoints.
+The gap therefore puts the whole circle in the resolvent set.
 
 On a sufficiently small relative neighborhood of a fixed time, each
 boundary moves by less than $g$. It cannot cross a spectral point. The
@@ -199,8 +188,7 @@ For a fixed circle, smoothness is proved in the Banach algebra of continuous
 operator-valued functions on that circle. Inversion is smooth at invertible
 elements, and contour integration is a continuous linear map. This yields
 $C^2$ regularity in both $B(E)$ and $B(E,D)$ and then transfers locally to
-the moving band. There is no differentiation of a merely continuous choice
-of endpoints.
+the moving band without differentiating its endpoints.
 
 ## A global commutator solution
 
@@ -211,7 +199,7 @@ X_D=-\frac{1}{2\pi i}\oint_\Gamma R_D(z)P'r(z)\,dz
 $$
 
 is continuously differentiable. Let $X=jX_D$. Resolvent cancellation gives
-the actual domain identity
+the domain identity
 
 $$
 HX_Dj-XH=Kj.
@@ -221,38 +209,29 @@ Local circles need not be the same throughout the interval. A finite smooth
 partition of unity combines the local solutions. The commutator equation
 is real-linear in $X_D$, so weights summing to one preserve it. Smooth
 weights have support inside regions where each local construction is
-valid. This produces a global $C^1$ domain lift, with no assumption that
-one circle works for all time.
+valid. This produces a global $C^1$ domain lift even when no single circle
+isolates the band throughout the interval.
 
-Compactness bounds $X$, $X'$, and $K$ independently of runtime. Their
-construction occurs entirely before choosing $T$. The quantitative
-comparison argument therefore yields a single constant for all runtimes,
-rather than a separately chosen constant for each solution.
+Compactness bounds $X$, $X'$, and $K$. They are constructed independently of
+$T$, giving a comparison constant uniform in runtime and solution.
 
 ## Strong evolution foundations
 
-The autonomous construction is checked. Symmetric resolvent regularization
-produces bounded self-adjoint Hamiltonians. In ordinary scalar notation,
-with $a=n+1$, the regularization is
+Symmetric resolvent regularization produces bounded self-adjoint
+Hamiltonians. In scalar notation, with $a=n+1$,
 
 $$
 H_n=\frac{a^2}{2}\big((H-ia)^{-1}+(H+ia)^{-1}\big).
 $$
 
-The formal definition uses physical resolvents and never forms an
-unjustified product of unbounded operators. The $H_n$ commute with each
-other and with the resolvent; $H_njx\to Hx$ for every $x\in D$. Bounded
-unitary exponentials converge strongly to an autonomous unitary group.
-The code then proves its group law, domain preservation, and the strong
-differential equation. Thus the autonomous group is constructed rather than
-assumed through an informal reference to Stone's theorem.
+The definition uses physical resolvents. The $H_n$ commute with each other
+and with the resolvent, and $H_njx\to Hx$ for every $x\in D$. Their unitary
+exponentials converge strongly. The proof establishes the limit's unitarity,
+group law, domain preservation, and strong differential equation.
 
-For time-dependent $H$, the construction follows a separate
-approximation in time. Freeze $H$ on a fine partition and compose the
-autonomous groups in time order. A right-derivative interface accommodates
-the partition boundaries. Estimates use the norm $B(D,E)$ and shifted graph
-coordinates, not the nonexistent bounded-operator norm of an unbounded
-$H$ on $E$.
+For time-dependent $H$, freeze $H$ on a fine partition and compose the
+autonomous groups in time order. Right derivatives accommodate the partition
+boundaries. Estimates use the $B(D,E)$ norm and shifted graph coordinates.
 
 Supporting results include graph-norm equivalence, uniform bounds
 for reference resolvents, relative Hamiltonian-change bounds, exponential
@@ -260,8 +239,8 @@ graph bounds for ordered products, comparison of right strong propagators,
 and strong limits on the physical space. Forward and inverse approximations
 must both be controlled: a strong limit of unitary operators alone need not
 be surjective. Domain recovery uses self-adjointness and graph bounds.
-The limiting curve's domain continuity and strong derivative are then
-established before it inhabits `StrongPropagator`.
+Domain continuity and strong differentiation complete the construction of
+a `StrongPropagator`.
 
 `FrozenApproximation.lean` constructs the full family of time-sliced
 evolutions and their uniform estimates from $C^1$ regularity and
@@ -273,27 +252,25 @@ the common-domain norm.
 `Nonautonomous.lean` compares the limiting curve locally with the
 autonomous group of the Hamiltonian frozen at the current time. The
 remainder is $O(|s-t|^2)$ on each initial domain vector, so both curves have
-the same derivative. This proves the actual strong Schrödinger equation
-throughout the closed interval, with the appropriate one-sided derivatives
-at its endpoints. It does not pass an unbounded Hamiltonian through a
-physical-space limit without domain control.
+the same derivative. This proves the strong Schrödinger equation throughout
+the closed interval, with one-sided derivatives at its endpoints.
 
 The resulting declaration `exists_nonautonomous_strongPropagator` has only
-the stated $C^1$ common-domain regularity, genuine self-adjointness, and a
-purely imaginary generator scale as hypotheses. `common_domain_evolution_existence`
+$C^1$ common-domain regularity, self-adjointness, and a purely imaginary
+generator scale as hypotheses. `common_domain_evolution_existence`
 specializes it to $-iT$. Both forward and inverse evolution preserve the
 full common domain.
 
 ## From evolution existence to the adiabatic theorem
 
-The spectral part already proves that $K\in C^1(I,B(E))$ and $K^*=-K$.
+The spectral construction proves that $K\in C^1(I,B(E))$ and $K^*=-K$.
 For $z=-iT$, define
 
 $$
 H_A=H+(z^{-1}K)j=H+\frac{i}{T}Kj.
 $$
 
-A checked bounded-perturbation argument proves genuine self-adjointness of
+A bounded-perturbation argument proves self-adjointness of
 $H_A$ on the same full domain. Its common-domain regularity is $C^1$.
 Consequently, a generic $C^1$ self-adjoint evolution theorem supplies both
 the physical propagator and the Kato propagator. Repackaging the latter
@@ -303,14 +280,13 @@ Strong differentiation on the dense domain proves $P(s)V(s)=V(s)P(0)$.
 A corrected comparison curve gives $\|U_T-V_T\|\le C_0/T$. Orthogonal
 projection contraction then controls leakage; expanding the difference of
 the transported projections gives at most $2C_0/T$. Choosing $C=2C_0$
-provides both advertised estimates with the same constant.
+provides both estimates with the same constant.
 
 The intermediate declaration
 [`commonDomainAdiabaticTheorem_of_evolution_existence`](../Adiabatic/Unbounded/GappedReduction.lean)
 implements this reduction. `common_domain_adiabatic_theorem` in
 [`Unbounded/MainTheorem.lean`](../Adiabatic/Unbounded/MainTheorem.lean)
-applies it to `common_domain_evolution_existence`, completing the proof from
-the advertised Hamiltonian and gap assumptions. The same module proves
+applies it to `common_domain_evolution_existence`. The same module proves
 `GappedHamiltonian.exists_unique_unitary_evolution`, with uniqueness among
 strong unitary common-domain propagators on $[0,1]$.
 
@@ -322,17 +298,12 @@ transitive axiom audit are recorded in [verification.md](verification.md).
 That record identifies the audited declarations and distinguishes local
 verification from external review or a hosted workflow run.
 
-The final theorem retains the order
-$\exists C\,\forall T\,\forall U\,\forall s$. Its constant is independent of
-runtime, solution, and time. Evolution existence is derived before the
-quantitative conclusion, so the universal estimate is not vacuous for lack
-of a physical propagator. The regularity and uniform spectral-gap
-hypotheses remain explicit mathematical assumptions.
+The quantifier order is $\exists C\,\forall T\,\forall U\,\forall s$, with
+$T>0$ and $s\in[0,1]$. Existence of the physical evolution is proved, so the
+estimate applies to a nonempty class of propagators.
 
-Further mathematical work can add explicit gap-dependent constants,
-concrete unbounded examples, unions of bounded spectral bands, or other
-adiabatic regimes. Those are separate extensions. They should not be
-described as consequences already checked by this theorem.
+Explicit gap-dependent constants, concrete unbounded examples, unions of
+bounded bands, and other adiabatic regimes remain further work.
 
 ## Sources
 
@@ -344,7 +315,6 @@ described as consequences already checked by this theorem.
 
 [^4]: J. E. Avron and A. Elgart, [*Adiabatic Theorem without a Gap Condition*](https://arxiv.org/abs/math-ph/9805022v4), *Communications in Mathematical Physics* 203, 445–463 (1999), version 4, 19 April 1999. Used to distinguish the gapless target.
 
-The implementation claims are supported by the linked project declarations,
-not by the literature citations. The reusable library sources are pinned in
-`lake-manifest.json`; the prior-art report distinguishes its search revision
-from the implementation revision.
+The linked Lean declarations support the implementation claims. Library
+sources are pinned in `lake-manifest.json`; the prior-art search uses the
+separate revisions recorded in its report.

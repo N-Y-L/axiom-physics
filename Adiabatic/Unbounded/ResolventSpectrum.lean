@@ -3,7 +3,7 @@ import Adiabatic.Unbounded.RieszProjection
 /-!
 # Spectrum of a bounded reference resolvent
 
-A bounded rational pencil detects the actual unbounded resolvent set. Nonzero
+A bounded rational pencil detects the unbounded resolvent set. Nonzero
 spectral values of a reference resolvent therefore recover unbounded spectral
 values by reciprocal translation.
 -/
