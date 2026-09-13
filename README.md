@@ -85,6 +85,8 @@ and [checks/](checks/README.md) for checker regression tests.
 
 ## References and license
 
+Author: Neil Yuanting Li. See [CITATION.cff](CITATION.cff) for citation metadata.
+
 The proof follows the Kato/commutator approach. Primary references include
 [Kato (1950)](https://doi.org/10.1143/JPSJ.5.435),
 [Kato (1953)](https://doi.org/10.2969/jmsj/00520208),
