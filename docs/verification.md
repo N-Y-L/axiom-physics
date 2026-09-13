@@ -1,4 +1,4 @@
-# Verification and scope
+# Verification
 
 Review date: 2026-09-13. The reviews were internal. There has been no external
 peer review.
@@ -141,8 +141,8 @@ comments, strings, and identifiers.
 Compilation checks that a proof inhabits its declared type. The axiom audit
 makes its foundational dependencies explicit. The separate semantic review
 checks that the type expresses the stated physical theorem. Lean's bundled
-checker is not a separately implemented proof assistant. The GitHub workflow
-is configured; a hosted run has not occurred before publication.
+checker is not a separately implemented proof assistant. The saved record
+documents local checks performed before the initial publication.
 
 ## Release review
 
@@ -173,6 +173,3 @@ a uniform gap around a bounded spectral band. It does not treat changing
 domains, gapless evolution, switching improvements, or exponentially small
 errors. It supplies an existential constant, without an explicit optimal
 dependence on the gap or derivatives of $H$.
-
-The [prior-art search](prior-art.md) lists the sources inspected and the
-limits of any priority claim.

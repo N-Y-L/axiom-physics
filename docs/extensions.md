@@ -2,7 +2,7 @@
 
 The common-domain and finite-dimensional theorems prove bounds with
 existential constants; see the [proof guide](proof-guide.md) and
-[Verification and scope](verification.md).
+[verification record](verification.md).
 
 The calculations below propose explicit constants in finite dimension.
 They are informal and are not inputs to either main theorem. Physical

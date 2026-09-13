@@ -2,6 +2,10 @@
 
 ## 2026-09-13
 
+Removed the prior-art report and obsolete publication instructions, and
+updated the documentation links. Mathematical statements, proofs,
+Lean comments, dependencies, and verification tools are unchanged.
+
 Shortened the documentation and proof comments, removed repeated caveats
 and rhetorical qualifiers, and retained the hypotheses, estimates, and
 citations. Checked that Lean edits affect only comments; the build and

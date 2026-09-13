@@ -46,11 +46,10 @@ The [finite-dimensional theorem](Adiabatic/MainTheorem.lean) is also included.
 
 | File | Contents |
 |---|---|
-| [Documentation index](docs/README.md) | Theorem, research, verification, and publication notes |
+| [Documentation index](docs/README.md) | Theorem, mathematical references, and verification |
 | [Proof guide](docs/proof-guide.md) | Mathematical argument and Lean dependencies |
 | [Common-domain research](docs/unbounded-research.md) | Literature, assumptions, spectral calculus, and evolution construction |
-| [Verification](docs/verification.md) | Exact scope and mechanical checks |
-| [Prior work](docs/prior-art.md) | Public-source search and its limits |
+| [Verification](docs/verification.md) | Theorem assumptions and proof checks |
 | [Module map](Adiabatic/README.md) | Source organization and all public proof modules |
 | [Unbounded/MainTheorem.lean](Adiabatic/Unbounded/MainTheorem.lean) | Full theorem and evolution uniqueness |
 | [Unbounded/Nonautonomous.lean](Adiabatic/Unbounded/Nonautonomous.lean) | Evolution existence from common-domain self-adjointness |
@@ -58,9 +57,7 @@ The [finite-dimensional theorem](Adiabatic/MainTheorem.lean) is also included.
 
 The constant is existential. Gapless evolution, changing
 operator domains, explicit optimal gap dependence, and higher-order or
-exponentially small error estimates are outside this statement. The
-prior-work search found no complete publicly inspectable formalization in
-the sources searched; it does not establish priority.
+exponentially small error estimates are outside this statement.
 
 ## Check the proofs
 
@@ -84,7 +81,7 @@ the dependencies of every project declaration, including private declarations
 and names in other namespaces. Only Lean's standard `propext`, `Classical.choice`,
 and `Quot.sound` are permitted. The final command rechecks compiled proofs with
 Lean's bundled checker. See the [verification record](docs/verification.md)
-for scope review and [checks/](checks/README.md) for checker regression tests.
+and [checks/](checks/README.md) for checker regression tests.
 
 ## References and license
 

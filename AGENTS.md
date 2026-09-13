@@ -14,8 +14,8 @@ Do not add unfinished proofs, new axioms, unsafe declarations, or native
 decision procedures. Check both compilation and transitive theorem axioms.
 
 Keep verified results distinct from proposed extensions. Update the proof
-guide and verification note when the theorem's scope changes. Do not claim
-that a search proves no prior formalization exists.
+guide and verification note when the theorem's scope changes. Keep public
+documentation focused on the theorem, proof, and verification.
 
 Use `main` for checked work. Keep experiments in an explicitly named branch.
 Do not publish or push without the repository owner's instruction.

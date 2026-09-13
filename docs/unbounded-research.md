@@ -7,9 +7,7 @@ strong evolution from common-domain hypotheses and proves uniform $C/T$
 bounds on projection distance and leakage. The declaration is in
 [`Unbounded/MainTheorem.lean`](../Adiabatic/Unbounded/MainTheorem.lean).
 
-This report describes its scope, proof, and mathematical sources. The
-[prior-art assessment](prior-art.md) records the separate public-source
-search and its limits.
+This report describes the hypotheses, proof, and mathematical sources.
 
 ## Checked results
 
@@ -29,7 +27,7 @@ The final theorem derives propagator existence and the commutator solution.
 Intermediate results state their supplied-propagator hypotheses explicitly.
 The build and axiom audit are recorded in [verification.md](verification.md).
 
-## Mathematical scope
+## Hypotheses
 
 Let $E$ be a complex Hilbert space and $D$ a complete complex normed space.
 A continuous injective map $j:D\to E$ has dense range. Each
@@ -290,7 +288,7 @@ applies it to `common_domain_evolution_existence`. The same module proves
 `GappedHamiltonian.exists_unique_unitary_evolution`, with uniqueness among
 strong unitary common-domain propagators on $[0,1]$.
 
-## Verification and scope
+## Verification
 
 The implementation is pinned to Lean `v4.28.0` and mathlib commit
 `8f9d9cff6bd728b17a24e163c9402775d9e6a365`. The final mechanical build and
@@ -315,6 +313,4 @@ bounded bands, and other adiabatic regimes remain further work.
 
 [^4]: J. E. Avron and A. Elgart, [*Adiabatic Theorem without a Gap Condition*](https://arxiv.org/abs/math-ph/9805022v4), *Communications in Mathematical Physics* 203, 445–463 (1999), version 4, 19 April 1999. Used to distinguish the gapless target.
 
-The linked Lean declarations support the implementation claims. Library
-sources are pinned in `lake-manifest.json`; the prior-art search uses the
-separate revisions recorded in its report.
+Library sources are pinned in `lake-manifest.json`.
