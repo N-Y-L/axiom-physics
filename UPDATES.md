@@ -2,6 +2,16 @@
 
 ## 2026-09-13
 
+Added foundations results explaining the role of choice and graph norms:
+a necessary weak choice principle, sufficiency of DC for the original
+theorem, and a ZF proof with explicit graph control. These are mathematical
+arguments, not Lean formalizations. Added 189 supporting Lean declarations
+whose audited axioms exclude `Classical.choice`, a strict audit, and eight
+regression tests. The original theorem and proof checks are preserved.
+See the [foundations overview](docs/choice-reduction.md).
+
+Corrected the citation author to Neil Yuanting Li and added the repository URL.
+
 Removed internal guidance and review notes, the prior-art report, and
 obsolete publication instructions. Updated the documentation links.
 Mathematical statements, proofs,

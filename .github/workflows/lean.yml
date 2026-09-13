@@ -27,3 +27,5 @@ jobs:
         run: python3 -m unittest discover -s checks -p 'test_*.py'
       - name: Audit proof dependencies
         run: python3 checks/check_proofs.py
+      - name: Audit choice-reduction foundations
+        run: lake env lean checks/ChoiceReductionAxioms.lean

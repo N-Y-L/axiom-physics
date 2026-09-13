@@ -1,0 +1,1285 @@
+{
+  "scope": "Dependencies of the pinned implementation; a path is not a mathematical necessity proof",
+  "lean": "leanprover/lean4:v4.28.0",
+  "mathlib_revision": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "command": "lake env lean checks/TraceChoice.lean",
+  "first_edge_filter": "type or body restricts only the first edge; all subsequent edges traverse types and bodies",
+  "definition_edges": "May include proof fields stored in definitions",
+  "trace_source_sha256": "a1a615722cb91b40f2f9ffa5adefd4438d8f40cf6e3370841aa90abfdc5452e7",
+  "printed_axioms": {
+    "ChoiceDependency.real_reflexivity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CompleteSpace": [
+      "propext",
+      "Quot.sound"
+    ],
+    "cauchySeq_tendsto_of_complete": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Real": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "paths": [
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "Adiabatic.Unbounded.common_domain_evolution_existence",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.common_domain_evolution_existence",
+          "target": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+          "target": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "target": "Classical.choice",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "Classical.choice",
+      "first_edge": "type",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "Complex.instRCLike",
+          "kind": "type"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "Adiabatic.Unbounded.common_domain_evolution_existence",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.common_domain_evolution_existence",
+          "target": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+          "target": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "target": "Classical.choice",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomainAdiabaticTheorem",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomainAdiabaticTheorem",
+          "target": "Complex.instRCLike",
+          "kind": "definition"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+          "target": "Complex.instRCLike",
+          "kind": "definition"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.rangeEquiv",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rangeEquiv",
+          "target": "LinearEquiv.ofInjective",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearEquiv.ofInjective",
+          "target": "Classical.choose",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.inverseShift",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.inverseShift",
+          "target": "ContinuousLinearMap.inverse",
+          "kind": "definition"
+        },
+        {
+          "source": "ContinuousLinearMap.inverse",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.rieszProjection",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rieszProjection",
+          "target": "Complex.instRCLike",
+          "kind": "definition"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.GappedHamiltonian.spectralProjection",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.GappedHamiltonian.spectralProjection",
+          "target": "Complex.instRCLike",
+          "kind": "definition"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_nonautonomous_strongPropagator",
+          "target": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "target": "Classical.choice",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_unitary_strong_limit_of_restricted_cauchy",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_unitary_strong_limit_of_restricted_cauchy",
+          "target": "Classical.choose",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_limit_domain_lift",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_limit_domain_lift",
+          "target": "Classical.choose",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.exists_contDiffOn_commutatorLift_of_local_contours",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.exists_contDiffOn_commutatorLift_of_local_contours",
+          "target": "Adiabatic.Unbounded.CommonDomain.contDiffOn_contourCommutatorLift",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.contDiffOn_contourCommutatorLift",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Real",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "edge_count": 7,
+      "edges": [
+        {
+          "source": "Real",
+          "target": "Real.ofCauchy",
+          "kind": "constructor"
+        },
+        {
+          "source": "Real.ofCauchy",
+          "target": "Rat.instIsStrictOrderedRing",
+          "kind": "type"
+        },
+        {
+          "source": "Rat.instIsStrictOrderedRing",
+          "target": "IsDomain.to_noZeroDivisors",
+          "kind": "proof"
+        },
+        {
+          "source": "IsDomain.to_noZeroDivisors",
+          "target": "IsRightCancelMulZero.to_noZeroDivisors",
+          "kind": "proof"
+        },
+        {
+          "source": "IsRightCancelMulZero.to_noZeroDivisors",
+          "target": "Classical.or_iff_not_imp_right",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.or_iff_not_imp_right",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "CompleteSpace",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "found": false
+    },
+    {
+      "start": "NormedAddCommGroup",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "edge_count": 9,
+      "edges": [
+        {
+          "source": "NormedAddCommGroup",
+          "target": "NormedAddCommGroup.mk",
+          "kind": "constructor"
+        },
+        {
+          "source": "NormedAddCommGroup.mk",
+          "target": "Real",
+          "kind": "type"
+        },
+        {
+          "source": "Real",
+          "target": "Real.ofCauchy",
+          "kind": "constructor"
+        },
+        {
+          "source": "Real.ofCauchy",
+          "target": "Rat.instIsStrictOrderedRing",
+          "kind": "type"
+        },
+        {
+          "source": "Rat.instIsStrictOrderedRing",
+          "target": "IsDomain.to_noZeroDivisors",
+          "kind": "proof"
+        },
+        {
+          "source": "IsDomain.to_noZeroDivisors",
+          "target": "IsRightCancelMulZero.to_noZeroDivisors",
+          "kind": "proof"
+        },
+        {
+          "source": "IsRightCancelMulZero.to_noZeroDivisors",
+          "target": "Classical.or_iff_not_imp_right",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.or_iff_not_imp_right",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.opNorm",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.opNorm",
+          "target": "Real.instInfSet",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.instInfSet",
+          "target": "Real.instSupSet",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.instSupSet",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Real.linearOrder",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.inverse",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.inverse",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "cauchySeq_tendsto_of_complete",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "found": false
+    },
+    {
+      "start": "LinearEquiv.ofInjective",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "LinearEquiv.ofInjective",
+          "target": "Classical.choose",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.equivRange",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.equivRange",
+          "target": "LinearEquiv.ofInjective",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearEquiv.ofInjective",
+          "target": "Classical.choose",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_frozenApproximation",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_frozenApproximation",
+          "target": "Classical.choice",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_frozenFamily",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_frozenFamily",
+          "target": "Classical.choice",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+      "target": "LinearEquiv.ofInjective",
+      "first_edge": "all",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+          "target": "ContinuousLinearMap.equivRange",
+          "kind": "definition"
+        },
+        {
+          "source": "ContinuousLinearMap.equivRange",
+          "target": "LinearEquiv.ofInjective",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.rieszProjection",
+      "target": "MeasureTheory.integral",
+      "first_edge": "all",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rieszProjection",
+          "target": "circleIntegral",
+          "kind": "definition"
+        },
+        {
+          "source": "circleIntegral",
+          "target": "intervalIntegral",
+          "kind": "definition"
+        },
+        {
+          "source": "intervalIntegral",
+          "target": "MeasureTheory.integral",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.opNorm",
+      "target": "Real.instSupSet",
+      "first_edge": "all",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.opNorm",
+          "target": "Real.instInfSet",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.instInfSet",
+          "target": "Real.instSupSet",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Real.instSupSet",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Real.instSupSet",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "MeasureTheory.integral",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "MeasureTheory.integral",
+          "target": "MeasureTheory.wrapped._@.Mathlib.MeasureTheory.Integral.Bochner.Basic.770231033._hygCtx._hyg.8",
+          "kind": "definition"
+        },
+        {
+          "source": "MeasureTheory.wrapped._@.Mathlib.MeasureTheory.Integral.Bochner.Basic.770231033._hygCtx._hyg.8",
+          "target": "MeasureTheory.definition._@.Mathlib.MeasureTheory.Integral.Bochner.Basic.770231033._hygCtx._hyg.8",
+          "kind": "type"
+        },
+        {
+          "source": "MeasureTheory.definition._@.Mathlib.MeasureTheory.Integral.Bochner.Basic.770231033._hygCtx._hyg.8",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "SmoothPartitionOfUnity.exists_isSubordinate",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "SmoothPartitionOfUnity.exists_isSubordinate",
+          "target": "Real.normedField",
+          "kind": "proof"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "IsCompact.elim_finite_subcover",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "IsCompact.elim_finite_subcover",
+          "target": "Finset.isDirected_le",
+          "kind": "proof"
+        },
+        {
+          "source": "Finset.isDirected_le",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "LinearPMap.adjoint",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "LinearPMap.adjoint",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "cfcHom",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "cfcHom",
+          "target": "Exists.choose",
+          "kind": "definition"
+        },
+        {
+          "source": "Exists.choose",
+          "target": "Classical.choose",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.choose",
+          "target": "Classical.indefiniteDescription",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.indefiniteDescription",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Real.exists_isLUB",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Real.exists_isLUB",
+          "target": "Real.linearOrder",
+          "kind": "proof"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.exists_preimage_norm_le",
+      "target": "Classical.choice",
+      "first_edge": "body",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.exists_preimage_norm_le",
+          "target": "Real.linearOrder",
+          "kind": "proof"
+        },
+        {
+          "source": "Real.linearOrder",
+          "target": "Classical.propDecidable",
+          "kind": "definition"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+      "target": "ContinuousLinearMap.exists_preimage_norm_le",
+      "first_edge": "all",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+          "target": "ContinuousLinearMap.equivRange",
+          "kind": "definition"
+        },
+        {
+          "source": "ContinuousLinearMap.equivRange",
+          "target": "LinearEquiv.toContinuousLinearEquivOfContinuous",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearEquiv.toContinuousLinearEquivOfContinuous",
+          "target": "LinearEquiv.continuous_symm",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearEquiv.continuous_symm",
+          "target": "ContinuousLinearMap.isOpenMap",
+          "kind": "proof"
+        },
+        {
+          "source": "ContinuousLinearMap.isOpenMap",
+          "target": "ContinuousLinearMap.exists_preimage_norm_le",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.rieszProjection_isStarProjection",
+      "target": "cfcHom",
+      "first_edge": "all",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rieszProjection_isStarProjection",
+          "target": "Adiabatic.Unbounded.rationalRieszProjection_isStarProjection",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.rationalRieszProjection_isStarProjection",
+          "target": "cfcHom",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.exists_contDiffOn_commutatorLift_of_local_contours",
+      "target": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+      "first_edge": "all",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.exists_contDiffOn_commutatorLift_of_local_contours",
+          "target": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.IsSelfAdjoint",
+      "target": "LinearPMap.adjoint",
+      "first_edge": "all",
+      "edge_count": 2,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.IsSelfAdjoint",
+          "target": "LinearPMap.instStar",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearPMap.instStar",
+          "target": "LinearPMap.adjoint",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "CompleteSpace",
+      "first_edge": "all",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "CompleteSpace",
+          "kind": "type"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "Real.linearOrder",
+      "first_edge": "all",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "Complex.instRCLike",
+          "kind": "type"
+        },
+        {
+          "source": "Complex.instRCLike",
+          "target": "Real.normedField",
+          "kind": "definition"
+        },
+        {
+          "source": "Real.normedField",
+          "target": "Real.linearOrder",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.rieszProjection_isStarProjection",
+      "target": "Ideal.exists_le_maximal",
+      "first_edge": "all",
+      "edge_count": 8,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rieszProjection_isStarProjection",
+          "target": "Adiabatic.Unbounded.rationalRieszProjection",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.rationalRieszProjection",
+          "target": "IsStarNormal.instContinuousFunctionalCalculus",
+          "kind": "definition"
+        },
+        {
+          "source": "IsStarNormal.instContinuousFunctionalCalculus",
+          "target": "continuousFunctionalCalculus",
+          "kind": "proof"
+        },
+        {
+          "source": "continuousFunctionalCalculus",
+          "target": "StarAlgebra.elemental.characterSpaceHomeo",
+          "kind": "definition"
+        },
+        {
+          "source": "StarAlgebra.elemental.characterSpaceHomeo",
+          "target": "StarAlgebra.elemental.bijective_characterSpaceToSpectrum",
+          "kind": "definition"
+        },
+        {
+          "source": "StarAlgebra.elemental.bijective_characterSpaceToSpectrum",
+          "target": "WeakDual.CharacterSpace.mem_spectrum_iff_exists",
+          "kind": "proof"
+        },
+        {
+          "source": "WeakDual.CharacterSpace.mem_spectrum_iff_exists",
+          "target": "WeakDual.CharacterSpace.exists_apply_eq_zero",
+          "kind": "proof"
+        },
+        {
+          "source": "WeakDual.CharacterSpace.exists_apply_eq_zero",
+          "target": "Ideal.exists_le_maximal",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Ideal.exists_le_maximal",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "edge_count": 5,
+      "edges": [
+        {
+          "source": "Ideal.exists_le_maximal",
+          "target": "Ideal.instIsCoatomic",
+          "kind": "proof"
+        },
+        {
+          "source": "Ideal.instIsCoatomic",
+          "target": "CompleteLattice.coatomic_of_top_compact",
+          "kind": "proof"
+        },
+        {
+          "source": "CompleteLattice.coatomic_of_top_compact",
+          "target": "CompleteLattice.Iic_coatomic_of_compact_element",
+          "kind": "proof"
+        },
+        {
+          "source": "CompleteLattice.Iic_coatomic_of_compact_element",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+      "target": "Classical.choose",
+      "first_edge": "all",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.exists_contDiffOn_linear_solution",
+          "target": "Classical.choose",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+      "target": "Classical.choose",
+      "first_edge": "all",
+      "edge_count": 3,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.graphEquiv",
+          "target": "ContinuousLinearMap.equivRange",
+          "kind": "definition"
+        },
+        {
+          "source": "ContinuousLinearMap.equivRange",
+          "target": "LinearEquiv.ofInjective",
+          "kind": "definition"
+        },
+        {
+          "source": "LinearEquiv.ofInjective",
+          "target": "Classical.choose",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Real.exists_isLUB",
+      "target": "Classical.choose",
+      "first_edge": "all",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "Real.exists_isLUB",
+          "target": "Classical.choose",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "ContinuousLinearMap.exists_preimage_norm_le",
+      "target": "Classical.choose",
+      "first_edge": "all",
+      "edge_count": 1,
+      "edges": [
+        {
+          "source": "ContinuousLinearMap.exists_preimage_norm_le",
+          "target": "Classical.choose",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "Ideal.exists_le_maximal",
+      "target": "zorn_le_nonempty₀",
+      "first_edge": "all",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "Ideal.exists_le_maximal",
+          "target": "Ideal.instIsCoatomic",
+          "kind": "proof"
+        },
+        {
+          "source": "Ideal.instIsCoatomic",
+          "target": "CompleteLattice.coatomic_of_top_compact",
+          "kind": "proof"
+        },
+        {
+          "source": "CompleteLattice.coatomic_of_top_compact",
+          "target": "CompleteLattice.Iic_coatomic_of_compact_element",
+          "kind": "proof"
+        },
+        {
+          "source": "CompleteLattice.Iic_coatomic_of_compact_element",
+          "target": "zorn_le_nonempty₀",
+          "kind": "proof"
+        }
+      ]
+    },
+    {
+      "start": "zorn_le_nonempty₀",
+      "target": "Classical.choice",
+      "first_edge": "all",
+      "edge_count": 4,
+      "edges": [
+        {
+          "source": "zorn_le_nonempty₀",
+          "target": "Set.eq_empty_or_nonempty",
+          "kind": "proof"
+        },
+        {
+          "source": "Set.eq_empty_or_nonempty",
+          "target": "Classical.or_iff_not_imp_left",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.or_iff_not_imp_left",
+          "target": "Classical.propDecidable",
+          "kind": "proof"
+        },
+        {
+          "source": "Classical.propDecidable",
+          "target": "Classical.choice",
+          "kind": "definition"
+        }
+      ]
+    },
+    {
+      "start": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+      "target": "Ideal.exists_le_maximal",
+      "first_edge": "all",
+      "edge_count": 11,
+      "edges": [
+        {
+          "source": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+          "target": "Adiabatic.Unbounded.commonDomainAdiabaticTheorem_of_evolution_existence",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.commonDomainAdiabaticTheorem_of_evolution_existence",
+          "target": "Adiabatic.Unbounded.GappedHamiltonian.spectralProjection_contDiff",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.GappedHamiltonian.spectralProjection_contDiff",
+          "target": "Adiabatic.Unbounded.GappedHamiltonian.eventually_spectralProjection_eq_fixed",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.GappedHamiltonian.eventually_spectralProjection_eq_fixed",
+          "target": "Adiabatic.Unbounded.CommonDomain.rieszProjection_eq_of_spectral_membership",
+          "kind": "proof"
+        },
+        {
+          "source": "Adiabatic.Unbounded.CommonDomain.rieszProjection_eq_of_spectral_membership",
+          "target": "IsStarNormal.instContinuousFunctionalCalculus",
+          "kind": "proof"
+        },
+        {
+          "source": "IsStarNormal.instContinuousFunctionalCalculus",
+          "target": "continuousFunctionalCalculus",
+          "kind": "proof"
+        },
+        {
+          "source": "continuousFunctionalCalculus",
+          "target": "StarAlgebra.elemental.characterSpaceHomeo",
+          "kind": "definition"
+        },
+        {
+          "source": "StarAlgebra.elemental.characterSpaceHomeo",
+          "target": "StarAlgebra.elemental.bijective_characterSpaceToSpectrum",
+          "kind": "definition"
+        },
+        {
+          "source": "StarAlgebra.elemental.bijective_characterSpaceToSpectrum",
+          "target": "WeakDual.CharacterSpace.mem_spectrum_iff_exists",
+          "kind": "proof"
+        },
+        {
+          "source": "WeakDual.CharacterSpace.mem_spectrum_iff_exists",
+          "target": "WeakDual.CharacterSpace.exists_apply_eq_zero",
+          "kind": "proof"
+        },
+        {
+          "source": "WeakDual.CharacterSpace.exists_apply_eq_zero",
+          "target": "Ideal.exists_le_maximal",
+          "kind": "proof"
+        }
+      ]
+    }
+  ]
+}

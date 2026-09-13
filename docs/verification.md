@@ -113,20 +113,24 @@ input structure.
 
 Lean is pinned to `v4.28.0` and mathlib to
 `8f9d9cff6bd728b17a24e163c9402775d9e6a365`. The public entry point imports all
-58 project proof modules. `checks/Axioms.lean` adds the audit module, for
-59 Lean source files in total.
+65 project proof modules, including the choice-reduction components.
+The two axiom audits and dependency diagnostic bring the total to 68 Lean files.
 
-The completed verification runs are recorded with source hashes in
-[checks/results.json](../checks/results.json):
+The current checks and source hashes are recorded in
+[choice-reduction-results.json](../checks/choice-reduction-results.json).
+The original theorem's record is preserved in
+[checks/results.json](../checks/results.json).
 
 - `lake --wfail build` compiles the full library with warnings treated as
   errors.
 - `python3 checks/check_proofs.py` scans all project Lean sources for
-  forbidden proof constructs and audits all 963 declarations originating in
+  forbidden proof constructs and audits all 1152 declarations originating in
   project proof modules, including private/generated declarations and names
   outside the project namespace. It also prints 69 named public checks,
   including the full unbounded theorem and nonautonomous existence.
-- `python3 -m unittest discover -s checks -p 'test_*.py'` runs seven
+- `lake env lean checks/ChoiceReductionAxioms.lean` audits all 189 supporting
+  declarations and rejects `Classical.choice` in their transitive dependencies.
+- `python3 -m unittest discover -s checks -p 'test_*.py'` runs 15
   regression tests for the source scanner and compiled Lean rejection fixtures.
 - `LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic` rechecks the compiled
   project proofs using Lean's bundled checker.
@@ -139,8 +143,8 @@ comments, strings, and identifiers.
 
 Compilation checks that a proof inhabits its declared type. The axiom audit
 makes its foundational dependencies explicit. Lean's bundled
-checker is not a separately implemented proof assistant. The saved record
-documents local checks performed before the initial publication.
+checker is not a separately implemented proof assistant. These checks verify
+the Lean declarations; they do not certify the mathematical research notes.
 
 ## Build record
 
@@ -158,6 +162,19 @@ descriptions of spectral-band boundaries and $C^1$ regularity. All 59 Lean
 files match the preceding version after removing comments and normalizing
 whitespace. The build, axiom audit, and bundled proof checker passed again.
 The integrity checker code and its regression tests are unchanged.
+
+## Foundational arguments
+
+The [foundations notes](choice-reduction.md) examine the theorem's dependence
+on choice and graph-norm control. Their necessity, DC sufficiency, and
+explicit-graph-control results are mathematical proofs, not Lean formalizations.
+The extra graph-control hypothesis and uniform-completeness convention are
+stated separately from the original theorem.
+
+The [supporting Lean components](foundations/lean-audit.md) have audited axioms
+contained in `[propext, Quot.sound]`. The full adiabatic theorem retains
+`[propext, Classical.choice, Quot.sound]`. No missing projection, evolution,
+commutator, or error estimate has been added as a hypothesis to that theorem.
 
 ## Limits
 

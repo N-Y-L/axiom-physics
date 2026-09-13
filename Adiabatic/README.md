@@ -44,6 +44,23 @@ transport, and comparison results.
 case. [ProjectionDistance](ProjectionDistance.lean) is shared by the broader
 theorems.
 
+## Choice-reduction components
+
+[ChoiceReduction.lean](ChoiceReduction.lean) imports the supporting modules:
+
+| Module | Result |
+| --- | --- |
+| [ExplicitInverse](ChoiceReduction/ExplicitInverse.lean) | Specified inverses, resolvent identities, and reduced commutator algebra |
+| [FiniteSelection](ChoiceReduction/FiniteSelection.lean) | Existential selection over a supplied finite index set |
+| [FiniteProducts](ChoiceReduction/FiniteProducts.lean) | Contractive product comparison from local errors |
+| [MixedProducts](ChoiceReduction/MixedProducts.lean) | Product comparison with separate physical and domain bounds |
+| [ChoicePrinciples](ChoiceReduction/ChoicePrinciples.lean) | Conditional equivalences of selection and inverse principles |
+| [LiftObstruction](ChoiceReduction/LiftObstruction.lean) | A lift of the coordinate swap supplies an inverse and its bound |
+
+Their [separate audit](../checks/ChoiceReductionAxioms.lean) excludes
+`Classical.choice`. The [research note](../docs/choice-reduction.md) states
+their hypotheses and the limits of their application to the full theorem.
+
 See the [proof guide](../docs/proof-guide.md) for the mathematical argument
 and the [documentation index](../docs/README.md) for research, verification,
 and proposed extensions.

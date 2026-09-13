@@ -42,6 +42,13 @@ Its complete hypotheses and conclusion are in
 [Unbounded/Statement.lean](Adiabatic/Unbounded/Statement.lean).
 The [finite-dimensional theorem](Adiabatic/MainTheorem.lean) is also included.
 
+The [foundations notes](docs/choice-reduction.md) explain how the theorem
+depends on choice and graph-norm control. They prove mathematically that
+dependent choice suffices, give a necessary weak choice principle, and establish
+a ZF version
+with explicit graph control. These arguments are not Lean-formalized;
+the supporting algebraic Lean results have a separate axiom audit.
+
 ## Read the proof
 
 | File | Contents |

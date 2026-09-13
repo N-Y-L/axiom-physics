@@ -22,5 +22,17 @@ separate input structure and two-level example.
 | [Two-level example](../Adiabatic/Examples.lean) | A nontrivial instance of the original finite-dimensional input structure. |
 | [Possible extensions](extensions.md) | Informal explicit-gap and reduced-resolvent estimates. |
 
+## Foundations
+
+The [overview](choice-reduction.md) explains the role of choice and graph norms,
+and separates mathematical arguments from Lean-checked components.
+
+| Resource | Contents |
+| --- | --- |
+| [Necessity](foundations/necessity.md) | Counterexample to the initial-graph-norm theorem in ZF and its weak choice consequence. |
+| [Dependent choice](foundations/dependent-choice.md) | Proof of the original theorem in ZF + DC. |
+| [Explicit graph control](foundations/graph-control.md) | ZF proof with an additional graph inequality at every time. |
+| [Lean audit](foundations/lean-audit.md) | Supporting formal results, their statements, and transitive dependencies. |
+
 For local verification commands, see the [repository README](../README.md).
 For editing conventions, see [Contributing](../CONTRIBUTING.md).
