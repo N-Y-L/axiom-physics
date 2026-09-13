@@ -2,6 +2,9 @@
 
 ## 2026-09-13
 
+Added attribution identifying the project lead and the use of OpenAI Codex
+for Lean formalization and mathematical drafting. Proof sources are unchanged.
+
 Added foundations results explaining the role of choice and graph norms:
 a necessary weak choice principle, sufficiency of DC for the original
 theorem, and a ZF proof with explicit graph control. These are mathematical

@@ -90,9 +90,16 @@ and `Quot.sound` are permitted. The final command rechecks compiled proofs with
 Lean's bundled checker. See the [verification record](docs/verification.md)
 and [checks/](checks/README.md) for checker regression tests.
 
+## Attribution
+
+**Project lead and maintainer:** Neil Yuanting Li.
+
+**Development:** Lean formalization and mathematical drafts developed with
+OpenAI Codex under Neil Yuanting Li’s direction.
+
 ## References and license
 
-Author: Neil Yuanting Li. See [CITATION.cff](CITATION.cff) for citation metadata.
+See [CITATION.cff](CITATION.cff) for citation metadata.
 
 The proof follows the Kato/commutator approach. Primary references include
 [Kato (1950)](https://doi.org/10.1143/JPSJ.5.435),
