@@ -170,21 +170,5 @@
   "lean_source_files": 59,
   "rejection_checks_scope": "Current compiled regression fixtures and source-scanner tests",
   "all_project_declarations_audited": 963,
-  "audit_selection": "originating Adiabatic module, including private/generated declarations and names in other namespaces",
-  "semantic_review": {
-    "theorem_and_spectral_construction": "No substantive defect found in independent internal code review",
-    "evolution_domain_and_endpoints": "No substantive defect found in independent internal code review",
-    "external_peer_review": "not claimed"
-  },
-  "editorial_review": {
-    "base_commit": "a3890ebe365c8b678d79319b26783396728d2cfb",
-    "base_verification_utc": "2026-09-13T19:29:33.121118+00:00",
-    "lean_changes": "comments only; all 59 Lean files compared after removing comments and normalizing whitespace",
-    "checks_rerun": [
-      "lake --wfail build",
-      "python3 checks/check_proofs.py",
-      "LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic"
-    ],
-    "documentation": "relative files and section links checked; mathematical qualifications and citations retained"
-  }
+  "audit_selection": "originating Adiabatic module, including private/generated declarations and names in other namespaces"
 }

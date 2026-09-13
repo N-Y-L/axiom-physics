@@ -1,7 +1,6 @@
 # Verification
 
-Review date: 2026-09-13. The reviews were internal. There has been no external
-peer review.
+Verification date: 2026-09-13.
 
 The main declaration is
 `Adiabatic.Unbounded.common_domain_adiabatic_theorem` in
@@ -64,9 +63,9 @@ These are norms of continuous complex linear maps $E\to E$. Internal band
 degeneracies and crossings are allowed. Empty selected bands and the
 zero-dimensional Hilbert space are included.
 
-## Proof review
+## Proof structure
 
-The review traced each construction from the theorem's hypotheses.
+The constructions follow from the theorem's hypotheses as follows.
 
 1. `Domain.lean` identifies the full physical operator domain and proves
    graph norm equivalence. The resolvent modules derive nonreal resolvents,
@@ -139,17 +138,11 @@ declaration, or native decision procedure was found. The
 comments, strings, and identifiers.
 
 Compilation checks that a proof inhabits its declared type. The axiom audit
-makes its foundational dependencies explicit. The separate semantic review
-checks that the type expresses the stated physical theorem. Lean's bundled
+makes its foundational dependencies explicit. Lean's bundled
 checker is not a separately implemented proof assistant. The saved record
 documents local checks performed before the initial publication.
 
-## Release review
-
-Two further reviews of the spectral and evolution arguments found no
-substantive mathematical defect. They checked the assumptions, adjoint
-domains, projection, commutator, unitary limits, domain preservation,
-endpoint derivatives, and uniqueness scope.
+## Build record
 
 A fresh copy of the tracked sources was built without reusing project
 compiled artifacts. The nine dependency builds were reused after checking

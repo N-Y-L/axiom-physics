@@ -43,5 +43,5 @@ full dependency audit.
 [results.json](results.json) records completed checks, the pinned toolchain,
 public theorem names, and source hashes. Rerun the checks after mathematical
 changes.
-The [verification note](../docs/verification.md) describes the exact theorem
-scope and the separate semantic review.
+The [verification note](../docs/verification.md) describes the theorem
+hypotheses and the recorded checks.

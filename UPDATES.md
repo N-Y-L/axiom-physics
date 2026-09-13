@@ -2,8 +2,9 @@
 
 ## 2026-09-13
 
-Removed the prior-art report and obsolete publication instructions, and
-updated the documentation links. Mathematical statements, proofs,
+Removed internal guidance and review notes, the prior-art report, and
+obsolete publication instructions. Updated the documentation links.
+Mathematical statements, proofs,
 Lean comments, dependencies, and verification tools are unchanged.
 
 Shortened the documentation and proof comments, removed repeated caveats
@@ -11,8 +12,8 @@ and rhetorical qualifiers, and retained the hypotheses, estimates, and
 citations. Checked that Lean edits affect only comments; the build and
 axiom audit and bundled proof recheck passed.
 
-Rechecked the full theorem with independent semantic reviews and a fresh
-project build. Organized the documentation around the common-domain result,
+Rechecked the full theorem in a fresh project build. Organized the
+documentation around the common-domain result,
 added a module map, and separated proposed explicit constants from checked
 proofs. Strengthened the integrity audit to cover every project declaration
 and reject additional placeholder syntax; added compiled regression fixtures
