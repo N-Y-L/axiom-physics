@@ -1,22 +1,17 @@
+-- Original finite-dimensional theorem and examples.
 import Adiabatic.MainTheorem
 import Adiabatic.Schrodinger
 import Adiabatic.Examples
 import Adiabatic.ReducedResolvent
+
+-- Bounded Hamiltonians on arbitrary complex Hilbert spaces.
 import Adiabatic.Infinite.SpectralTheorem
-import Adiabatic.ProjectionDistance
-import Adiabatic.Unbounded.CommutatorTheorem
-import Adiabatic.Unbounded.Autonomous
-import Adiabatic.Unbounded.BoundedPerturbation
-import Adiabatic.Unbounded.NonautonomousDomain
-import Adiabatic.Unbounded.Perturbation
-import Adiabatic.Unbounded.TimeSlicing
-import Adiabatic.Unbounded.RieszCommutator
-import Adiabatic.Unbounded.Statement
-import Adiabatic.Unbounded.GappedReduction
-import Adiabatic.Unbounded.HilbertGraphConvergence
-import Adiabatic.Unbounded.FrozenApproximation
 
+-- Common-domain theorem for possibly unbounded Hamiltonians.
 import Adiabatic.Unbounded.MainTheorem
+import Adiabatic.Unbounded.CommutatorTheorem
+import Adiabatic.Unbounded.Perturbation
 
-/-! Checked finite-dimensional and common-domain quantum adiabatic theorems.
-The full unbounded theorem is proved in `Adiabatic.Unbounded.MainTheorem`. -/
+/-! Public entry point for all checked project proof modules.
+See `Adiabatic/README.md` for the module map and `docs/proof-guide.md`
+for the mathematical argument. -/

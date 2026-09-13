@@ -2,7 +2,7 @@
 """Reject proof placeholders, then audit Lean's transitive trusted dependencies.
 
 Run after `lake build`. This script uses only Python's standard library. The Lean
-audit, rather than text matching, checks which axioms the public results depend on.
+audit, rather than text matching, checks which axioms all project declarations depend on.
 """
 
 from __future__ import annotations
@@ -15,13 +15,13 @@ import subprocess
 import sys
 
 
-FORBIDDEN = re.compile(r"(?<![\w'?!])(?:sorry|sorryAx|axiom|unsafe|native_decide)(?![\w'?!])")
+FORBIDDEN = re.compile(r"(?<![\w'?!])(?:sorry|admit|sorryAx|axiom|unsafe|native_decide)(?![\w'?!])")
 RAW_STRING = re.compile(r'r(#+)?"')
 CHAR_LITERAL = re.compile(r"'(?:\\(?:u\{[0-9a-fA-F]+\}|x[0-9a-fA-F]{2}|.)|[^\\'\n])'")
 
 
 def mask_noncode(source: str) -> str:
-    """Blank comments, strings and quoted identifiers, preserving line positions.
+    """Blank noncode and ordinary quoted identifiers, preserving line positions.
 
     Lean block comments nest. Strings may contain escapes or use raw delimiters.
     Interpolated strings are left visible so their embedded proof terms are scanned.
@@ -58,6 +58,11 @@ def mask_noncode(source: str) -> str:
             end = source.find("»", index + 1)
             if end < 0:
                 raise ValueError("unterminated quoted identifier")
+            # Quoting a constant's name does not change which constant Lean uses.
+            # Other quoted identifiers may legitimately contain keyword text.
+            if source[index + 1 : end] == "sorryAx":
+                index = end + 1
+                continue
             index = end + 1
         elif (match := CHAR_LITERAL.match(source, index)) is not None and (
             index == 0 or not (source[index - 1].isalnum() or source[index - 1] in "_'?")
@@ -142,7 +147,7 @@ def main() -> int:
     if result.returncode:
         print("Lean dependency audit failed. Run `lake build` first if imports are missing.", file=sys.stderr)
         return result.returncode
-    print("Proof integrity audit passed: only the three permitted standard axioms occur.")
+    print("Proof integrity audit passed: all project declarations use only permitted standard axioms.")
     return 0
 
 

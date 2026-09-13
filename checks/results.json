@@ -1,11 +1,13 @@
 {
-  "verified_at_utc": "2026-09-13T19:07:29.452029+00:00",
+  "verified_at_utc": "2026-09-13T19:29:33.121118+00:00",
   "lean": "leanprover/lean4:v4.28.0",
   "mathlib_revision": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
   "checks": {
     "lake --wfail build": "passed",
     "python3 checks/check_proofs.py": "passed",
-    "LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic": "passed"
+    "LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic": "passed",
+    "python3 -m unittest discover -s checks -p 'test_*.py'": "passed (7 tests)",
+    "fresh project build": "passed; no project compiled artifacts reused; nine dependency revisions checked against manifest"
   },
   "audited_declarations": [
     "Adiabatic.projection_derivative",
@@ -84,12 +86,16 @@
     "Quot.sound"
   ],
   "rejection_checks": {
-    "unfinished_proof": "rejected",
-    "custom_axiom_dependency": "rejected"
+    "private_admit": "rejected",
+    "normal_sorryAx": "rejected",
+    "quoted_sorryAx": "rejected",
+    "unused_axiom_other_namespace": "rejected",
+    "unsafe_definition": "rejected",
+    "valid_comments_strings_identifiers": "accepted"
   },
   "hosted_ci": "not run; repository not published",
   "source_sha256": {
-    "Adiabatic.lean": "c53db9d187b394e66ed9d11c6043da2a2f81676385933b22201ef450493929f3",
+    "Adiabatic.lean": "db98e0a5ef72eec62cc54fa3a8b516b89c50f8db2aa9f7310ddc44a2db8edb9a",
     "Adiabatic/Bounds.lean": "1c07f32f0e1c9aa5af676b4dc41a01096f9fa8aec44ea2ed8e850e14e8c77173",
     "Adiabatic/CommutatorTheorem.lean": "803fe39bfa129f4563ce7c5ed2ebef16124326aceaece7987d724ef677d090aa",
     "Adiabatic/Comparison.lean": "cb420948e7aebfdef0e84e9ed2f12e3c9ace0dbc212219486bae614a0c2d1e14",
@@ -147,11 +153,13 @@
     "Adiabatic/Unbounded/TimeSlicing.lean": "a536ec13a83a8b7e694c012aa998cf5827c135ce69a424f8c7afcc6109cc3fd6",
     "Adiabatic/Unbounded/Transport.lean": "6f07b0696a80f1290fd46551cd93c4f8e6e69da8a8a0f42e5dd7c0fe22c37d4f",
     "Adiabatic/Unbounded/UniformComparison.lean": "bf3569e561b3692a877877c6bcc17490fed205d127e7af2ea026274320f00ecf",
-    "checks/Axioms.lean": "be42df7cb3da1b35c9ec59897850da407512039e2972d94cdeee960df69274cb",
-    "checks/check_proofs.py": "30f2e88ab3e44086c1e46e6c9bfee4ade67fe0763f67748f3e256b475c28afe6",
+    "checks/Axioms.lean": "41f20c40c68d380871f4cd2a8eda24015ac14bd54d0ddc9c301668ab54884c7b",
+    "checks/check_proofs.py": "a9bba019751363ef226f12ca80a6c568f96c6549f6a71524c3839981eb4a910b",
+    "checks/test_check_proofs.py": "69e9cf2e62d4da20d4221d9b038fea3f4a98d1c2779c6bbc0f25e53064f9fa24",
     "lake-manifest.json": "20da362617baffb81c80cdb105c1f769c0d4d81c10e2fbe797a9af5c5456a65d",
     "lakefile.toml": "a7129b09641f7eed46b47869f4a3129f6126c104d24ba90d3b2359ce280f86f0",
-    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    ".github/workflows/lean.yml": "3df18f43d19cba9b7e9f19f7e45ab6117049f165883aa58b3604105c66c8fbdc"
   },
   "main_declarations": [
     "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
@@ -160,5 +168,12 @@
   ],
   "project_proof_modules": 58,
   "lean_source_files": 59,
-  "rejection_checks_scope": "Initial finite-dimensional release; rejection checks remain applicable to the unchanged audit implementation."
+  "rejection_checks_scope": "Current compiled regression fixtures and source-scanner tests",
+  "all_project_declarations_audited": 963,
+  "audit_selection": "originating Adiabatic module, including private/generated declarations and names in other namespaces",
+  "semantic_review": {
+    "theorem_and_spectral_construction": "No substantive defect found in independent internal code review",
+    "evolution_domain_and_endpoints": "No substantive defect found in independent internal code review",
+    "external_peer_review": "not claimed"
+  }
 }

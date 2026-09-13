@@ -48,10 +48,12 @@ available unchanged.
 
 | File | Contents |
 |---|---|
-| [Proof guide](docs/proof-plan.md) | Mathematical argument and Lean dependencies |
+| [Documentation index](docs/README.md) | Reading paths for the theorem, research, verification, and publication |
+| [Proof guide](docs/proof-guide.md) | Mathematical argument and Lean dependencies |
 | [Common-domain research](docs/unbounded-research.md) | Literature, assumptions, spectral calculus, and evolution construction |
 | [Verification](docs/verification.md) | Exact scope and mechanical checks |
 | [Prior work](docs/prior-art.md) | Public-source search and its limits |
+| [Module map](Adiabatic/README.md) | Source organization and all public proof modules |
 | [Unbounded/MainTheorem.lean](Adiabatic/Unbounded/MainTheorem.lean) | Full theorem and evolution uniqueness |
 | [Unbounded/Nonautonomous.lean](Adiabatic/Unbounded/Nonautonomous.lean) | Evolution existence from common-domain self-adjointness |
 | [Examples.lean](Adiabatic/Examples.lean) | A nontrivial two-level example for the original finite theorem |
@@ -80,11 +82,13 @@ command. The compiler and dependency revisions are pinned in
 `lean-toolchain` and `lake-manifest.json`.
 
 The integrity check rejects unfinished proofs and added axioms, and checks
-the transitive dependencies of the public declarations. Only Lean's
+the transitive dependencies of every declaration from a project proof module,
+including private declarations and declarations in other namespaces. Only Lean's
 standard `propext`, `Classical.choice`, and `Quot.sound` are permitted.
 The final command rechecks the compiled project proofs with Lean's bundled
 checker. The [verification record](docs/verification.md) distinguishes these
 mechanical checks from the review of the mathematical statement.
+Regression tests for the integrity checker are documented in [checks/](checks/README.md).
 
 ## References and license
 

@@ -9,8 +9,9 @@ An estimate, propagator, or spectral construction must be derived if the
 theorem claims to establish it. Do not replace missing work with assumptions
 that contain the conclusion.
 
-Run `lake build` and `python3 checks/check_proofs.py` before submitting a
-change. Add substantive new public theorems to the axiom audit. Keep the
+Run `lake --wfail build` and `python3 checks/check_proofs.py` before submitting
+a change. When changing the integrity checker, also run
+`python3 -m unittest discover -s checks -p 'test_*.py'`. Add substantive new public theorems to the axiom audit. Keep the
 formal statement, proof guide, and verification note consistent. Record
 changes in `UPDATES.md` with their mathematical scope and checks.
 

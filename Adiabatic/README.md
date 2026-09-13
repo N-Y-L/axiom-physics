@@ -1,0 +1,49 @@
+# Proof modules
+
+The public import is `import Adiabatic`. It includes all checked project
+modules. The principal result is
+[`Unbounded.common_domain_adiabatic_theorem`](Unbounded/MainTheorem.lean);
+read its [statement](Unbounded/Statement.lean) before the supporting proofs.
+
+## Common-domain theorem
+
+`Unbounded/` treats arbitrary complex Hilbert spaces and Hamiltonians that
+may be unbounded in the physical norm.
+
+| Part | Modules |
+| --- | --- |
+| Statement and final theorem | [Statement](Unbounded/Statement.lean), [MainTheorem](Unbounded/MainTheorem.lean) |
+| Domain and resolvents | [Domain](Unbounded/Domain.lean), [Resolvent](Unbounded/Resolvent.lean), [ResolventSpectrum](Unbounded/ResolventSpectrum.lean), [BoundedPerturbation](Unbounded/BoundedPerturbation.lean) |
+| Spectral projections | [RieszProjection](Unbounded/RieszProjection.lean), [ContourIndependence](Unbounded/ContourIndependence.lean), [MovingBand](Unbounded/MovingBand.lean) |
+| Domain-valued commutator | [RieszCommutator](Unbounded/RieszCommutator.lean), [SmoothGluing](Unbounded/SmoothGluing.lean), [GlobalCommutator](Unbounded/GlobalCommutator.lean), [GappedCommutator](Unbounded/GappedCommutator.lean) |
+| Autonomous evolution | [ResolventApproximation](Unbounded/ResolventApproximation.lean), [Autonomous](Unbounded/Autonomous.lean) |
+| Time-dependent evolution | [Propagator](Unbounded/Propagator.lean), [RightPropagator](Unbounded/RightPropagator.lean), [TimeSlicing](Unbounded/TimeSlicing.lean), [FrozenEvolution](Unbounded/FrozenEvolution.lean), [FrozenApproximation](Unbounded/FrozenApproximation.lean), [Nonautonomous](Unbounded/Nonautonomous.lean) |
+| Domain control in the limit | [GraphBounds](Unbounded/GraphBounds.lean), [FrozenGraphBounds](Unbounded/FrozenGraphBounds.lean), [NonautonomousDomain](Unbounded/NonautonomousDomain.lean), [HilbertGraphConvergence](Unbounded/HilbertGraphConvergence.lean), [GraphLimit](Unbounded/GraphLimit.lean) |
+| Strong calculus and transport | [StrongCalculus](Unbounded/StrongCalculus.lean), [StrongEstimate](Unbounded/StrongEstimate.lean), [Evolution](Unbounded/Evolution.lean), [Transport](Unbounded/Transport.lean) |
+| Comparison and error bounds | [Comparison](Unbounded/Comparison.lean), [Perturbation](Unbounded/Perturbation.lean), [CommutatorTheorem](Unbounded/CommutatorTheorem.lean), [UniformComparison](Unbounded/UniformComparison.lean), [GappedSpectralTheorem](Unbounded/GappedSpectralTheorem.lean), [GappedReduction](Unbounded/GappedReduction.lean) |
+
+## Bounded Hamiltonians in arbitrary dimension
+
+`Infinite/` is the bounded-Hamiltonian construction in arbitrary dimension.
+Its [SpectralTheorem](Infinite/SpectralTheorem.lean) assembles
+[RieszProjection](Infinite/RieszProjection.lean),
+[RieszCommutator](Infinite/RieszCommutator.lean),
+[Unitary](Infinite/Unitary.lean), and
+[CommutatorTheorem](Infinite/CommutatorTheorem.lean).
+
+## Original finite-dimensional theorem
+
+The files directly under `Adiabatic/` retain their original import paths and
+public declarations. Start with [Statement](Statement.lean),
+[MainTheorem](MainTheorem.lean), [Schrodinger](Schrodinger.lean), and the
+[two-level example](Examples.lean).
+
+The remaining files provide the original projection, spectral-gap,
+regularity, propagator, transport, and comparison arguments.
+[ReducedResolvent](ReducedResolvent.lean) gives a separate algebraic special
+case. [ProjectionDistance](ProjectionDistance.lean) is shared by the broader
+theorems.
+
+For the mathematical argument and reading order, see the
+[proof guide](../docs/proof-guide.md). Research, verification, and proposed
+extensions have separate entries in the [documentation index](../docs/README.md).

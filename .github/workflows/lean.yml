@@ -23,5 +23,7 @@ jobs:
           use-mathlib-cache: true
           leanchecker: true
           leanchecker-args: "Adiabatic"
+      - name: Test proof-integrity checks
+        run: python3 -m unittest discover -s checks -p 'test_*.py'
       - name: Audit proof dependencies
         run: python3 checks/check_proofs.py

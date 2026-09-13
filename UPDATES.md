@@ -2,6 +2,14 @@
 
 ## 2026-09-13
 
+Rechecked the full theorem with independent semantic reviews and a fresh
+project build. Organized the documentation around the common-domain result,
+added a module map, and separated proposed explicit constants from checked
+proofs. Strengthened the integrity audit to cover every project declaration
+and reject additional placeholder syntax; added compiled regression fixtures
+and included them in CI. The mathematical statements and proofs are unchanged.
+
+
 Extended the formalization to arbitrary complex Hilbert spaces and unbounded
 self-adjoint Hamiltonians on a common domain. The theorem constructs the
 spectral projection of a continuously moving uniformly isolated band,
