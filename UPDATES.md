@@ -2,6 +2,16 @@
 
 ## 2026-09-13
 
+Extended the formalization to arbitrary complex Hilbert spaces and unbounded
+self-adjoint Hamiltonians on a common domain. The theorem constructs the
+spectral projection of a continuously moving uniformly isolated band,
+constructs strong unitary evolution from $C^1$ common-domain regularity, and
+proves uniform $C/T$ projection-distance and leakage bounds for $C^2$
+Hamiltonians. The original finite-dimensional theorem is preserved. The
+[verification note](docs/verification.md) records the build, transitive axiom
+audit, and compiled-proof recheck; the [research report](docs/unbounded-research.md)
+explains the exact scope and primary sources.
+
 Proved the finite-dimensional spectral-subspace adiabatic theorem with a
 uniform $C/T$ leakage estimate, assuming smooth Hamiltonian and orthogonal
 spectral-projection paths with a uniform gap. Added propagator existence,

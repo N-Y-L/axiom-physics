@@ -1,11 +1,16 @@
-# Proof architecture: finite-dimensional quantum adiabatic theorem
+# Proof architecture: quantum adiabatic theorem
 
-Research date: 2026-09-13. The finite-dimensional adiabatic theorem is proved
-in `Adiabatic/MainTheorem.lean`. This document explains the proof and separates
-its checked statements from informal consequences and proposed extensions.
-See [verification.md](verification.md) for the exact scope and audit results.
+The finite-dimensional adiabatic theorem is proved in
+`Adiabatic/MainTheorem.lean`. The bounded arbitrary-dimensional theorem with
+a fixed resolvent circle is also proved. The unbounded common-domain
+theorem in `Adiabatic/Unbounded/MainTheorem.lean` constructs the moving
+spectral projection and strong evolution, and proves both uniform spectral
+error estimates. The final section explains this complete extension.
+See [verification.md](verification.md) for the mechanical audit and
+[unbounded-research.md](unbounded-research.md) for the mathematical scope
+and literature comparison.
 
-## Proved statement and conventions
+## Finite-dimensional statement and conventions
 
 Let $E$ be a finite-dimensional complex Hilbert space, and use the
 operator norm on $B(E)$. Time is the real variable $s\in[0,1]$; the runtime is
@@ -39,7 +44,7 @@ $$
 `Schrodinger.lean` separately proves uniqueness on $[0,1]$ and unitarity.
 The main theorem's conclusion is the operator leakage estimate above.
 
-**Informal consequences, not additional checked declarations.** A normalized
+**Consequences and separate declarations.** Informally, a normalized
 initial state in $\operatorname{range}P(0)$ has leakage probability at most
 $C^2/T^2$. The comparison proof also gives
 
@@ -48,10 +53,12 @@ $$
 $$
 
 Here $C$ may be taken to be the comparison constant constructed in the proof;
-the factor $2$ is not optimal. Formal probability, projection-distance, and
-limit corollaries remain extensions. Construction of the $C^2$ projection
-path from the Hamiltonian and an isolated spectral-band selection rule also
-remains separate. The current theorem supplies both smooth paths as input.
+the factor $2$ is not optimal. Formal probability and limit corollaries
+remain extensions of this theorem. The generic projection-distance estimate
+is now proved in `ProjectionDistance.lean` and is used by the common-domain
+extension below. The finite-dimensional theorem still supplies both smooth
+paths as input; contour construction of the projection is available in the
+new spectral modules.
 Its global regularity assumptions are stronger than regularity on a
 neighborhood of $[0,1]$.
 
@@ -162,7 +169,7 @@ Q(s)U(s)P(0)=Q(s)(U(s)-V(s))P(0).
 $$
 
 Orthogonal projections are contractions, giving the checked leakage bound
-in `Leakage.lean`. For the proposed projection-distance corollary, expand the
+in `Leakage.lean`. For the checked projection-distance estimate, expand the
 difference between $UP(0)U^*$ and $VP(0)V^*$ into two terms, each bounded by
 $\|U-V\|$.
 
@@ -293,11 +300,164 @@ constructs a $C^1$ path satisfying $[H,X]=[P',P]$, where $P'$ is
 `derivWithin P s`, from $H\in C^1$, $P\in C^2$, and pointwise sector
 separation on a domain with unique derivatives.
 
-## Verification and extensions
+## Verification of the finite-dimensional proof
 
 The completed main proof derives the commutator solution, both evolutions,
 unitarity, exact transport, and the leakage estimate. The source and axiom
-checks are described in [verification.md](verification.md). Construction of
-the projection from the Hamiltonian alone, formal probability and
-projection-distance corollaries, weaker regularity assumptions, and explicit
-gap-dependent constants remain extensions.
+checks are described in [verification.md](verification.md). Formal
+probability corollaries and explicit gap-dependent constants remain
+extensions. The following construction derives the projection from a
+spectral-band rule and treats arbitrary dimension.
+
+## Bounded spectral theorem in arbitrary dimension
+
+`Infinite/RieszProjection.lean` constructs a Riesz projection from a fixed
+circle in the resolvent set. The scalar circle integral is evaluated first;
+continuous functional calculus then proves that the operator integral is a
+self-adjoint idempotent commuting with the Hamiltonian. Smoothness follows
+from smooth inversion in the algebra of continuous operator-valued functions
+on the circle and the continuity of contour integration.
+
+`Infinite/RieszCommutator.lean` constructs the contour commutator and proves
+its equation and regularity. `Infinite/Unitary.lean` constructs two-sided
+unitary evolution without using finite-dimensional injectivity or
+surjectivity. The final declaration is
+`bounded_adiabatic_theorem_of_resolvent_contour` in
+[`Infinite/SpectralTheorem.lean`](../Adiabatic/Infinite/SpectralTheorem.lean).
+It proves existence and uniform leakage for a bounded self-adjoint $C^2$
+Hamiltonian with one fixed isolating circle. A fixed circle is an explicit
+assumption of this particular theorem.
+
+## Unbounded common-domain construction
+
+The input structure in
+[`Unbounded/Statement.lean`](../Adiabatic/Unbounded/Statement.lean) uses a
+dense injective continuous inclusion $j:D\to E$, a complete domain space,
+and a $C^2$ path $H:[0,1]\to B(D,E)$. Each represented unbounded operator is
+equal to its actual adjoint. Continuous endpoints $a<b$ select a bounded
+spectral band and stay a uniform positive distance from spectrum.
+
+The full theorem follows the dependency chain below.
+
+```mermaid
+flowchart TD
+  A[Self-adjoint common-domain Hamiltonian] --> B[Resolvent into the domain]
+  B --> C[Rational continuous functional calculus]
+  C --> D[Orthogonal contour projection]
+  D --> E[Moving-band projection is C²]
+  E --> F[Local contour commutator]
+  F --> G[Finite smooth partition gives global C¹ solution]
+  G --> H[Strong comparison and spectral error bounds]
+  E --> I[C¹ self-adjoint Kato-corrected Hamiltonian]
+  J[General nonautonomous evolution existence] --> K[Physical and Kato propagators]
+  I --> K
+  K --> H
+```
+
+### Domain-valued resolvents and projections
+
+Write $R_D(z)=(H-zj)^{-1}:E\to D$ and $r(z)=jR_D(z)$. The two maps have
+different types and norms. Their cancellation and resolvent identities are
+proved in `Unbounded/Resolvent.lean`; `Domain.lean` proves equivalence with
+the graph norm and uses full unbounded self-adjointness.
+
+The physical projection and its lift are
+
+$$
+P=-\frac1{2\pi i}\oint r(z)\,dz,
+\qquad
+P_D=-\frac1{2\pi i}\oint R_D(z)\,dz.
+$$
+
+To identify this projection using bounded functional calculus, set $b=r(i)$
+and use
+
+$$
+b((z-i)b-I)^{-1}=-r(z).
+$$
+
+The spectrum correspondence $w\mapsto i+w^{-1}$ for $w\ne0$ and the scalar
+circle integral identify $P$ as the selected spectral cutoff of $b$.
+The value at $w=0$ is zero. `Unbounded/RieszProjection.lean` derives
+$P^2=P=P^*$, $jP_D=P$, and fixed-contour regularity in both operator norms.
+
+### Continuously moving endpoints
+
+The enclosing circle has center $(a+b)/2$ and radius $(b-a)/2$. Holding its
+endpoints fixed near any given time preserves the selected part of the
+current spectrum, because the moving endpoints change by less than the
+gap. `ContourIndependence.lean` proves equality of projections selecting the
+same spectral subset. `MovingBand.lean` uses this equality to prove $C^2$
+regularity of $P$ and $P_D$. Differentiability of $a$ and $b$ is unnecessary.
+
+### The global domain commutator
+
+For $K=[P',P]$, a local contour gives
+
+$$
+X_D=-\frac1{2\pi i}\oint R_D(z)P'r(z)\,dz,
+\qquad X=jX_D,
+\qquad HX_Dj-XH=Kj.
+$$
+
+`RieszCommutator.lean` proves this identity on every domain vector and
+establishes $C^1$ regularity. `SmoothGluing.lean` proves a finite smooth
+partition-of-unity theorem for linear equations. `GlobalCommutator.lean`
+applies it to the domain commutator; `GappedCommutator.lean` supplies the local
+contours from the moving-band hypotheses. This constructs a global smooth
+solution directly from the gap.
+
+### Strong comparison and final reduction
+
+The comparison calculation is made after application to domain vectors.
+`StrongCalculus.lean` supplies the needed product rules under strong
+continuity and uniform boundedness. `StrongEstimate.lean` extends the
+resulting norm bound from the dense domain to the physical Hilbert space.
+`Transport.lean` derives exact intertwining for the Kato evolution.
+
+`GappedSpectralTheorem.lean` constructs the spectral inputs and proves both
+projection distance and leakage with one constant $C$, conditional only on
+the two strong propagators. `GappedReduction.lean` proves that the Kato
+correction is $C^1$ and skew-adjoint. The bounded self-adjoint perturbation
+$H+(i/T)Kj$ has the same full domain. Thus general $C^1$ common-domain
+evolution existence supplies both propagators.
+
+`commonDomainAdiabaticTheorem_of_evolution_existence` keeps the spectral
+argument separate from general evolution theory. The declaration
+`common_domain_evolution_existence` proves its existence hypothesis, and
+`common_domain_adiabatic_theorem` applies the reduction. Both are in
+[`Unbounded/MainTheorem.lean`](../Adiabatic/Unbounded/MainTheorem.lean).
+The same module proves `GappedHamiltonian.exists_unique_unitary_evolution`,
+with uniqueness on the unit interval among strong unitary common-domain
+propagators.
+
+### Autonomous and nonautonomous evolution
+
+`ResolventApproximation.lean` constructs commuting bounded self-adjoint
+approximations from nonreal resolvents. `Autonomous.lean` proves convergence
+of their unitary exponentials to an actual autonomous group, including
+domain preservation and the strong equation. These results are checked.
+
+For time dependence, the construction composes autonomous groups for frozen
+Hamiltonians. `GraphBounds.lean` controls products in shifted graph norms.
+`RightPropagator.lean` handles right derivatives at partition boundaries;
+`Nonautonomous.lean` develops comparison and limit estimates.
+`NonautonomousDomain.lean` recovers membership in the common domain from
+graph bounds, and `HilbertGraphConvergence.lean` upgrades the corresponding
+continuity.
+
+`FrozenApproximation.lean` assembles actual frozen evolutions, a vanishing
+uniform coefficient error, and forward/inverse domain bounds from $C^1$
+regularity and genuine self-adjointness. `GraphLimit.lean` transfers the
+sharp two-time graph bound to the physical limit and proves continuity of
+its domain lift. A local comparison with the autonomous group of $H(t)$
+has an $O(|s-t|^2)$ remainder on every initial domain vector. Consequently,
+the limit satisfies the strong equation, including the appropriate
+one-sided derivatives at both endpoints.
+
+`exists_nonautonomous_strongPropagator` in `Nonautonomous.lean` packages
+these derived facts into the required strong propagator. It assumes no
+auxiliary evolution, domain invariance, or graph estimate. This completes
+the existence input used by the full adiabatic theorem. The final mechanical
+build and transitive axiom audit are recorded in
+[verification.md](verification.md).

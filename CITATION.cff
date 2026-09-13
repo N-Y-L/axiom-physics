@@ -7,7 +7,8 @@ authors:
   - name: N-Y-L
 license: Apache-2.0
 abstract: >-
-  Lean 4 formalization of the finite-dimensional spectral-subspace quantum
-  adiabatic theorem, with supplied smooth Hamiltonian and orthogonal
-  spectral-projection paths, a uniform spectral gap, and an operator-norm
-  leakage estimate of C/T.
+  Lean 4 formalization of the uniformly gapped quantum adiabatic theorem
+  for possibly unbounded self-adjoint Hamiltonians on a common domain in
+  an arbitrary complex Hilbert space. It constructs the spectral projection
+  and strong unitary evolution and proves uniform operator-norm
+  projection-distance and leakage estimates of C/T.

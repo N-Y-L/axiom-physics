@@ -5,8 +5,11 @@ standard notation, and descriptive filenames. Explain the physics for readers
 with limited programming experience. Avoid invented terminology and decorative
 formatting. Follow `CONTRIBUTING.md`.
 
-The formal statement is in `Adiabatic/Statement.lean`; the complete proof is
-in `Adiabatic/MainTheorem.lean`. Preserve their meaning when refactoring.
+The full common-domain statement and proof are in
+`Adiabatic/Unbounded/Statement.lean` and `Adiabatic/Unbounded/MainTheorem.lean`.
+The original finite-dimensional statement and proof remain in
+`Adiabatic/Statement.lean` and `Adiabatic/MainTheorem.lean`. Preserve their
+meaning when refactoring.
 Do not add unfinished proofs, new axioms, unsafe declarations, or native
 decision procedures. Check both compilation and transitive theorem axioms.
 

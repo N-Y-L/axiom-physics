@@ -1,55 +1,66 @@
 # Quantum adiabatic theorem in Lean
 
-A Lean 4 formalization of the finite-dimensional quantum adiabatic theorem,
-using mathlib. The proof includes existence of Schrödinger evolution,
-Kato transport, the spectral-gap argument, and a uniform error bound.
+A Lean 4 formalization of the uniformly gapped quantum adiabatic theorem,
+including unbounded self-adjoint Hamiltonians on a common domain in an
+arbitrary complex Hilbert space. The proof constructs the spectral
+projection and Schrödinger evolution, then proves uniform error bounds.
 
 ## The result
 
-Let $H(s)$ be a self-adjoint Hamiltonian on a finite-dimensional complex
-Hilbert space. Let $P(s)$ be an orthogonal projection commuting with $H(s)$.
-Assume both paths are $C^2$, and the spectra selected by $P(s)$ and $I-P(s)$
-are separated by a fixed gap $g>0$ for $0\le s\le1$.
+Let $H(s)$ be a self-adjoint Hamiltonian on a fixed dense domain $D$ in a
+complex Hilbert space $E$. Assume $H:D\to E$ is $C^2$ in the graph norm for
+$0\le s\le1$. Choose continuous real endpoints $a(s)<b(s)$ whose distances
+from the spectrum are at least a fixed $g>0$.
 
-With $\hbar=1$, the physical evolution satisfies
+The formalization constructs the orthogonal spectral projection $P(s)$ for
+the spectrum between these endpoints and proves that it is $C^2$. Neither
+the Hilbert space nor the selected spectral subspace needs to have finite
+dimension. The Hamiltonian need not be bounded in the physical norm.
 
-$$
-U_T'(s)=-iT H(s)U_T(s),\qquad U_T(0)=I.
-$$
-
-The formalization proves that this evolution exists and that there is a
-constant $C\ge0$, independent of $T$, such that every solution satisfies
+With $\hbar=1$, it constructs domain-preserving unitary evolution satisfying
 
 $$
-\left\|(I-P(s))U_T(s)P(0)\right\|\le\frac{C}{T}
-\qquad(T>0,\;0\le s\le1).
+U_T'(s)\psi=-iT H(s)U_T(s)\psi,\qquad U_T(0)=I,\qquad\psi\in D.
 $$
 
-The norm is the Hilbert-space operator norm. Degeneracies and crossings within
-either spectral sector are allowed. The formal hypotheses use paths defined
-on $\mathbb R$; the gap is needed only on $[0,1]$.
+There is a constant $C\ge0$, chosen before the runtime $T$, such that for
+every $T>0$ and every $s\in[0,1]$,
+
+$$
+\left\|U_T(s)P(0)U_T(s)^*-P(s)\right\|\le\frac{C}{T},
+\qquad
+\left\|(I-P(s))U_T(s)P(0)\right\|\le\frac{C}{T}.
+$$
+
+These are Hilbert-space operator norms. The second bound controls departure
+from the selected spectral subspace. Degeneracies and crossings inside the
+band are allowed. Strong unitary common-domain evolution is unique on the
+unit interval.
 
 The main declaration is
-[`Adiabatic.finite_dimensional_adiabatic_theorem`](Adiabatic/MainTheorem.lean).
-Its complete hypotheses and conclusion are defined in
-[Statement.lean](Adiabatic/Statement.lean).
+[`Adiabatic.Unbounded.common_domain_adiabatic_theorem`](Adiabatic/Unbounded/MainTheorem.lean).
+Its complete hypotheses and conclusion are in
+[Unbounded/Statement.lean](Adiabatic/Unbounded/Statement.lean).
+The original [finite-dimensional theorem](Adiabatic/MainTheorem.lean) remains
+available unchanged.
 
 ## Read the proof
 
 | File | Contents |
 |---|---|
-| [Proof guide](docs/proof-plan.md) | Mathematical argument, conventions, and Lean dependencies |
-| [Verification](docs/verification.md) | What is checked and the exact scope |
-| [Prior work](docs/prior-art.md) | Literature and formalization search with sources |
-| [MainTheorem.lean](Adiabatic/MainTheorem.lean) | Complete theorem assembled from the supporting results |
-| [Examples.lean](Adiabatic/Examples.lean) | A two-level Hamiltonian with a proper spectral subspace and gap one |
-| [Adiabatic/](Adiabatic/) | Propagator, projection, transport, spectral, and error-bound proofs |
+| [Proof guide](docs/proof-plan.md) | Mathematical argument and Lean dependencies |
+| [Common-domain research](docs/unbounded-research.md) | Literature, assumptions, spectral calculus, and evolution construction |
+| [Verification](docs/verification.md) | Exact scope and mechanical checks |
+| [Prior work](docs/prior-art.md) | Public-source search and its limits |
+| [Unbounded/MainTheorem.lean](Adiabatic/Unbounded/MainTheorem.lean) | Full theorem and evolution uniqueness |
+| [Unbounded/Nonautonomous.lean](Adiabatic/Unbounded/Nonautonomous.lean) | Evolution existence from common-domain self-adjointness |
+| [Examples.lean](Adiabatic/Examples.lean) | A nontrivial two-level example for the original finite theorem |
 
-The theorem takes a smooth spectral projection as input. Constructing that
-projection from a Hamiltonian alone, explicit constants in terms of the gap,
-and infinite-dimensional or gapless versions are outside this result.
-The prior-work search found no complete publicly inspectable formalization;
-it does not establish priority.
+The result gives an existential constant. Gapless evolution, changing
+operator domains, explicit optimal gap dependence, and higher-order or
+exponentially small error estimates are outside this statement. The
+prior-work search found no complete publicly inspectable formalization in
+the sources searched; it does not establish priority.
 
 ## Check the proofs
 
@@ -58,29 +69,32 @@ From this repository folder, run:
 
 ```sh
 lake exe cache get
-lake build
+lake --wfail build
 python3 checks/check_proofs.py
+LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic
 ```
 
-On Windows, the last command can be run as `py -3 checks/check_proofs.py`.
-The first run downloads the compiler and dependencies. The compiler version
-and all dependency revisions are pinned in `lean-toolchain` and
-`lake-manifest.json`.
+On Windows, the Python command can be run as `py -3 checks/check_proofs.py`;
+set `LEAN_NUM_THREADS` using the conventions of your shell for the last
+command. The compiler and dependency revisions are pinned in
+`lean-toolchain` and `lake-manifest.json`.
 
-The integrity check rejects unfinished proofs, new axioms, and unapproved
-axioms in the transitive dependencies of the audited declarations.
-The accepted foundational axioms are Lean's `propext`, `Classical.choice`,
-and `Quot.sound`. Compilation and an axiom audit establish the formal
-statements; the [verification note](docs/verification.md) explains their
-connection to the physical theorem.
+The integrity check rejects unfinished proofs and added axioms, and checks
+the transitive dependencies of the public declarations. Only Lean's
+standard `propext`, `Classical.choice`, and `Quot.sound` are permitted.
+The final command rechecks the compiled project proofs with Lean's bundled
+checker. The [verification record](docs/verification.md) distinguishes these
+mechanical checks from the review of the mathematical statement.
 
 ## References and license
 
-The argument follows the Kato/commutator approach. Primary mathematical
-references include [Kato (1950)](https://doi.org/10.1143/JPSJ.5.435),
-[Avron–Elgart (1999)](https://arxiv.org/abs/math-ph/9805022), and
-[Jansen–Ruskai–Seiler (2007)](https://arxiv.org/abs/quant-ph/0603175).
-The research notes provide detailed citations and scope comparisons.
+The proof follows the Kato/commutator approach. Primary references include
+[Kato (1950)](https://doi.org/10.1143/JPSJ.5.435),
+[Kato (1953)](https://doi.org/10.2969/jmsj/00520208),
+[Avron–Elgart (1999)](https://arxiv.org/abs/math-ph/9805022),
+[Jansen–Ruskai–Seiler (2007)](https://arxiv.org/abs/quant-ph/0603175), and
+[Schmid–Griesemer (2014)](https://arxiv.org/abs/1203.4700).
+The research notes explain how their assumptions relate to this theorem.
 
 Licensed under [Apache 2.0](LICENSE). See [NOTICE](NOTICE) for mathlib
 attribution, [CONTRIBUTING.md](CONTRIBUTING.md) for editing conventions,
