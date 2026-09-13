@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this formalization, cite the repository and the commit used."
+title: "Quantum adiabatic theorem in Lean"
+type: software
+version: 0.1.0
+authors:
+  - name: N-Y-L
+license: Apache-2.0
+abstract: >-
+  Lean 4 formalization of the finite-dimensional spectral-subspace quantum
+  adiabatic theorem, with supplied smooth Hamiltonian and orthogonal
+  spectral-projection paths, a uniform spectral gap, and an operator-norm
+  leakage estimate of C/T.

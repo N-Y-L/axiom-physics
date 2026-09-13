@@ -1,0 +1,14 @@
+Quantum adiabatic theorem in Lean
+
+This project depends on mathlib, licensed under Apache License 2.0.
+https://github.com/leanprover-community/mathlib4
+
+Adiabatic/Propagator.lean adapts the factorial Picard-iterate argument from
+Mathlib/Analysis/ODE/PicardLindelof.lean at revision
+8f9d9cff6bd728b17a24e163c9402775d9e6a365.
+Copyright (c) 2021 Yury Kudryashov.
+Original authors: Yury Kudryashov and Winston Yin.
+The adapted construction acts on all continuous curves on the unit interval
+to establish global existence for a uniformly globally Lipschitz vector field.
+
+Other dependency notices remain in their respective packages.

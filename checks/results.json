@@ -1,0 +1,70 @@
+{
+  "verified_at_utc": "2026-09-13T17:39:58.993255+00:00",
+  "lean": "leanprover/lean4:v4.28.0",
+  "mathlib_revision": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "checks": {
+    "lake --wfail build": "passed",
+    "python3 checks/check_proofs.py": "passed",
+    "LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic": "passed"
+  },
+  "audited_declarations": [
+    "Adiabatic.projection_derivative",
+    "Adiabatic.katoGenerator_commutator_of_hasDerivWithinAt",
+    "Adiabatic.star_katoGenerator_of_hasDerivWithinAt",
+    "Adiabatic.transport_mem_unitary_of_finiteDimensional",
+    "Adiabatic.kato_transport_intertwines_of_finiteDimensional",
+    "Adiabatic.gapSuperoperator_isUnit",
+    "Adiabatic.commutatorSolution_katoGenerator",
+    "Adiabatic.hasDisjointSectorEigenvalues_of_gap",
+    "Adiabatic.exists_contDiffOn_commutator_of_spectral_separation",
+    "Adiabatic.exists_uniform_bounds",
+    "Adiabatic.exists_solution_unitInterval",
+    "Adiabatic.exists_propagator_unitInterval",
+    "Adiabatic.hasDerivWithinAt_correctedEvolution",
+    "Adiabatic.adiabatic_comparison",
+    "Adiabatic.leakage_le_comparison",
+    "Adiabatic.reducedResolvent_commutator",
+    "Adiabatic.exists_adiabatic_bound_of_commutator",
+    "Adiabatic.GappedHamiltonian.hasSchrodingerEvolution",
+    "Adiabatic.GappedHamiltonian.hasUniformAdiabaticEstimate",
+    "Adiabatic.finite_dimensional_adiabatic_theorem",
+    "Adiabatic.exists_schrodingerEvolution",
+    "Adiabatic.schrodingerEvolution_unitary",
+    "Adiabatic.schrodingerEvolution_unique",
+    "Adiabatic.GappedHamiltonian.exists_unique_unitary_evolution",
+    "Adiabatic.Examples.exists_nontrivial_gappedHamiltonian"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "rejection_checks": {
+    "unfinished_proof": "rejected",
+    "custom_axiom_dependency": "rejected"
+  },
+  "hosted_ci": "not run; repository not published",
+  "source_sha256": {
+    "Adiabatic/Bounds.lean": "1c07f32f0e1c9aa5af676b4dc41a01096f9fa8aec44ea2ed8e850e14e8c77173",
+    "Adiabatic/CommutatorTheorem.lean": "803fe39bfa129f4563ce7c5ed2ebef16124326aceaece7987d724ef677d090aa",
+    "Adiabatic/Comparison.lean": "cb420948e7aebfdef0e84e9ed2f12e3c9ace0dbc212219486bae614a0c2d1e14",
+    "Adiabatic/Evolution.lean": "4c233083fcbd37a433c7c37f334a13b672e79316685c858ca867ab390fc3f095",
+    "Adiabatic/Examples.lean": "2ef84a9b9121851ba4495e820d784e66c1d5262a6fffc818e9f060e7ac7b0527",
+    "Adiabatic/Leakage.lean": "d18a700005328778fd4ecc8c5efd1e97d09992700e3ff622e4a9aaa2d5103c04",
+    "Adiabatic/MainTheorem.lean": "3345c9b8e237e2ccd211e2ef910e2d85dfe5b7f8b5156fdd6b521519b7246260",
+    "Adiabatic/Projection.lean": "6d990a54fd73083003032e99a62adb5a64ae088f243c83ec475f6af805efb5b2",
+    "Adiabatic/Propagator.lean": "8084d3c9b9cf93f1ff9118151713b67da9e5187224a909ad1750c01e7f4c800d",
+    "Adiabatic/ReducedResolvent.lean": "2b42ab86cc0960f70bdc6d92ca51fb34240d7dfe906f3709c4da05557ed413d7",
+    "Adiabatic/Regularity.lean": "3df1dca2a19a11234e31c925279471e9d81b4eb7bbad401d0c5e8c6599383826",
+    "Adiabatic/Schrodinger.lean": "fb674dfa243190679a2c4f3bfe2a1a18edd6c5fbf827297ac3dea8a3bcb05edd",
+    "Adiabatic/SpectralGap.lean": "aa6c8ab1a62d80c0f6b51fd55196703a09eab6292af6b58262ad3886ee9d137f",
+    "Adiabatic/Statement.lean": "102693dcc6089203793a33c1f9b0d5658c43c253bbd73a0f3eea3200b8cb8ace",
+    "Adiabatic/Transport.lean": "a637ddc6913db5a3633bb964e131fd8a79dcce4cb039ec3b16c29b3321cc595a",
+    "Adiabatic.lean": "96d0608f72ccbbfef6f9e3fcca9a7e15112ec53c9d757b3021d4eafdb55378d2",
+    "checks/Axioms.lean": "524f070e870d83dcafadb49dea95fdd882b47f0d0990225b272b3ffc54ec9db0",
+    "checks/check_proofs.py": "30f2e88ab3e44086c1e46e6c9bfee4ade67fe0763f67748f3e256b475c28afe6",
+    "lake-manifest.json": "20da362617baffb81c80cdb105c1f769c0d4d81c10e2fbe797a9af5c5456a65d",
+    "lakefile.toml": "a7129b09641f7eed46b47869f4a3129f6126c104d24ba90d3b2359ce280f86f0",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  }
+}
