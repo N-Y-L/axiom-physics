@@ -2,8 +2,9 @@
 
 Dependent choice (DC) suffices to construct the evolution, spectral
 projection, and graph estimates from the original common-domain hypotheses.
-This gives an upper bound on the choice needed by the theorem. The proof is
-mathematical, in classical ZF + DC; it is not formalized in Lean. The existing
+[Countable choice](countable-choice.md) gives a sharper sufficient
+assumption; the proof below records the direct route under DC. It is a
+mathematical proof in classical ZF + DC, not a Lean formalization. The existing
 Lean theorem still uses `Classical.choice`.
 
 ## Statement
@@ -265,8 +266,11 @@ Only continuous functional calculus for this one normal operator is
 needed. Blackadar–Farah prove that calculus in ZF for normal elements in
 an arbitrary ambient C*-algebra; separability of E is not required.
 [Proposition 6.1.4](https://arxiv.org/html/2602.15812v1)
-Their result replaces the general character/maximal-ideal construction
-used by the current mathlib implementation.
+Their result applies to the adjoint-closed tuple (r(t),r(t)*), and
+replaces the general character/maximal-ideal construction used by the
+current mathlib implementation. An alternative
+[direct resolvent integral argument](analytic-constructions.md#direct-projection-proof-without-normal-functional-calculus)
+proves the same projection properties without this functional calculus.
 
 Take the positively oriented circle Γ_t with diameter [a(t),b(t)]. The
 gap and reality of the spectrum put it in the resolvent set. With
@@ -363,10 +367,10 @@ C=2(2M+N+MQ) proves both asserted estimates. This completes the proof.
 
 ## Scope of the conclusion
 
-The argument proves sufficiency of DC, not its necessity or an optimal
-choice strength. In particular it does not assert that countable choice
-alone suffices. Combined with the [necessity theorem](necessity.md), it gives
-the bounds
+This argument proves sufficiency of DC, not its necessity or an optimal
+choice strength. The separate [countable-choice proof](countable-choice.md)
+sharpens the sufficient assumption. Combined with the
+[necessity theorem](necessity.md), the argument in this note gives the bounds
 
 $$
 \mathrm{DC}\ \Longrightarrow\ \mathrm{QAT}\ \Longrightarrow\

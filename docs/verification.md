@@ -1,6 +1,6 @@
 # Verification
 
-Verification date: 2026-09-13.
+Verification date: 2026-09-14.
 
 The main declaration is
 `Adiabatic.Unbounded.common_domain_adiabatic_theorem` in
@@ -113,68 +113,84 @@ input structure.
 
 Lean is pinned to `v4.28.0` and mathlib to
 `8f9d9cff6bd728b17a24e163c9402775d9e6a365`. The public entry point imports all
-65 project proof modules, including the choice-reduction components.
-The two axiom audits and dependency diagnostic bring the total to 68 Lean files.
+76 project proof modules. The audits and standalone diagnostics bring the
+total to 81 Lean files.
 
-The current checks and source hashes are recorded in
-[choice-reduction-results.json](../checks/choice-reduction-results.json).
-The original theorem's record is preserved in
-[checks/results.json](../checks/results.json).
+The [current record](../checks/foundations-results.json) contains verification
+commands, source hashes, complete printed types for the 92 added declarations,
+and their type, body, and combined axiom dependencies. It also records the
+202 declarations covered by the strict audit. The
+[original theorem record](../checks/results.json) and
+[September 13 choice-reduction record](../checks/choice-reduction-results.json)
+are preserved as historical records of their respective versions.
 
-- `lake --wfail build` compiles the full library with warnings treated as
-  errors.
-- `python3 checks/check_proofs.py` scans all project Lean sources for
-  forbidden proof constructs and audits all 1152 declarations originating in
-  project proof modules, including private/generated declarations and names
-  outside the project namespace. It also prints 69 named public checks,
-  including the full unbounded theorem and nonautonomous existence.
-- `lake env lean checks/ChoiceReductionAxioms.lean` audits all 189 supporting
-  declarations and rejects `Classical.choice` in their transitive dependencies.
-- `python3 -m unittest discover -s checks -p 'test_*.py'` runs 15
-  regression tests for the source scanner and compiled Lean rejection fixtures.
+- `lake --wfail build` compiles the full library with warnings treated as errors.
+- `python3 checks/check_proofs.py` scans all project Lean sources for forbidden
+  constructs and audits all 1,244 project declarations, including private and
+  generated declarations. It also prints 114 named public checks.
+- `lake env lean checks/ChoiceReductionAxioms.lean` audits all 202 declarations
+  in the strict supporting modules and rejects `Classical.choice` in their
+  complete transitive dependencies.
+- `python3 -m unittest discover -s checks -p 'test_*.py'` runs 15 regression
+  tests, including compiled rejection fixtures.
 - `LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic` rechecks the compiled
   project proofs using Lean's bundled checker.
+- `lake env lean checks/TraceChoice.lean` traces the original implementation's
+  dependencies on choice.
+- `lake env lean checks/FoundationsAxioms.lean` exports checked types and
+  complete axiom lists for the 92 added declarations.
+- `lake env lean checks/FoundationsDependencies.lean` separates dependencies
+  reached first through the checked type and through the body. Later edges
+  traverse both; their union must equal Lean's combined axiom collector.
 
-Only `propext`, `Classical.choice`, and `Quot.sound` occur in the audited
-transitive dependency closures. No `sorryAx`, added theorem axiom, unsafe
-declaration, or native decision procedure was found. The
-[checker tests](../checks/README.md) cover forbidden constructs and valid
-comments, strings, and identifiers.
+All eight commands passed. Only `propext`, `Classical.choice`, and `Quot.sound`
+occur in the ordinary audit. The strict audit permits only `propext` and
+`Quot.sound`. No unfinished proof, added theorem axiom, unsafe declaration,
+or native decision procedure was found.
 
 Compilation checks that a proof inhabits its declared type. The axiom audit
-makes its foundational dependencies explicit. Lean's bundled
-checker is not a separately implemented proof assistant. These checks verify
-the Lean declarations; they do not certify the mathematical research notes.
+makes its foundational dependencies explicit. Lean's bundled checker is not
+a separately implemented proof assistant. These checks verify the Lean
+declarations; they do not certify the written foundations arguments.
 
-## Build record
+## Build and preservation
 
-A fresh copy of the tracked sources was built without reusing project
-compiled artifacts. The nine dependency builds were reused after checking
-their checkouts against the pinned revisions; mathlib was not rebuilt.
+The integrated sources were built on macOS without reusing project compiled
+artifacts. All nine dependency checkouts matched their pinned revisions;
+their compiled caches were reused. The full build completed 3,342 jobs.
+The complete types and axiom dependencies of the 92 added declarations match
+the preceding Windows verification. Raw platform logs and the original
+research deliveries are retained outside the source repository.
 
-The earlier text scan omitted `admit` and quoted `sorryAx`. Neither was
-present in the proofs; the main-theorem axiom audits were valid. The scan
-now rejects both, and the audit covers every project declaration by its
-originating module. Compiled regression fixtures run in GitHub CI.
-
-A subsequent prose revision shortened the documentation and corrected
-descriptions of spectral-band boundaries and $C^1$ regularity. All 59 Lean
-files match the preceding version after removing comments and normalizing
-whitespace. The build, axiom audit, and bundled proof checker passed again.
-The integrity checker code and its regression tests are unchanged.
+Relative to `625685f33cb0ad7e2b8ab39ff78118a4460c4be6`, the 63 original
+non-aggregate proof modules are unchanged. The original aggregate files add
+imports, and the named report adds public checks. The theorem statements,
+proof bodies, dependency pins, original checker logic, strict audit,
+dependency tracer, regression tests, and historical verification records
+are preserved. The two additional diagnostics are standalone exports.
 
 ## Foundational arguments
 
-The [foundations notes](choice-reduction.md) examine the theorem's dependence
-on choice and graph-norm control. Their necessity, DC sufficiency, and
-explicit-graph-control results are mathematical proofs, not Lean formalizations.
-The extra graph-control hypothesis and uniform-completeness convention are
-stated separately from the original theorem.
+The [foundations notes](choice-reduction.md) give written arguments for
+countable-choice sufficiency, the bounded-inverse characterization, the CMC
+lower bound, and the separable-physical-space result in ZF. Their completeness
+convention and any additional graph-control hypothesis are explicit. These
+set-theoretic conclusions are not Lean-formalized.
 
-The [supporting Lean components](foundations/lean-audit.md) have audited axioms
-contained in `[propext, Quot.sound]`. The full adiabatic theorem retains
-`[propext, Classical.choice, Quot.sound]`. No missing projection, evolution,
-commutator, or error estimate has been added as a hypothesis to that theorem.
+The 202 `ChoiceReduction` declarations have audited dependencies contained
+in `[propext, Quot.sound]`. The symmetry module's nine declarations use no
+axioms; the involution module's four use only `propext`. Its final selector
+theorem explicitly assumes decidable equality.
+
+The eight `Foundations` modules use ordinary mathlib. The
+[doubled-swap construction](foundations/lean-audit.md#the-doubled-swap-construction)
+builds the exact gapped Hamiltonian and obtains a bounded inverse from the
+propagator supplied by the original theorem predicate. This extraction uses
+the bounded domain lift, not either adiabatic error estimate. It verifies the
+conditional construction in standard Lean foundations. Weighted-space
+completeness in ZF, the complete analytic equivalence, and the inner-model
+argument remain unformalized. The full adiabatic theorem retains
+`[propext, Classical.choice, Quot.sound]`.
 
 ## Limits
 

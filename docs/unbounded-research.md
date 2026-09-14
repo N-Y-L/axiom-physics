@@ -48,10 +48,11 @@ $$
 \qquad |\lambda-b(s)|\ge g.
 $$
 
-The spectrum here is defined by failure of bounded invertibility of
-$H(s)-zj:D\to E$, with invertibility derived from bijectivity by the Banach
-inverse theorem. It is the spectrum of the unbounded operator represented
-by the common domain. Self-adjointness proves it is real.
+The spectrum is defined as the complement of algebraic bijectivity of
+$H(s)-zj:D\to E$. The checked proof derives a bounded inverse from
+bijectivity by the Banach inverse theorem. This agrees with the usual
+unbounded-operator spectrum in the present Lean foundations; the distinction
+matters in classical ZF without choice. Self-adjointness proves it is real.
 
 The selected region is the bounded interval between $a(s)$ and $b(s)$.
 No finite-rank, eigenbasis, compact-resolvent, or discreteness assumption is

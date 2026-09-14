@@ -4,7 +4,9 @@ Explicit graph-norm control prevents the failure exhibited in the
 [counterexample](necessity.md). With this additional hypothesis, the full
 adiabatic theorem holds in classical ZF. The proof uses uniform completeness,
 retains the algebraic spectral-gap condition, and constructs the projection
-and evolution. It is a mathematical proof, not a Lean formalization.
+and evolution. It is a mathematical proof, not a Lean formalization. The complete
+[analytic construction](analytic-constructions.md) makes the extension,
+evolution, projection, and commutator steps explicit.
 
 ## Spectral closure
 
@@ -87,8 +89,7 @@ I is disjoint from σ_phys(H_F).
 Fix λ∈I and δ>0 with (λ−δ,λ+δ)⊂I. The bounded physical inverse
 B=(H_F−λ)⁻¹ is self-adjoint. For any nonzero w∈σ(B), the elementary
 resolvent identity gives λ+w⁻¹∈σ_phys(H_F). Therefore |w|≤1/δ.
-Continuous functional calculus for the bounded self-adjoint B gives
-‖B‖≤1/δ. Hence
+The self-adjoint spectral-radius identity gives ‖B‖≤1/δ. Hence
 
 $$
 \|(H-\lambda j)x\|\ge\delta\|jx\|.
@@ -110,8 +111,9 @@ lemma. ∎
 The completeness and orthogonal-complement facts are
 Blackadar–Farah–Karagila, Theorem 1.0.2 and Corollary 2.0.5.
 [Hilbert Spaces Without Countable AC](https://arxiv.org/abs/2304.09602)
-The separable open mapping and self-adjoint functional-calculus results are
-Blackadar–Farah, Propositions 2.0.1(6) and 2.3.6.
+The separable open mapping theorem and self-adjoint spectral-radius identity
+are Blackadar–Farah, Proposition 2.0.1(6), Theorem 2.3.2, and
+Corollary 2.3.3.
 [Separable C*-algebras Without the Countable Axiom of Choice](https://arxiv.org/html/2602.15812v1)
 
 ## The adiabatic theorem with graph control
@@ -132,8 +134,8 @@ both uniform C/T estimates with one constant independent of T and time.
 inverse S_t⁻¹ is unique and bounded by the first part of the proof. Replacement
 assembles these inverses, and their local Neumann series gives continuous
 dependence on t. Compactness of [0,1] supplies a uniform bound R, leading
-to the same graph-change estimate and all subsequent explicit evolution
-constructions in the [dependent-choice proof](dependent-choice.md).
+to the graph-change estimate and the explicit evolution constructions in
+the [analytic proof](analytic-constructions.md).
 
 The lemma transfers the original algebraic spectral gap to a physical
 gap. For physical real resolvents the graph inequality bounds the D-valued
@@ -145,11 +147,14 @@ Hamiltonian, graph control follows from
 The remaining Hilbert projection and Riesz steps are the ZF results of
 Blackadar–Farah–Karagila, Theorems 2.0.4 and 2.0.6. Bounded operators on
 the uniformly complete Hilbert space form a uniformly complete C*-algebra
-by their Proposition 7.0.1 and §7.0.3. Bounded maps on a dense subspace
-extend uniquely by Proposition 2.0.7; an approximating vector sequence
-is not selected at every point. All subsequent sequential limits are of
-specified sequences, and the contour gluing uses finitely many witnesses.
-Thus the graph-controlled version of the
-full theorem follows in classical ZF with the stated uniform-completeness
-convention. This is a stronger explicit hypothesis than the original
-theorem has in ZF; DC derives it for the original theorem.
+by their Proposition 7.0.1 and §7.0.3. The bounded-map extension following their Proposition 2.0.7 has the
+[direct shrinking-set proof](analytic-constructions.md#elementary-complete-space-infrastructure)
+used here; an approximating vector sequence is not selected at every point.
+The [resolvent integral proof](analytic-constructions.md#direct-projection-proof-without-normal-functional-calculus)
+establishes the projection identities and regularity without normal
+functional calculus. All subsequent limits use specified sequences, and
+contour gluing uses finitely many witnesses. The commutator estimate in
+that proof gives both uniform errors with one constant independent of T.
+Thus the full theorem follows in classical ZF with the stated uniform
+completeness and graph-control premise. [Countable choice](countable-choice.md)
+derives this additional premise from the original hypotheses.

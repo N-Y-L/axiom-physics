@@ -1,11 +1,10 @@
 # Lean components and dependency audit
 
-Explicit inverse data and finite algebraic estimates separate steps that
-need no choice from the analytic constructions of the full theorem.
-All 189 declarations in these supporting modules omit `Classical.choice`;
-the complete adiabatic theorem still uses it. See the
-[result overview](../choice-reduction.md) for the mathematical bounds on
-choice and their formalization status.
+The 202 declarations in `Adiabatic/ChoiceReduction/` omit `Classical.choice`
+in their complete dependency closures. The eight `Adiabatic/Foundations/`
+modules and the full adiabatic theorem use ordinary mathlib foundations,
+including choice. The [overview](../choice-reduction.md) separates these
+formal results from the written ZF arguments.
 
 ## Two foundational questions
 
@@ -36,11 +35,11 @@ $$
 \qquad \|(I-P(s))U_T(s)P(0)\|\le C/T.
 $$
 
-## Proved components
+## Components without Classical.choice
 
 The sources below give the exact statements. Printed Lean types and complete
 individual transitive axiom lists are recorded in
-[choice-reduction-results.json](../../checks/choice-reduction-results.json).
+[foundations-results.json](../../checks/foundations-results.json).
 
 | Module | All declarations, including generated helpers | Union of audited axioms |
 | --- | ---: | --- |
@@ -50,8 +49,10 @@ individual transitive axiom lists are recorded in
 | MixedProducts | 66 | `propext`, `Quot.sound` |
 | ChoicePrinciples | 21 | None |
 | LiftObstruction | 11 | `propext`, `Quot.sound` |
+| SymmetryObstruction | 9 | None |
+| InvolutionObstruction | 4 | `propext` |
 
-All 189 declarations omit `Classical.choice`. This audit includes dependencies
+All 202 declarations omit `Classical.choice`. This audit includes dependencies
 in their types. It certifies these generic algebraic statements; specializing
 them to mathlib's current real or complex analytic structures reintroduces
 choice through those structures.
@@ -171,6 +172,80 @@ they do not assert any of them unconditionally. No such principle is added
 to the adiabatic theorem, and no implication from that theorem to arbitrary
 surjection splitting is proved.
 
+### Symmetry and involution obstructions
+
+[SymmetryObstruction.lean](../../Adiabatic/ChoiceReduction/SymmetryObstruction.lean)
+proves that equivariant maps preserve fixed points. A fixed symmetric input
+therefore cannot produce a selected element in a target where the symmetry
+has no fixed point. Its nine declarations have empty axiom lists.
+
+[InvolutionObstruction.lean](../../Adiabatic/ChoiceReduction/InvolutionObstruction.lean)
+proves that an additive involution with no nonzero fixed vector is negation.
+Two such involutions compose to the identity, so both involutions and their
+composite cannot all have trivial fixed spaces on a nontrivial group.
+The corresponding selector theorem explicitly supplies `DecidableEq V` for
+its zero/nonzero split. All four declarations use only `propext`.
+These statements exclude specified equivariant selectors, not every possible
+construction of a choice function. See the
+[selection limits](operator-consequences.md).
+
+## Components using ordinary mathlib foundations
+
+The following modules have combined axiom union
+`[propext, Classical.choice, Quot.sound]`. Counts include generated helpers;
+individual checked types and dependency lists appear in the
+[current record](../../checks/foundations-results.json).
+
+| Module | Declarations | Scope |
+| --- | ---: | --- |
+| PrefixMultipleChoice | 3 | Finite nonempty sets of prefixes at unbounded lengths yield finite nonempty subsets at each index. |
+| PrefixSupport | 12 | Summable coefficients with unbounded active prefix levels yield the finite-prefix extraction. |
+| SwapScalarEvolution | 3 | Scalar strong equations force quarter-turn coordinate transfer. |
+| StrongSwapObstruction | 3 | The actual strong-propagator equation yields a domain-lift norm obstruction. |
+| SwapExtraction | 7 | Continuous-linear-map inverse extraction from phased swap identities. |
+| StrongSwapInverse | 4 | A strong swap propagator supplies a bounded two-sided inverse. |
+| TrajectoryAssembly | 11 | Conservation, uniqueness, linearity, and a physical norm bound for supplied trajectories. |
+| DoubledSwap | 36 | The exact gapped Hamiltonian is constructed and the theorem supplies its propagator. |
+
+The prefix lemmas do not construct a ZF model or establish weighted-space
+completeness. `TrajectoryAssembly` takes the trajectory family as input;
+it does not prove its existence or boundedness in the supplied domain norm.
+These are separate supporting statements, not new assumptions in QAT.
+
+### The doubled-swap construction
+
+For a bounded complex-linear bijection $j:D\to E$, the
+[DoubledSwap module](../../Adiabatic/Foundations/DoubledSwap.lean) constructs
+physical Hilbert space $E\oplus_2E$, Banach domain $D\times E$, and
+
+$$
+J(x,y)=(jx,y),\qquad H(x,y)=(y,jx).
+$$
+
+The physical operator is the coordinate swap on the whole Hilbert space.
+The module proves self-adjointness under the original partial-operator
+definition, spectrum containment in $\{-1,1\}$, and equality when $E$ is
+nonzero. The constant family with band $(0,2)$ and gap $1$ satisfies the
+original `GappedHamiltonian` interface, including the zero-space case.
+
+`Adiabatic.Foundations.bounded_inverse_of_doubled_adiabatic_theorem` assumes
+`CommonDomainAdiabaticTheorem (doubledDomain j hj)`, applies it to that
+constructed Hamiltonian at runtime $\pi/2$, and uses the resulting strong
+propagator's bounded domain lift to obtain
+
+$$
+\exists R:E\to D\text{ bounded and linear},\qquad jR=I_E,\quad Rj=I_D.
+$$
+
+The Hamiltonian, its gap, and the propagator are derived within this
+implication. It uses the strong-propagator existence conjunct and its bounded
+domain lift; neither $C/T$ estimate nor projection regularity is needed.
+The proof uses the supplied Banach domain norm; it does not
+itself establish this inverse implication with a prescribed initial graph
+norm. It is checked in ordinary Lean foundations, so it does not certify
+the [ZF equivalence](bounded-inverses.md) or
+[CMC necessity argument](countable-multiple-choice.md).
+
 ## Where the current proof uses choice
 
 [TraceChoice.lean](../../checks/TraceChoice.lean) searches the checked
@@ -227,8 +302,9 @@ or error bound has been added as a hypothesis to the original theorem.
 
 ## Verification
 
-All supporting proof modules are imported by `Adiabatic/ChoiceReduction.lean`,
-which is imported by the public `Adiabatic.lean` entry point. Run:
+Supporting proof modules are imported by `Adiabatic/ChoiceReduction.lean`
+and `Adiabatic/Foundations.lean`. Both are imported by the public
+`Adiabatic.lean` entry point. Run:
 
 ```sh
 lake --wfail build
@@ -237,6 +313,8 @@ lake env lean checks/ChoiceReductionAxioms.lean
 python3 -m unittest discover -s checks -p 'test_*.py'
 LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic
 lake env lean checks/TraceChoice.lean
+lake env lean checks/FoundationsAxioms.lean
+lake env lean checks/FoundationsDependencies.lean
 ```
 
 The dedicated audit selects declarations by source module, including private,
@@ -246,8 +324,10 @@ hidden in an imported statement, imported proofs, classical logic, private
 definitions, added axioms, unfinished proofs, unsafe definitions, and an
 empty selection. The original integrity checks remain in force.
 
-The warning-free build, original audit of 1152 declarations, strict audit of
-189 declarations, all 15 regression tests, and bundled compiled-proof recheck
-passed. The source scan covered 68 Lean files. The full theorem retains
-exactly `[propext, Classical.choice, Quot.sound]`. The saved dependency
-report contains 51 queries and four complete axiom diagnostics.
+The warning-free build, ordinary audit of 1,244 declarations, strict audit of
+202 declarations, all 15 regression tests, and bundled compiled-proof recheck
+passed. The source scan covered 81 Lean files, including the standalone
+diagnostics. The additional exports record all 92 declarations added by the
+foundations and obstruction modules. The full theorem retains exactly
+`[propext, Classical.choice, Quot.sound]`. See the
+[verification note](../verification.md) and [current record](../../checks/foundations-results.json).

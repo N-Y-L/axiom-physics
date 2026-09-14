@@ -4,6 +4,8 @@ import Adiabatic.ChoiceReduction.FiniteProducts
 import Adiabatic.ChoiceReduction.MixedProducts
 import Adiabatic.ChoiceReduction.ChoicePrinciples
 import Adiabatic.ChoiceReduction.LiftObstruction
+import Adiabatic.ChoiceReduction.SymmetryObstruction
+import Adiabatic.ChoiceReduction.InvolutionObstruction
 
 /-!
 # Choice-reduction components

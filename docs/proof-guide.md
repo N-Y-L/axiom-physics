@@ -17,6 +17,8 @@ projection path.
 
 The [verification record](verification.md) and
 [literature comparison](unbounded-research.md) accompany this guide.
+The [foundations overview](choice-reduction.md) describes the written choice
+bounds and the separately checked bounded-inverse construction.
 [Possible extensions](extensions.md) collects informal explicit estimates;
 the [documentation index](README.md) lists all guides.
 

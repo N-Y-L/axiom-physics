@@ -42,12 +42,14 @@ Its complete hypotheses and conclusion are in
 [Unbounded/Statement.lean](Adiabatic/Unbounded/Statement.lean).
 The [finite-dimensional theorem](Adiabatic/MainTheorem.lean) is also included.
 
-The [foundations notes](docs/choice-reduction.md) explain how the theorem
-depends on choice and graph-norm control. They prove mathematically that
-dependent choice suffices, give a necessary weak choice principle, and establish
-a ZF version
-with explicit graph control. These arguments are not Lean-formalized;
-the supporting algebraic Lean results have a separate axiom audit.
+The [foundations notes](docs/choice-reduction.md) give written arguments that
+countable choice suffices and countable multiple choice is necessary for the
+unrestricted theorem. They identify the exact theorem with a Banach-to-Hilbert
+bounded inverse principle and prove a ZF version for separable physical spaces.
+The weakest equivalent choice principle remains undetermined. These ZF
+arguments are not Lean-formalized. Lean separately checks the
+[construction extracting a bounded inverse](docs/foundations/lean-audit.md#the-doubled-swap-construction)
+from the exact theorem, using ordinary mathlib foundations.
 
 ## Read the proof
 

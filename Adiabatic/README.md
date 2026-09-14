@@ -56,10 +56,33 @@ theorems.
 | [MixedProducts](ChoiceReduction/MixedProducts.lean) | Product comparison with separate physical and domain bounds |
 | [ChoicePrinciples](ChoiceReduction/ChoicePrinciples.lean) | Conditional equivalences of selection and inverse principles |
 | [LiftObstruction](ChoiceReduction/LiftObstruction.lean) | A lift of the coordinate swap supplies an inverse and its bound |
+| [SymmetryObstruction](ChoiceReduction/SymmetryObstruction.lean) | Equivariant maps preserve fixed points and cannot orient symmetric pair data |
+| [InvolutionObstruction](ChoiceReduction/InvolutionObstruction.lean) | Fixed-point and equivariant-selector obstructions for two additive involutions |
 
 Their [separate audit](../checks/ChoiceReductionAxioms.lean) excludes
 `Classical.choice`. The [research note](../docs/choice-reduction.md) states
 their hypotheses and the limits of their application to the full theorem.
+
+## Foundations components using mathlib's ordinary axioms
+
+[Foundations.lean](Foundations.lean) imports the components below. Their
+transitive dependencies include `Classical.choice`; they are covered by
+the ordinary project audit and do not alter the stricter choice-reduction audit.
+
+| Module | Result |
+| --- | --- |
+| [PrefixMultipleChoice](Foundations/PrefixMultipleChoice.lean) | Finite nonempty sets of prefixes at unbounded lengths give finite nonempty subsets at every index |
+| [PrefixSupport](Foundations/PrefixSupport.lean) | Summable coefficients with unbounded active prefix levels give countable multiple choice |
+| [SwapScalarEvolution](Foundations/SwapScalarEvolution.lean) | Scalar integrating factor and forced quarter-turn coordinate transfer |
+| [StrongSwapObstruction](Foundations/StrongSwapObstruction.lean) | The actual strong-propagator equation forces a domain-lift norm lower bound; arbitrarily large witnesses exclude a propagator |
+| [SwapExtraction](Foundations/SwapExtraction.lean) | Continuous-linear-map specialization of phased swap inverse extraction |
+| [StrongSwapInverse](Foundations/StrongSwapInverse.lean) | An actual strong swap propagator supplies a bounded inverse, using Hilbert-valued coordinate equations |
+| [TrajectoryAssembly](Foundations/TrajectoryAssembly.lean) | Strong trajectories preserve inner products; uniqueness forces linearity and physical boundedness of a supplied family |
+| [DoubledSwap](Foundations/DoubledSwap.lean) | Constructs the original self-adjoint gapped Hamiltonian and derives a bounded inverse from the exact adiabatic theorem predicate |
+
+The [written ZF reductions](../docs/choice-reduction.md) also require weighted
+Hilbert spaces and their completeness. Those constructions and the
+set-theoretic implications are not formalized by these components.
 
 See the [proof guide](../docs/proof-guide.md) for the mathematical argument
 and the [documentation index](../docs/README.md) for research, verification,

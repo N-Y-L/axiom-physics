@@ -14,6 +14,7 @@ import Adiabatic.Unbounded.Perturbation
 
 -- Experimental components with a separate audit excluding Classical.choice.
 import Adiabatic.ChoiceReduction
+import Adiabatic.Foundations
 
 /-! Public entry point for all checked project proof modules.
 See `Adiabatic/README.md` for the module map and `docs/proof-guide.md`

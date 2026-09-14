@@ -1,5 +1,21 @@
 # Updates
 
+## 2026-09-14
+
+Added written choice bounds and a bounded-inverse characterization of the
+exact theorem, an initial-graph-norm CMC obstruction, and a ZF result for
+physical spaces with a well-orderable dense subset, including separable spaces.
+The [foundations notes](docs/choice-reduction.md) separate these arguments
+from the Lean formalization and record the unresolved choice-strength question.
+
+Added eight ordinary-foundations Lean modules for prefix support, strong
+swap evolution, bounded-inverse extraction, trajectory assembly, and the
+complete doubled-swap construction. Two algebraic obstruction modules extend
+the strict audit to 202 declarations. The full build, 1,244-declaration audit,
+114 named checks, 15 regression tests, compiled-proof replay, and dependency
+exports passed. See [verification](docs/verification.md). Original theorem
+proofs, dependency pins, and integrity-checking logic are preserved.
+
 ## 2026-09-13
 
 Added attribution identifying the project lead and the use of OpenAI Codex

@@ -24,15 +24,22 @@ separate input structure and two-level example.
 
 ## Foundations
 
-The [overview](choice-reduction.md) explains the role of choice and graph norms,
-and separates mathematical arguments from Lean-checked components.
+The [overview](choice-reduction.md) separates written mathematical arguments
+from Lean-checked components and states the remaining choice-strength question.
 
 | Resource | Contents |
 | --- | --- |
-| [Necessity](foundations/necessity.md) | Counterexample to the initial-graph-norm theorem in ZF and its weak choice consequence. |
-| [Dependent choice](foundations/dependent-choice.md) | Proof of the original theorem in ZF + DC. |
-| [Explicit graph control](foundations/graph-control.md) | ZF proof with an additional graph inequality at every time. |
-| [Lean audit](foundations/lean-audit.md) | Supporting formal results, their statements, and transitive dependencies. |
+| [Bounded inverses](foundations/bounded-inverses.md) | ZF characterization of the exact theorem by the Banach-to-Hilbert bounded inverse principle. |
+| [Countable choice](foundations/countable-choice.md) | A sufficient choice principle for the original theorem. |
+| [Countable multiple choice](foundations/countable-multiple-choice.md) | Necessary choice principle, including the initial-graph-norm obstruction. |
+| [Separable physical spaces](foundations/separable-spaces.md) | ZF result for physical spaces with a well-orderable dense subset and arbitrary supplied Banach domains. |
+| [Analytic constructions](foundations/analytic-constructions.md) | Choice accounting for graph control, spectral projections, evolution, and estimates. |
+| [Explicit graph control](foundations/graph-control.md) | ZF proof under an additional graph inequality at every time. |
+| [Operator consequences](foundations/operator-consequences.md) | Closed graph, uniform boundedness, and the limits of partial-choice arguments. |
+| [Lean audit](foundations/lean-audit.md) | Formal components, checked types, and transitive dependencies. |
+| [Dedekind-finite-real obstruction](foundations/necessity.md) | Earlier counterexample and its weak choice consequence. |
+| [Dependent choice](foundations/dependent-choice.md) | Earlier sufficient foundation for the original theorem. |
+| [Bounded lifts](foundations/bounded-lifts.md) | Auxiliary bounded-inverse extraction argument. |
 
 For local verification commands, see the [repository README](../README.md).
 For editing conventions, see [Contributing](../CONTRIBUTING.md).
