@@ -111,6 +111,6 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "\u00abgeneralized-equipartition-lean\u00bb",
+  "name": "\u00abquantum-backflow\u00bb",
   "lakeDir": ".lake"
 }

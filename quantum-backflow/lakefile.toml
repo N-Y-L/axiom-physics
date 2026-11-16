@@ -1,4 +1,4 @@
-name = "quantum-backflow-lean"
+name = "quantum-backflow"
 version = "0.1.0"
 defaultTargets = ["QuantumBackflow"]
 

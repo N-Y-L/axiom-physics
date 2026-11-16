@@ -1619,13 +1619,6 @@
   "library_module_count": 65,
   "lean_source_count": 68,
   "all_project_declarations_audited": 1152,
-  "citation_validation": {
-    "schema": "https://citation-file-format.github.io/1.2.0/schema.json",
-    "schema_sha256": "0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b",
-    "given_names": "Neil Yuanting",
-    "family_names": "Li",
-    "repository_code": "https://github.com/N-Y-L/quantum-adiabatic-lean"
-  },
   "source_sha256": {
     "Adiabatic.lean": "56aa858daabbb9e3efc01b8da769aa34c3a9b7183576ecd06891a458f6d50d5f",
     "Adiabatic/Bounds.lean": "bb2ceab0f87d07a7430b07a23897289f2430df5eeb2ccffb4d9ec1f496f4da02",

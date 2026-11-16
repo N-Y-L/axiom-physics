@@ -1,4 +1,4 @@
-name = "generalized-equipartition-lean"
+name = "generalized-equipartition"
 version = "0.1.0"
 defaultTargets = ["Equipartition"]
 

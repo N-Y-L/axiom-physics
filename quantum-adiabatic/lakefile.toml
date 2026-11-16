@@ -1,4 +1,4 @@
-name = "quantum-adiabatic-lean"
+name = "quantum-adiabatic"
 version = "0.1.0"
 defaultTargets = ["Adiabatic"]
 
