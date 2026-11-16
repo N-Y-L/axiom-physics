@@ -56,4 +56,4 @@ The [verification report](docs/verification.md) records the checks and their lim
 **Development:** Lean formalization and mathematical drafts developed with
 OpenAI Codex under Neil Yuanting Li’s direction.
 
-Citation: [CITATION.cff](CITATION.cff). License: [Apache 2.0](LICENSE). Dependency and checker attribution: [NOTICE](NOTICE).
+License: [Apache 2.0](../LICENSE). Dependency and checker attribution: [NOTICE](../NOTICE).

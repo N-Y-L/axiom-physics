@@ -53,4 +53,4 @@ those conditions from parameter positivity. The uniform interval example proves
 its domain hypotheses and verifies a nonzero boundary correction.
 
 This report records local checks. Hosted verification is tracked in
-[GitHub Actions](https://github.com/N-Y-L/generalized-equipartition-lean/actions).
+[GitHub Actions](https://github.com/N-Y-L/axiom-physics/actions).

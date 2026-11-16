@@ -1,5 +1,7 @@
 .lake/
 *.olean
 *.ilean
+*.trace
 .DS_Store
 __pycache__/
+**/checks/local-build.log

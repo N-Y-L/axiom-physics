@@ -71,7 +71,7 @@ exponentially small error estimates are outside this statement.
 ## Check the proofs
 
 Install [Lean through elan](https://lean-lang.org/install/) and Python 3.
-From this repository folder, run:
+From this folder, run:
 
 ```sh
 lake exe cache get
@@ -101,8 +101,6 @@ OpenAI Codex under Neil Yuanting Li’s direction.
 
 ## References and license
 
-See [CITATION.cff](CITATION.cff) for citation metadata.
-
 The proof follows the Kato/commutator approach. Primary references include
 [Kato (1950)](https://doi.org/10.1143/JPSJ.5.435),
 [Kato (1953)](https://doi.org/10.2969/jmsj/00520208),
@@ -111,6 +109,5 @@ The proof follows the Kato/commutator approach. Primary references include
 [Schmid–Griesemer (2014)](https://arxiv.org/abs/1203.4700).
 The research notes explain how their assumptions relate to this theorem.
 
-Licensed under [Apache 2.0](LICENSE). See [NOTICE](NOTICE) for mathlib
-attribution, [CONTRIBUTING.md](CONTRIBUTING.md) for editing conventions,
-and [UPDATES.md](UPDATES.md) for changes.
+Licensed under [Apache 2.0](../LICENSE). See [NOTICE](../NOTICE) for mathlib
+attribution.

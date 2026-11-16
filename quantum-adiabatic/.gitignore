@@ -1,7 +1,0 @@
-.lake/
-.DS_Store
-*.olean
-*.ilean
-*.trace
-__pycache__/
-checks/local-build.log

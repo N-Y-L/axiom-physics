@@ -42,4 +42,3 @@ from Lean-checked components and states the remaining choice-strength question.
 | [Bounded lifts](foundations/bounded-lifts.md) | Auxiliary bounded-inverse extraction argument. |
 
 For local verification commands, see the [repository README](../README.md).
-For editing conventions, see [Contributing](../CONTRIBUTING.md).
