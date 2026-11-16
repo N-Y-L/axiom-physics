@@ -1,0 +1,1711 @@
+{
+  "scope": "Choice-reduction Lean components: complete transitive axiom audit. The mathematical foundations notes are not Lean-formalized.",
+  "lean": "leanprover/lean4:v4.28.0",
+  "mathlib_revision": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "audit_command": "lake env lean checks/ChoiceReductionAxioms.lean",
+  "selection": "All declarations originating in Adiabatic.ChoiceReduction modules, including private and generated declarations, with complete checked-environment type and body dependencies",
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "actual_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "declaration_count": 189,
+  "type_format": "Lean pretty-printed types; proof arguments in two generated helper types are elided. The linked source files give the exact authored statements.",
+  "modules": {
+    "Adiabatic.ChoiceReduction.ChoicePrinciples": {
+      "source": "Adiabatic/ChoiceReduction/ChoicePrinciples.lean",
+      "declarations": 21,
+      "axioms": [],
+      "source_sha256": "36a4aefc79c86747f83f81b7b50bf339ac1e53e0b3ec80fc422b31260a89d829"
+    },
+    "Adiabatic.ChoiceReduction.ExplicitInverse": {
+      "source": "Adiabatic/ChoiceReduction/ExplicitInverse.lean",
+      "declarations": 50,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "source_sha256": "e3745f809b257a9655ec35dc025628bf73cafffa0ed2772cc4af39a3935a6dbb"
+    },
+    "Adiabatic.ChoiceReduction.FiniteProducts": {
+      "source": "Adiabatic/ChoiceReduction/FiniteProducts.lean",
+      "declarations": 39,
+      "axioms": [
+        "propext"
+      ],
+      "source_sha256": "ccf9a3517d1e481765b3e20e9e08449cfd8f7984443b5cca44da2d832307268d"
+    },
+    "Adiabatic.ChoiceReduction.FiniteSelection": {
+      "source": "Adiabatic/ChoiceReduction/FiniteSelection.lean",
+      "declarations": 2,
+      "axioms": [
+        "propext"
+      ],
+      "source_sha256": "2a24718a5b0ef1d4268e488aa4aa617557eb13864f29d6926a138fb96356fe89"
+    },
+    "Adiabatic.ChoiceReduction.LiftObstruction": {
+      "source": "Adiabatic/ChoiceReduction/LiftObstruction.lean",
+      "declarations": 11,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "source_sha256": "4d756fa8f822235739da19e7c941d7bac14cc2b1b71108e07fe7eddac71453d9"
+    },
+    "Adiabatic.ChoiceReduction.MixedProducts": {
+      "source": "Adiabatic/ChoiceReduction/MixedProducts.lean",
+      "declarations": 66,
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "source_sha256": "63e31959659297149db22a3643f79d905b16ca1b83f267b4209d33a3af9b3630"
+    }
+  },
+  "declarations": [
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.BijectiveInverseSelector",
+      "type": "Type (u + 1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.BijectiveInverseSelector.uniqueWitnesses",
+      "type": "Adiabatic.ChoiceReduction.BijectiveInverseSelector → Adiabatic.ChoiceReduction.UniqueWitnessSelector"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.BijectiveInverseSelector.uniqueWitnesses._proof_1",
+      "type": "∀ (A : Type u_1) (p : A → Prop),\n  (∃! a, p a) → (Function.Injective fun x => PUnit.unit) ∧ Function.Surjective fun x => PUnit.unit"
+    },
+    {
+      "axioms": [],
+      "kind": "inductive",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "type": "{A : Type u_1} → [Monoid A] → A → Type u_1"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse._sizeOf_1",
+      "type": "{A : Type u_1} → {inst : Monoid A} → {a : A} → [SizeOf A] → Adiabatic.ChoiceReduction.ExplicitInverse a → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse._sizeOf_inst",
+      "type": "{A : Type u_1} → {inst : Monoid A} → (a : A) → [SizeOf A] → SizeOf (Adiabatic.ChoiceReduction.ExplicitInverse a)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.casesOn",
+      "type": "{A : Type u_1} →\n  [inst : Monoid A] →\n    {a : A} →\n      {motive : Adiabatic.ChoiceReduction.ExplicitInverse a → Sort u} →\n        (t : Adiabatic.ChoiceReduction.ExplicitInverse a) →\n          ((value : A) →\n              (left_inverse : value * a = 1) →\n                (right_inverse : a * value = 1) →\n                  motive { value := value, left_inverse := left_inverse, right_inverse := right_inverse }) →\n            motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.ctorIdx",
+      "type": "{A : Type u_1} → {inst : Monoid A} → {a : A} → Adiabatic.ChoiceReduction.ExplicitInverse a → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.exists_unique_of_exists",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A}, (∃ b, b * a = 1 ∧ a * b = 1) → ∃! b, b * a = 1 ∧ a * b = 1"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.left_inverse",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A} (self : Adiabatic.ChoiceReduction.ExplicitInverse a), self.value * a = 1"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.left_right_unique",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a b c : A}, b * a = 1 → a * c = 1 → b = c"
+    },
+    {
+      "axioms": [],
+      "kind": "constructor",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk",
+      "type": "{A : Type u_1} →\n  [inst : Monoid A] →\n    {a : A} → (value : A) → value * a = 1 → a * value = 1 → Adiabatic.ChoiceReduction.ExplicitInverse a"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk._flat_ctor",
+      "type": "{A : Type u_1} →\n  [inst : Monoid A] →\n    {a : A} → (value : A) → value * a = 1 → a * value = 1 → Adiabatic.ChoiceReduction.ExplicitInverse a"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk.inj",
+      "type": "∀ {A : Type u_1} {inst : Monoid A} {a value : A} {left_inverse : value * a = 1} {right_inverse : a * value = 1}\n  {value_1 : A} {left_inverse_1 : value_1 * a = 1} {right_inverse_1 : a * value_1 = 1},\n  { value := value, left_inverse := left_inverse, right_inverse := right_inverse } =\n      { value := value_1, left_inverse := left_inverse_1, right_inverse := right_inverse_1 } →\n    value = value_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk.injEq",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A} (value : A) (left_inverse : value * a = 1) (right_inverse : a * value = 1)\n  (value_1 : A) (left_inverse_1 : value_1 * a = 1) (right_inverse_1 : a * value_1 = 1),\n  ({ value := value, left_inverse := left_inverse, right_inverse := right_inverse } =\n      { value := value_1, left_inverse := left_inverse_1, right_inverse := right_inverse_1 }) =\n    (value = value_1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk.noConfusion",
+      "type": "{A : Type u_1} →\n  {inst : Monoid A} →\n    {a : A} →\n      {P : Sort u} →\n        {value : A} →\n          {left_inverse : value * a = 1} →\n            {right_inverse : a * value = 1} →\n              {value' : A} →\n                {left_inverse' : value' * a = 1} →\n                  {right_inverse' : a * value' = 1} →\n                    { value := value, left_inverse := left_inverse, right_inverse := right_inverse } =\n                        { value := value', left_inverse := left_inverse', right_inverse := right_inverse' } →\n                      (value ≍ value' → P) → P"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.mk.sizeOf_spec",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A} [inst_1 : SizeOf A] (value : A) (left_inverse : value * a = 1)\n  (right_inverse : a * value = 1),\n  sizeOf { value := value, left_inverse := left_inverse, right_inverse := right_inverse } =\n    1 + sizeOf value + sizeOf left_inverse + sizeOf right_inverse"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.noConfusion",
+      "type": "{P : Sort u} →\n  {A : Type u_1} →\n    {inst : Monoid A} →\n      {a : A} →\n        {t : Adiabatic.ChoiceReduction.ExplicitInverse a} →\n          {A' : Type u_1} →\n            {inst' : Monoid A'} →\n              {a' : A'} →\n                {t' : Adiabatic.ChoiceReduction.ExplicitInverse a'} →\n                  A = A' →\n                    inst ≍ inst' → a ≍ a' → t ≍ t' → Adiabatic.ChoiceReduction.ExplicitInverse.noConfusionType P t t'"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.noConfusionType",
+      "type": "Sort u →\n  {A : Type u_1} →\n    [inst : Monoid A] →\n      {a : A} →\n        Adiabatic.ChoiceReduction.ExplicitInverse a →\n          {A' : Type u_1} → [inst' : Monoid A'] → {a' : A'} → Adiabatic.ChoiceReduction.ExplicitInverse a' → Sort u"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.ofUnit",
+      "type": "{A : Type u_1} → [inst : Monoid A] → (u : Aˣ) → Adiabatic.ChoiceReduction.ExplicitInverse ↑u"
+    },
+    {
+      "axioms": [],
+      "kind": "recursor",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.rec",
+      "type": "{A : Type u_1} →\n  [inst : Monoid A] →\n    {a : A} →\n      {motive : Adiabatic.ChoiceReduction.ExplicitInverse a → Sort u} →\n        ((value : A) →\n            (left_inverse : value * a = 1) →\n              (right_inverse : a * value = 1) →\n                motive { value := value, left_inverse := left_inverse, right_inverse := right_inverse }) →\n          (t : Adiabatic.ChoiceReduction.ExplicitInverse a) → motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.recOn",
+      "type": "{A : Type u_1} →\n  [inst : Monoid A] →\n    {a : A} →\n      {motive : Adiabatic.ChoiceReduction.ExplicitInverse a → Sort u} →\n        (t : Adiabatic.ChoiceReduction.ExplicitInverse a) →\n          ((value : A) →\n              (left_inverse : value * a = 1) →\n                (right_inverse : a * value = 1) →\n                  motive { value := value, left_inverse := left_inverse, right_inverse := right_inverse }) →\n            motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.right_inverse",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A} (self : Adiabatic.ChoiceReduction.ExplicitInverse a), a * self.value = 1"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.toUnit",
+      "type": "{A : Type u_1} → [inst : Monoid A] → {a : A} → Adiabatic.ChoiceReduction.ExplicitInverse a → Aˣ"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.value",
+      "type": "{A : Type u_1} → [inst : Monoid A] → {a : A} → Adiabatic.ChoiceReduction.ExplicitInverse a → A"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitInverse.value_unique",
+      "type": "∀ {A : Type u_1} [inst : Monoid A] {a : A} (r s : Adiabatic.ChoiceReduction.ExplicitInverse a), r.value = s.value"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "inductive",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] → [inst_4 : _root_.Module R E] → (D →ₗ[R] E) → Type (max u_2 u_3)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse._sizeOf_1",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      {inst : Semiring R} →\n        {inst_1 : AddCommMonoid D} →\n          {inst_2 : AddCommMonoid E} →\n            {inst_3 : _root_.Module R D} →\n              {inst_4 : _root_.Module R E} →\n                {A : D →ₗ[R] E} →\n                  [SizeOf R] → [SizeOf D] → [SizeOf E] → Adiabatic.ChoiceReduction.ExplicitLinearInverse A → ℕ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse._sizeOf_inst",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      {inst : Semiring R} →\n        {inst_1 : AddCommMonoid D} →\n          {inst_2 : AddCommMonoid E} →\n            {inst_3 : _root_.Module R D} →\n              {inst_4 : _root_.Module R E} →\n                (A : D →ₗ[R] E) →\n                  [SizeOf R] → [SizeOf D] → [SizeOf E] → SizeOf (Adiabatic.ChoiceReduction.ExplicitLinearInverse A)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.apply_inverse",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E}\n  (r : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) (x : E), A (r.inverse x) = x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.casesOn",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} →\n                  {motive : Adiabatic.ChoiceReduction.ExplicitLinearInverse A → Sort u} →\n                    (t : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) →\n                      ((inverse : E →ₗ[R] D) →\n                          (left_inverse : inverse ∘ₗ A = LinearMap.id) →\n                            (right_inverse : A ∘ₗ inverse = LinearMap.id) →\n                              motive\n                                { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse }) →\n                        motive t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.ctorIdx",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      {inst : Semiring R} →\n        {inst_1 : AddCommMonoid D} →\n          {inst_2 : AddCommMonoid E} →\n            {inst_3 : _root_.Module R D} →\n              {inst_4 : _root_.Module R E} → {A : D →ₗ[R] E} → Adiabatic.ChoiceReduction.ExplicitLinearInverse A → ℕ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.inverse",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} → Adiabatic.ChoiceReduction.ExplicitLinearInverse A → E →ₗ[R] D"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.inverse_apply",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E}\n  (r : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) (x : D), r.inverse (A x) = x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.left_inverse",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E}\n  (self : Adiabatic.ChoiceReduction.ExplicitLinearInverse A), self.inverse ∘ₗ A = LinearMap.id"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "constructor",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} →\n                  (inverse : E →ₗ[R] D) →\n                    inverse ∘ₗ A = LinearMap.id →\n                      A ∘ₗ inverse = LinearMap.id → Adiabatic.ChoiceReduction.ExplicitLinearInverse A"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk._flat_ctor",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} →\n                  (inverse : E →ₗ[R] D) →\n                    inverse ∘ₗ A = LinearMap.id →\n                      A ∘ₗ inverse = LinearMap.id → Adiabatic.ChoiceReduction.ExplicitLinearInverse A"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk.inj",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} {inst : Semiring R} {inst_1 : AddCommMonoid D} {inst_2 : AddCommMonoid E}\n  {inst_3 : _root_.Module R D} {inst_4 : _root_.Module R E} {A : D →ₗ[R] E} {inverse : E →ₗ[R] D}\n  {left_inverse : inverse ∘ₗ A = LinearMap.id} {right_inverse : A ∘ₗ inverse = LinearMap.id} {inverse_1 : E →ₗ[R] D}\n  {left_inverse_1 : inverse_1 ∘ₗ A = LinearMap.id} {right_inverse_1 : A ∘ₗ inverse_1 = LinearMap.id},\n  { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse } =\n      { inverse := inverse_1, left_inverse := left_inverse_1, right_inverse := right_inverse_1 } →\n    inverse = inverse_1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk.injEq",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E} (inverse : E →ₗ[R] D)\n  (left_inverse : inverse ∘ₗ A = LinearMap.id) (right_inverse : A ∘ₗ inverse = LinearMap.id) (inverse_1 : E →ₗ[R] D)\n  (left_inverse_1 : inverse_1 ∘ₗ A = LinearMap.id) (right_inverse_1 : A ∘ₗ inverse_1 = LinearMap.id),\n  ({ inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse } =\n      { inverse := inverse_1, left_inverse := left_inverse_1, right_inverse := right_inverse_1 }) =\n    (inverse = inverse_1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk.noConfusion",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      {inst : Semiring R} →\n        {inst_1 : AddCommMonoid D} →\n          {inst_2 : AddCommMonoid E} →\n            {inst_3 : _root_.Module R D} →\n              {inst_4 : _root_.Module R E} →\n                {A : D →ₗ[R] E} →\n                  {P : Sort u} →\n                    {inverse : E →ₗ[R] D} →\n                      {left_inverse : inverse ∘ₗ A = LinearMap.id} →\n                        {right_inverse : A ∘ₗ inverse = LinearMap.id} →\n                          {inverse' : E →ₗ[R] D} →\n                            {left_inverse' : inverse' ∘ₗ A = LinearMap.id} →\n                              {right_inverse' : A ∘ₗ inverse' = LinearMap.id} →\n                                { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse } =\n                                    { inverse := inverse', left_inverse := left_inverse',\n                                      right_inverse := right_inverse' } →\n                                  (inverse ≍ inverse' → P) → P"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.mk.sizeOf_spec",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E} [inst_5 : SizeOf R] [inst_6 : SizeOf D]\n  [inst_7 : SizeOf E] (inverse : E →ₗ[R] D) (left_inverse : inverse ∘ₗ A = LinearMap.id)\n  (right_inverse : A ∘ₗ inverse = LinearMap.id),\n  sizeOf { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse } =\n    1 + sizeOf inverse + sizeOf left_inverse + sizeOf right_inverse"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.noConfusion",
+      "type": "{P : Sort u} →\n  {R : Type u_1} →\n    {D : Type u_2} →\n      {E : Type u_3} →\n        {inst : Semiring R} →\n          {inst_1 : AddCommMonoid D} →\n            {inst_2 : AddCommMonoid E} →\n              {inst_3 : _root_.Module R D} →\n                {inst_4 : _root_.Module R E} →\n                  {A : D →ₗ[R] E} →\n                    {t : Adiabatic.ChoiceReduction.ExplicitLinearInverse A} →\n                      {R' : Type u_1} →\n                        {D' : Type u_2} →\n                          {E' : Type u_3} →\n                            {inst' : Semiring R'} →\n                              {inst'_1 : AddCommMonoid D'} →\n                                {inst'_2 : AddCommMonoid E'} →\n                                  {inst'_3 : _root_.Module R' D'} →\n                                    {inst'_4 : _root_.Module R' E'} →\n                                      {A' : D' →ₗ[R'] E'} →\n                                        {t' : Adiabatic.ChoiceReduction.ExplicitLinearInverse A'} →\n                                          R = R' →\n                                            D = D' →\n                                              E = E' →\n                                                inst ≍ inst' →\n                                                  inst_1 ≍ inst'_1 →\n                                                    inst_2 ≍ inst'_2 →\n                                                      inst_3 ≍ inst'_3 →\n                                                        inst_4 ≍ inst'_4 →\n                                                          A ≍ A' →\n                                                            t ≍ t' →\n                                                              Adiabatic.ChoiceReduction.ExplicitLinearInverse.noConfusionType\n                                                                P t t'"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.noConfusionType",
+      "type": "Sort u →\n  {R : Type u_1} →\n    {D : Type u_2} →\n      {E : Type u_3} →\n        [inst : Semiring R] →\n          [inst_1 : AddCommMonoid D] →\n            [inst_2 : AddCommMonoid E] →\n              [inst_3 : _root_.Module R D] →\n                [inst_4 : _root_.Module R E] →\n                  {A : D →ₗ[R] E} →\n                    Adiabatic.ChoiceReduction.ExplicitLinearInverse A →\n                      {R' : Type u_1} →\n                        {D' : Type u_2} →\n                          {E' : Type u_3} →\n                            [inst' : Semiring R'] →\n                              [inst'_1 : AddCommMonoid D'] →\n                                [inst'_2 : AddCommMonoid E'] →\n                                  [inst'_3 : _root_.Module R' D'] →\n                                    [inst'_4 : _root_.Module R' E'] →\n                                      {A' : D' →ₗ[R'] E'} → Adiabatic.ChoiceReduction.ExplicitLinearInverse A' → Sort u"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.pointwise_unique",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E}\n  (r s : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) (x : E), r.inverse x = s.inverse x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "recursor",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.rec",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} →\n                  {motive : Adiabatic.ChoiceReduction.ExplicitLinearInverse A → Sort u} →\n                    ((inverse : E →ₗ[R] D) →\n                        (left_inverse : inverse ∘ₗ A = LinearMap.id) →\n                          (right_inverse : A ∘ₗ inverse = LinearMap.id) →\n                            motive\n                              { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse }) →\n                      (t : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) → motive t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.recOn",
+      "type": "{R : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring R] →\n        [inst_1 : AddCommMonoid D] →\n          [inst_2 : AddCommMonoid E] →\n            [inst_3 : _root_.Module R D] →\n              [inst_4 : _root_.Module R E] →\n                {A : D →ₗ[R] E} →\n                  {motive : Adiabatic.ChoiceReduction.ExplicitLinearInverse A → Sort u} →\n                    (t : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) →\n                      ((inverse : E →ₗ[R] D) →\n                          (left_inverse : inverse ∘ₗ A = LinearMap.id) →\n                            (right_inverse : A ∘ₗ inverse = LinearMap.id) →\n                              motive\n                                { inverse := inverse, left_inverse := left_inverse, right_inverse := right_inverse }) →\n                        motive t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.ExplicitLinearInverse.right_inverse",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid D] [inst_2 : AddCommMonoid E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A : D →ₗ[R] E}\n  (self : Adiabatic.ChoiceReduction.ExplicitLinearInverse A), A ∘ₗ self.inverse = LinearMap.id"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.FamilyChoice",
+      "type": "Prop"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.FamilyChoice.surjectionSplitting",
+      "type": "Adiabatic.ChoiceReduction.FamilyChoice → Adiabatic.ChoiceReduction.SurjectionSplitting"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.embedding",
+      "type": "{K : Type u_1} →\n  {X : Type u_2} →\n    {Y : Type u_3} →\n      [inst : Semiring K] →\n        [inst_1 : AddCommMonoid X] →\n          [inst_2 : AddCommMonoid Y] →\n            [inst_3 : _root_.Module K X] → [inst_4 : _root_.Module K Y] → (X →ₗ[K] Y) → Y × X →ₗ[K] Y × Y"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.exists_bounded_inverse",
+      "type": "∀ {K : Type u_1} {X : Type u_2} {Y : Type u_3} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] {R : Type u_4} [inst_5 : Semiring R]\n  [inst_6 : PartialOrder R] [IsOrderedRing R] (S : X →ₗ[K] Y) (L : Y × X →ₗ[K] Y × X),\n  Function.Injective ⇑S →\n    Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n        Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n      ∀ (sizeX : X → R) (sizeY : Y → R) (sizeD : Y × X → R) (C : R),\n        0 ≤ C →\n          (∀ (p : Y × X), sizeX p.2 ≤ sizeD p) →\n            (∀ (y : Y), sizeD (y, 0) ≤ sizeY y) →\n              (∀ (p : Y × X), sizeD (L p) ≤ C * sizeD p) →\n                ∃ inverse,\n                  (∀ (x : X), inverse (S x) = x) ∧\n                    (∀ (y : Y), S (inverse y) = y) ∧ ∀ (y : Y), sizeX (inverse y) ≤ C * sizeY y"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.explicitInverse",
+      "type": "{K : Type u_1} →\n  {X : Type u_2} →\n    {Y : Type u_3} →\n      [inst : Semiring K] →\n        [inst_1 : AddCommMonoid X] →\n          [inst_2 : AddCommMonoid Y] →\n            [inst_3 : _root_.Module K X] →\n              [inst_4 : _root_.Module K Y] →\n                (S : X →ₗ[K] Y) →\n                  (L : Y × X →ₗ[K] Y × X) →\n                    Function.Injective ⇑S →\n                      Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n                          Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ\n                            Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n                        Adiabatic.ChoiceReduction.ExplicitLinearInverse S"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.explicitInverse._proof_1",
+      "type": "∀ {K : Type u_2} {X : Type u_1} {Y : Type u_3} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] (S : X →ₗ[K] Y) (L : Y × X →ₗ[K] Y × X),\n  Function.Injective ⇑S →\n    Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n        Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n      Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift L ∘ₗ S = LinearMap.id"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.explicitInverse._proof_2",
+      "type": "∀ {K : Type u_2} {X : Type u_3} {Y : Type u_1} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] (S : X →ₗ[K] Y) (L : Y × X →ₗ[K] Y × X),\n  Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n      Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n    S ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift L = LinearMap.id"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift",
+      "type": "{K : Type u_1} →\n  {X : Type u_2} →\n    {Y : Type u_3} →\n      [inst : Semiring K] →\n        [inst_1 : AddCommMonoid X] →\n          [inst_2 : AddCommMonoid Y] →\n            [inst_3 : _root_.Module K X] → [inst_4 : _root_.Module K Y] → (Y × X →ₗ[K] Y × X) → Y →ₗ[K] X"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift._proof_1",
+      "type": "∀ {K : Type u_1} [inst : Semiring K], RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K)"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.inverse_size_le",
+      "type": "∀ {K : Type u_1} {X : Type u_2} {Y : Type u_3} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] {R : Type u_4} [inst_5 : Semiring R]\n  [inst_6 : PartialOrder R] [IsOrderedRing R] (L : Y × X →ₗ[K] Y × X) (sizeX : X → R) (sizeY : Y → R)\n  (sizeD : Y × X → R) (C : R),\n  0 ≤ C →\n    (∀ (p : Y × X), sizeX p.2 ≤ sizeD p) →\n      (∀ (y : Y), sizeD (y, 0) ≤ sizeY y) →\n        (∀ (p : Y × X), sizeD (L p) ≤ C * sizeD p) →\n          ∀ (y : Y), sizeX ((Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift L) y) ≤ C * sizeY y"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.left_inverse",
+      "type": "∀ {K : Type u_1} {X : Type u_2} {Y : Type u_3} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] (S : X →ₗ[K] Y) (L : Y × X →ₗ[K] Y × X),\n  Function.Injective ⇑S →\n    Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n        Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n      ∀ (x : X), (Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift L) (S x) = x"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.right_inverse",
+      "type": "∀ {K : Type u_1} {X : Type u_2} {Y : Type u_3} [inst : Semiring K] [inst_1 : AddCommMonoid X] [inst_2 : AddCommMonoid Y]\n  [inst_3 : _root_.Module K X] [inst_4 : _root_.Module K Y] (S : X →ₗ[K] Y) (L : Y × X →ₗ[K] Y × X),\n  Adiabatic.ChoiceReduction.LiftObstruction.embedding S ∘ₗ L =\n      Adiabatic.ChoiceReduction.LiftObstruction.swap ∘ₗ Adiabatic.ChoiceReduction.LiftObstruction.embedding S →\n    ∀ (y : Y), S ((Adiabatic.ChoiceReduction.LiftObstruction.inverseFromLift L) y) = y"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.LiftObstruction",
+      "name": "Adiabatic.ChoiceReduction.LiftObstruction.swap",
+      "type": "{K : Type u_1} →\n  {Y : Type u_3} → [inst : Semiring K] → [inst_1 : AddCommMonoid Y] → [inst_2 : _root_.Module K Y] → Y × Y →ₗ[K] Y × Y"
+    },
+    {
+      "axioms": [],
+      "kind": "inductive",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction",
+      "type": "(A : Type u_1) →\n  (B : Type u_2) → (M : Type u_3) → [Monoid A] → [Monoid B] → [AddCommGroup M] → Type (max (max u_1 u_2) u_3)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction._sizeOf_1",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {inst : Monoid A} →\n        {inst_1 : Monoid B} →\n          {inst_2 : AddCommGroup M} →\n            [SizeOf A] → [SizeOf B] → [SizeOf M] → Adiabatic.ChoiceReduction.MixedAction A B M → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction._sizeOf_inst",
+      "type": "(A : Type u_1) →\n  (B : Type u_2) →\n    (M : Type u_3) →\n      {inst : Monoid A} →\n        {inst_1 : Monoid B} →\n          {inst_2 : AddCommGroup M} →\n            [SizeOf A] → [SizeOf B] → [SizeOf M] → SizeOf (Adiabatic.ChoiceReduction.MixedAction A B M)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.casesOn",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] →\n            {motive : Adiabatic.ChoiceReduction.MixedAction A B M → Sort u} →\n              (t : Adiabatic.ChoiceReduction.MixedAction A B M) →\n                ((left : A → M → M) →\n                    (right : M → B → M) →\n                      (left_one : ∀ (x : M), left 1 x = x) →\n                        (right_one : ∀ (x : M), right x 1 = x) →\n                          (left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x)) →\n                            (right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b) →\n                              (left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b) →\n                                (left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y) →\n                                  (right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) →\n                                    motive\n                                      { left := left, right := right, left_one := left_one, right_one := right_one,\n                                        left_mul := left_mul, right_mul := right_mul, left_right := left_right,\n                                        left_add := left_add, right_add := right_add }) →\n                  motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.ctorIdx",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {inst : Monoid A} →\n        {inst_1 : Monoid B} → {inst_2 : AddCommGroup M} → Adiabatic.ChoiceReduction.MixedAction A B M → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] → [inst_2 : AddCommGroup M] → Adiabatic.ChoiceReduction.MixedAction A B M → A → M → M"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left_add",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (a : A) (x y : M),\n  self.left a (x + y) = self.left a x + self.left a y"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left_mul",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (a b : A) (x : M),\n  self.left (a * b) x = self.left a (self.left b x)"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left_one",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (x : M), self.left 1 x = x"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left_right",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (a : A) (x : M) (b : B),\n  self.left a (self.right x b) = self.right (self.left a x) b"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.left_sub",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (act : Adiabatic.ChoiceReduction.MixedAction A B M) (a : A) (x y : M),\n  act.left a (x - y) = act.left a x - act.left a y"
+    },
+    {
+      "axioms": [],
+      "kind": "constructor",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] →\n            (left : A → M → M) →\n              (right : M → B → M) →\n                (∀ (x : M), left 1 x = x) →\n                  (∀ (x : M), right x 1 = x) →\n                    (∀ (a b : A) (x : M), left (a * b) x = left a (left b x)) →\n                      (∀ (x : M) (a b : B), right x (a * b) = right (right x a) b) →\n                        (∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b) →\n                          (∀ (a : A) (x y : M), left a (x + y) = left a x + left a y) →\n                            (∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) →\n                              Adiabatic.ChoiceReduction.MixedAction A B M"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk._flat_ctor",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] →\n            (left : A → M → M) →\n              (right : M → B → M) →\n                (∀ (x : M), left 1 x = x) →\n                  (∀ (x : M), right x 1 = x) →\n                    (∀ (a b : A) (x : M), left (a * b) x = left a (left b x)) →\n                      (∀ (x : M) (a b : B), right x (a * b) = right (right x a) b) →\n                        (∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b) →\n                          (∀ (a : A) (x y : M), left a (x + y) = left a x + left a y) →\n                            (∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) →\n                              Adiabatic.ChoiceReduction.MixedAction A B M"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk.inj",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {inst : Monoid A} {inst_1 : Monoid B} {inst_2 : AddCommGroup M}\n  {left : A → M → M} {right : M → B → M} {left_one : ∀ (x : M), left 1 x = x} {right_one : ∀ (x : M), right x 1 = x}\n  {left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x)}\n  {right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b}\n  {left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b}\n  {left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y}\n  {right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b} {left_1 : A → M → M} {right_1 : M → B → M}\n  {left_one_1 : ∀ (x : M), left_1 1 x = x} {right_one_1 : ∀ (x : M), right_1 x 1 = x}\n  {left_mul_1 : ∀ (a b : A) (x : M), left_1 (a * b) x = left_1 a (left_1 b x)}\n  {right_mul_1 : ∀ (x : M) (a b : B), right_1 x (a * b) = right_1 (right_1 x a) b}\n  {left_right_1 : ∀ (a : A) (x : M) (b : B), left_1 a (right_1 x b) = right_1 (left_1 a x) b}\n  {left_add_1 : ∀ (a : A) (x y : M), left_1 a (x + y) = left_1 a x + left_1 a y}\n  {right_add_1 : ∀ (x y : M) (b : B), right_1 (x + y) b = right_1 x b + right_1 y b},\n  { left := left, right := right, left_one := left_one, right_one := right_one, left_mul := left_mul,\n        right_mul := right_mul, left_right := left_right, left_add := left_add, right_add := right_add } =\n      { left := left_1, right := right_1, left_one := left_one_1, right_one := right_one_1, left_mul := left_mul_1,\n        right_mul := right_mul_1, left_right := left_right_1, left_add := left_add_1, right_add := right_add_1 } →\n    left = left_1 ∧ right = right_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk.injEq",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (left : A → M → M) (right : M → B → M) (left_one : ∀ (x : M), left 1 x = x) (right_one : ∀ (x : M), right x 1 = x)\n  (left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x))\n  (right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b)\n  (left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b)\n  (left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y)\n  (right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) (left_1 : A → M → M) (right_1 : M → B → M)\n  (left_one_1 : ∀ (x : M), left_1 1 x = x) (right_one_1 : ∀ (x : M), right_1 x 1 = x)\n  (left_mul_1 : ∀ (a b : A) (x : M), left_1 (a * b) x = left_1 a (left_1 b x))\n  (right_mul_1 : ∀ (x : M) (a b : B), right_1 x (a * b) = right_1 (right_1 x a) b)\n  (left_right_1 : ∀ (a : A) (x : M) (b : B), left_1 a (right_1 x b) = right_1 (left_1 a x) b)\n  (left_add_1 : ∀ (a : A) (x y : M), left_1 a (x + y) = left_1 a x + left_1 a y)\n  (right_add_1 : ∀ (x y : M) (b : B), right_1 (x + y) b = right_1 x b + right_1 y b),\n  ({ left := left, right := right, left_one := left_one, right_one := right_one, left_mul := left_mul,\n        right_mul := right_mul, left_right := left_right, left_add := left_add, right_add := right_add } =\n      { left := left_1, right := right_1, left_one := left_one_1, right_one := right_one_1, left_mul := left_mul_1,\n        right_mul := right_mul_1, left_right := left_right_1, left_add := left_add_1, right_add := right_add_1 }) =\n    (left = left_1 ∧ right = right_1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk.noConfusion",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {inst : Monoid A} →\n        {inst_1 : Monoid B} →\n          {inst_2 : AddCommGroup M} →\n            {P : Sort u} →\n              {left : A → M → M} →\n                {right : M → B → M} →\n                  {left_one : ∀ (x : M), left 1 x = x} →\n                    {right_one : ∀ (x : M), right x 1 = x} →\n                      {left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x)} →\n                        {right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b} →\n                          {left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b} →\n                            {left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y} →\n                              {right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b} →\n                                {left' : A → M → M} →\n                                  {right' : M → B → M} →\n                                    {left_one' : ∀ (x : M), left' 1 x = x} →\n                                      {right_one' : ∀ (x : M), right' x 1 = x} →\n                                        {left_mul' : ∀ (a b : A) (x : M), left' (a * b) x = left' a (left' b x)} →\n                                          {right_mul' : ∀ (x : M) (a b : B), right' x (a * b) = right' (right' x a) b} →\n                                            {left_right' :\n                                                ∀ (a : A) (x : M) (b : B),\n                                                  left' a (right' x b) = right' (left' a x) b} →\n                                              {left_add' :\n                                                  ∀ (a : A) (x y : M), left' a (x + y) = left' a x + left' a y} →\n                                                {right_add' :\n                                                    ∀ (x y : M) (b : B), right' (x + y) b = right' x b + right' y b} →\n                                                  { left := left, right := right, left_one := left_one,\n                                                        right_one := right_one, left_mul := left_mul,\n                                                        right_mul := right_mul, left_right := left_right,\n                                                        left_add := left_add, right_add := right_add } =\n                                                      { left := left', right := right', left_one := left_one',\n                                                        right_one := right_one', left_mul := left_mul',\n                                                        right_mul := right_mul', left_right := left_right',\n                                                        left_add := left_add', right_add := right_add' } →\n                                                    (left ≍ left' → right ≍ right' → P) → P"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.mk.sizeOf_spec",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  [inst_3 : SizeOf A] [inst_4 : SizeOf B] [inst_5 : SizeOf M] (left : A → M → M) (right : M → B → M)\n  (left_one : ∀ (x : M), left 1 x = x) (right_one : ∀ (x : M), right x 1 = x)\n  (left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x))\n  (right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b)\n  (left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b)\n  (left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y)\n  (right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b),\n  sizeOf\n      { left := left, right := right, left_one := left_one, right_one := right_one, left_mul := left_mul,\n        right_mul := right_mul, left_right := left_right, left_add := left_add, right_add := right_add } =\n    1"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.noConfusion",
+      "type": "{P : Sort u} →\n  {A : Type u_1} →\n    {B : Type u_2} →\n      {M : Type u_3} →\n        {inst : Monoid A} →\n          {inst_1 : Monoid B} →\n            {inst_2 : AddCommGroup M} →\n              {t : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                {A' : Type u_1} →\n                  {B' : Type u_2} →\n                    {M' : Type u_3} →\n                      {inst' : Monoid A'} →\n                        {inst'_1 : Monoid B'} →\n                          {inst'_2 : AddCommGroup M'} →\n                            {t' : Adiabatic.ChoiceReduction.MixedAction A' B' M'} →\n                              A = A' →\n                                B = B' →\n                                  M = M' →\n                                    inst ≍ inst' →\n                                      inst_1 ≍ inst'_1 →\n                                        inst_2 ≍ inst'_2 →\n                                          t ≍ t' → Adiabatic.ChoiceReduction.MixedAction.noConfusionType P t t'"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.noConfusionType",
+      "type": "Sort u →\n  {A : Type u_1} →\n    {B : Type u_2} →\n      {M : Type u_3} →\n        [inst : Monoid A] →\n          [inst_1 : Monoid B] →\n            [inst_2 : AddCommGroup M] →\n              Adiabatic.ChoiceReduction.MixedAction A B M →\n                {A' : Type u_1} →\n                  {B' : Type u_2} →\n                    {M' : Type u_3} →\n                      [inst' : Monoid A'] →\n                        [inst'_1 : Monoid B'] →\n                          [inst'_2 : AddCommGroup M'] → Adiabatic.ChoiceReduction.MixedAction A' B' M' → Sort u"
+    },
+    {
+      "axioms": [],
+      "kind": "recursor",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.rec",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] →\n            {motive : Adiabatic.ChoiceReduction.MixedAction A B M → Sort u} →\n              ((left : A → M → M) →\n                  (right : M → B → M) →\n                    (left_one : ∀ (x : M), left 1 x = x) →\n                      (right_one : ∀ (x : M), right x 1 = x) →\n                        (left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x)) →\n                          (right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b) →\n                            (left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b) →\n                              (left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y) →\n                                (right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) →\n                                  motive\n                                    { left := left, right := right, left_one := left_one, right_one := right_one,\n                                      left_mul := left_mul, right_mul := right_mul, left_right := left_right,\n                                      left_add := left_add, right_add := right_add }) →\n                (t : Adiabatic.ChoiceReduction.MixedAction A B M) → motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.recOn",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] →\n            {motive : Adiabatic.ChoiceReduction.MixedAction A B M → Sort u} →\n              (t : Adiabatic.ChoiceReduction.MixedAction A B M) →\n                ((left : A → M → M) →\n                    (right : M → B → M) →\n                      (left_one : ∀ (x : M), left 1 x = x) →\n                        (right_one : ∀ (x : M), right x 1 = x) →\n                          (left_mul : ∀ (a b : A) (x : M), left (a * b) x = left a (left b x)) →\n                            (right_mul : ∀ (x : M) (a b : B), right x (a * b) = right (right x a) b) →\n                              (left_right : ∀ (a : A) (x : M) (b : B), left a (right x b) = right (left a x) b) →\n                                (left_add : ∀ (a : A) (x y : M), left a (x + y) = left a x + left a y) →\n                                  (right_add : ∀ (x y : M) (b : B), right (x + y) b = right x b + right y b) →\n                                    motive\n                                      { left := left, right := right, left_one := left_one, right_one := right_one,\n                                        left_mul := left_mul, right_mul := right_mul, left_right := left_right,\n                                        left_add := left_add, right_add := right_add }) →\n                  motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.right",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] → [inst_2 : AddCommGroup M] → Adiabatic.ChoiceReduction.MixedAction A B M → M → B → M"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.right_add",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (x y : M) (b : B),\n  self.right (x + y) b = self.right x b + self.right y b"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.right_mul",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (x : M) (a b : B),\n  self.right x (a * b) = self.right (self.right x a) b"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.right_one",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (self : Adiabatic.ChoiceReduction.MixedAction A B M) (x : M), self.right x 1 = x"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedAction.right_sub",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (act : Adiabatic.ChoiceReduction.MixedAction A B M) (x y : M) (b : B),\n  act.right (x - y) b = act.right x b - act.right y b"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "inductive",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  Adiabatic.ChoiceReduction.MixedAction A B M →\n                    Adiabatic.ChoiceReduction.SubmultiplicativeSize A R →\n                      Adiabatic.ChoiceReduction.SubmultiplicativeSize B R → Type (max u_3 u_4)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize._sizeOf_1",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        {inst : Ring A} →\n          {inst_1 : Ring B} →\n            {inst_2 : AddCommGroup M} →\n              {inst_3 : Semiring R} →\n                {inst_4 : PartialOrder R} →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        [SizeOf A] →\n                          [SizeOf B] →\n                            [SizeOf M] → [SizeOf R] → Adiabatic.ChoiceReduction.MixedSize act physical domain → ℕ"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize._sizeOf_inst",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        {inst : Ring A} →\n          {inst_1 : Ring B} →\n            {inst_2 : AddCommGroup M} →\n              {inst_3 : Semiring R} →\n                {inst_4 : PartialOrder R} →\n                  (act : Adiabatic.ChoiceReduction.MixedAction A B M) →\n                    (physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) →\n                      (domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R) →\n                        [SizeOf A] →\n                          [SizeOf B] →\n                            [SizeOf M] → [SizeOf R] → SizeOf (Adiabatic.ChoiceReduction.MixedSize act physical domain)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.add",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (self : Adiabatic.ChoiceReduction.MixedSize act physical domain) (x y : M),\n  self.size (x + y) ≤ self.size x + self.size y"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.casesOn",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        {motive : Adiabatic.ChoiceReduction.MixedSize act physical domain → Sort u} →\n                          (t : Adiabatic.ChoiceReduction.MixedSize act physical domain) →\n                            ((size : M → R) →\n                                (nonneg : ∀ (x : M), 0 ≤ size x) →\n                                  (zero : size 0 = 0) →\n                                    (add : ∀ (x y : M), size (x + y) ≤ size x + size y) →\n                                      (left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x) →\n                                        (right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) →\n                                          motive\n                                            { size := size, nonneg := nonneg, zero := zero, add := add, left := left,\n                                              right := right }) →\n                              motive t"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.ctorIdx",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        {inst : Ring A} →\n          {inst_1 : Ring B} →\n            {inst_2 : AddCommGroup M} →\n              {inst_3 : Semiring R} →\n                {inst_4 : PartialOrder R} →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        Adiabatic.ChoiceReduction.MixedSize act physical domain → ℕ"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.left",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (self : Adiabatic.ChoiceReduction.MixedSize act physical domain) (a : A) (x : M),\n  self.size (act.left a x) ≤ physical.size a * self.size x"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "constructor",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        (size : M → R) →\n                          (∀ (x : M), 0 ≤ size x) →\n                            size 0 = 0 →\n                              (∀ (x y : M), size (x + y) ≤ size x + size y) →\n                                (∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x) →\n                                  (∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) →\n                                    Adiabatic.ChoiceReduction.MixedSize act physical domain"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk._flat_ctor",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        (size : M → R) →\n                          (∀ (x : M), 0 ≤ size x) →\n                            size 0 = 0 →\n                              (∀ (x y : M), size (x + y) ≤ size x + size y) →\n                                (∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x) →\n                                  (∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) →\n                                    Adiabatic.ChoiceReduction.MixedSize act physical domain"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk.inj",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} {inst : Ring A} {inst_1 : Ring B}\n  {inst_2 : AddCommGroup M} {inst_3 : Semiring R} {inst_4 : PartialOrder R}\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} {size : M → R} {nonneg : ∀ (x : M), 0 ≤ size x}\n  {zero : size 0 = 0} {add : ∀ (x y : M), size (x + y) ≤ size x + size y}\n  {left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x}\n  {right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b} {size_1 : M → R}\n  {nonneg_1 : ∀ (x : M), 0 ≤ size_1 x} {zero_1 : size_1 0 = 0}\n  {add_1 : ∀ (x y : M), size_1 (x + y) ≤ size_1 x + size_1 y}\n  {left_1 : ∀ (a : A) (x : M), size_1 (act.left a x) ≤ physical.size a * size_1 x}\n  {right_1 : ∀ (x : M) (b : B), size_1 (act.right x b) ≤ size_1 x * domain.size b},\n  { size := size, nonneg := nonneg, zero := zero, add := add, left := left, right := right } =\n      { size := size_1, nonneg := nonneg_1, zero := zero_1, add := add_1, left := left_1, right := right_1 } →\n    size = size_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk.injEq",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} (size : M → R) (nonneg : ∀ (x : M), 0 ≤ size x)\n  (zero : size 0 = 0) (add : ∀ (x y : M), size (x + y) ≤ size x + size y)\n  (left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x)\n  (right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) (size_1 : M → R)\n  (nonneg_1 : ∀ (x : M), 0 ≤ size_1 x) (zero_1 : size_1 0 = 0)\n  (add_1 : ∀ (x y : M), size_1 (x + y) ≤ size_1 x + size_1 y)\n  (left_1 : ∀ (a : A) (x : M), size_1 (act.left a x) ≤ physical.size a * size_1 x)\n  (right_1 : ∀ (x : M) (b : B), size_1 (act.right x b) ≤ size_1 x * domain.size b),\n  ({ size := size, nonneg := nonneg, zero := zero, add := add, left := left, right := right } =\n      { size := size_1, nonneg := nonneg_1, zero := zero_1, add := add_1, left := left_1, right := right_1 }) =\n    (size = size_1)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk.noConfusion",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        {inst : Ring A} →\n          {inst_1 : Ring B} →\n            {inst_2 : AddCommGroup M} →\n              {inst_3 : Semiring R} →\n                {inst_4 : PartialOrder R} →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        {P : Sort u} →\n                          {size : M → R} →\n                            {nonneg : ∀ (x : M), 0 ≤ size x} →\n                              {zero : size 0 = 0} →\n                                {add : ∀ (x y : M), size (x + y) ≤ size x + size y} →\n                                  {left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x} →\n                                    {right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b} →\n                                      {size' : M → R} →\n                                        {nonneg' : ∀ (x : M), 0 ≤ size' x} →\n                                          {zero' : size' 0 = 0} →\n                                            {add' : ∀ (x y : M), size' (x + y) ≤ size' x + size' y} →\n                                              {left' :\n                                                  ∀ (a : A) (x : M), size' (act.left a x) ≤ physical.size a * size' x} →\n                                                {right' :\n                                                    ∀ (x : M) (b : B),\n                                                      size' (act.right x b) ≤ size' x * domain.size b} →\n                                                  { size := size, nonneg := nonneg, zero := zero, add := add,\n                                                        left := left, right := right } =\n                                                      { size := size', nonneg := nonneg', zero := zero', add := add',\n                                                        left := left', right := right' } →\n                                                    (size ≍ size' → P) → P"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.mk.sizeOf_spec",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} [inst_5 : SizeOf A] [inst_6 : SizeOf B]\n  [inst_7 : SizeOf M] [inst_8 : SizeOf R] (size : M → R) (nonneg : ∀ (x : M), 0 ≤ size x) (zero : size 0 = 0)\n  (add : ∀ (x y : M), size (x + y) ≤ size x + size y)\n  (left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x)\n  (right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b),\n  sizeOf { size := size, nonneg := nonneg, zero := zero, add := add, left := left, right := right } = 1 + sizeOf zero"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.noConfusion",
+      "type": "{P : Sort u} →\n  {A : Type u_1} →\n    {B : Type u_2} →\n      {M : Type u_3} →\n        {R : Type u_4} →\n          {inst : Ring A} →\n            {inst_1 : Ring B} →\n              {inst_2 : AddCommGroup M} →\n                {inst_3 : Semiring R} →\n                  {inst_4 : PartialOrder R} →\n                    {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                      {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                        {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                          {t : Adiabatic.ChoiceReduction.MixedSize act physical domain} →\n                            {A' : Type u_1} →\n                              {B' : Type u_2} →\n                                {M' : Type u_3} →\n                                  {R' : Type u_4} →\n                                    {inst' : Ring A'} →\n                                      {inst'_1 : Ring B'} →\n                                        {inst'_2 : AddCommGroup M'} →\n                                          {inst'_3 : Semiring R'} →\n                                            {inst'_4 : PartialOrder R'} →\n                                              {act' : Adiabatic.ChoiceReduction.MixedAction A' B' M'} →\n                                                {physical' : Adiabatic.ChoiceReduction.SubmultiplicativeSize A' R'} →\n                                                  {domain' : Adiabatic.ChoiceReduction.SubmultiplicativeSize B' R'} →\n                                                    {t' : Adiabatic.ChoiceReduction.MixedSize act' physical' domain'} →\n                                                      A = A' →\n                                                        B = B' →\n                                                          M = M' →\n                                                            R = R' →\n                                                              inst ≍ inst' →\n                                                                inst_1 ≍ inst'_1 →\n                                                                  inst_2 ≍ inst'_2 →\n                                                                    inst_3 ≍ inst'_3 →\n                                                                      inst_4 ≍ inst'_4 →\n                                                                        act ≍ act' →\n                                                                          physical ≍ physical' →\n                                                                            domain ≍ domain' →\n                                                                              t ≍ t' →\n                                                                                Adiabatic.ChoiceReduction.MixedSize.noConfusionType\n                                                                                  P t t'"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.noConfusionType",
+      "type": "Sort u →\n  {A : Type u_1} →\n    {B : Type u_2} →\n      {M : Type u_3} →\n        {R : Type u_4} →\n          [inst : Ring A] →\n            [inst_1 : Ring B] →\n              [inst_2 : AddCommGroup M] →\n                [inst_3 : Semiring R] →\n                  [inst_4 : PartialOrder R] →\n                    {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                      {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                        {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                          Adiabatic.ChoiceReduction.MixedSize act physical domain →\n                            {A' : Type u_1} →\n                              {B' : Type u_2} →\n                                {M' : Type u_3} →\n                                  {R' : Type u_4} →\n                                    [inst' : Ring A'] →\n                                      [inst'_1 : Ring B'] →\n                                        [inst'_2 : AddCommGroup M'] →\n                                          [inst'_3 : Semiring R'] →\n                                            [inst'_4 : PartialOrder R'] →\n                                              {act' : Adiabatic.ChoiceReduction.MixedAction A' B' M'} →\n                                                {physical' : Adiabatic.ChoiceReduction.SubmultiplicativeSize A' R'} →\n                                                  {domain' : Adiabatic.ChoiceReduction.SubmultiplicativeSize B' R'} →\n                                                    Adiabatic.ChoiceReduction.MixedSize act' physical' domain' → Sort u"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.nonneg",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (self : Adiabatic.ChoiceReduction.MixedSize act physical domain) (x : M), 0 ≤ self.size x"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "recursor",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.rec",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        {motive : Adiabatic.ChoiceReduction.MixedSize act physical domain → Sort u} →\n                          ((size : M → R) →\n                              (nonneg : ∀ (x : M), 0 ≤ size x) →\n                                (zero : size 0 = 0) →\n                                  (add : ∀ (x y : M), size (x + y) ≤ size x + size y) →\n                                    (left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x) →\n                                      (right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) →\n                                        motive\n                                          { size := size, nonneg := nonneg, zero := zero, add := add, left := left,\n                                            right := right }) →\n                            (t : Adiabatic.ChoiceReduction.MixedSize act physical domain) → motive t"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.recOn",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        {motive : Adiabatic.ChoiceReduction.MixedSize act physical domain → Sort u} →\n                          (t : Adiabatic.ChoiceReduction.MixedSize act physical domain) →\n                            ((size : M → R) →\n                                (nonneg : ∀ (x : M), 0 ≤ size x) →\n                                  (zero : size 0 = 0) →\n                                    (add : ∀ (x y : M), size (x + y) ≤ size x + size y) →\n                                      (left : ∀ (a : A) (x : M), size (act.left a x) ≤ physical.size a * size x) →\n                                        (right : ∀ (x : M) (b : B), size (act.right x b) ≤ size x * domain.size b) →\n                                          motive\n                                            { size := size, nonneg := nonneg, zero := zero, add := add, left := left,\n                                              right := right }) →\n                              motive t"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.right",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (self : Adiabatic.ChoiceReduction.MixedSize act physical domain) (x : M) (b : B),\n  self.size (act.right x b) ≤ self.size x * domain.size b"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.size",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      {R : Type u_4} →\n        [inst : Ring A] →\n          [inst_1 : Ring B] →\n            [inst_2 : AddCommGroup M] →\n              [inst_3 : Semiring R] →\n                [inst_4 : PartialOrder R] →\n                  {act : Adiabatic.ChoiceReduction.MixedAction A B M} →\n                    {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n                      {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} →\n                        Adiabatic.ChoiceReduction.MixedSize act physical domain → M → R"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.MixedSize.zero",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (self : Adiabatic.ChoiceReduction.MixedSize act physical domain), self.size 0 = 0"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.NonemptySelector",
+      "type": "Type (u + 1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.NonemptySelector.surjectionSections",
+      "type": "Adiabatic.ChoiceReduction.NonemptySelector → Adiabatic.ChoiceReduction.SurjectionSectionSelector"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.NonemptySelector.surjectionSections._proof_1",
+      "type": "∀ (A B : Type u_1) (f : A → B), Function.Surjective f → ∀ (b : B), Nonempty { a // f a = b }"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.NonemptySelector.surjectionSections._proof_2",
+      "type": "∀ (select : Adiabatic.ChoiceReduction.NonemptySelector) (A B : Type u_1) (f : A → B) (hf : Function.Surjective f)\n  (b : B), f ↑((fun b => select { a // f a = b } ⋯) b) = b"
+    },
+    {
+      "axioms": [],
+      "kind": "inductive",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize",
+      "type": "(A : Type u_1) → (R : Type u_2) → [Ring A] → [Semiring R] → [PartialOrder R] → Type (max u_1 u_2)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize._sizeOf_1",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    {inst : Ring A} →\n      {inst_1 : Semiring R} →\n        {inst_2 : PartialOrder R} → [SizeOf A] → [SizeOf R] → Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize._sizeOf_inst",
+      "type": "(A : Type u_1) →\n  (R : Type u_2) →\n    {inst : Ring A} →\n      {inst_1 : Semiring R} →\n        {inst_2 : PartialOrder R} →\n          [SizeOf A] → [SizeOf R] → SizeOf (Adiabatic.ChoiceReduction.SubmultiplicativeSize A R)"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.add",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R]\n  (self : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a b : A), self.size (a + b) ≤ self.size a + self.size b"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.casesOn",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] →\n        [inst_2 : PartialOrder R] →\n          {motive : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → Sort u} →\n            (t : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) →\n              ((size : A → R) →\n                  (nonneg : ∀ (a : A), 0 ≤ size a) →\n                    (zero : size 0 = 0) →\n                      (one : size 1 ≤ 1) →\n                        (add : ∀ (a b : A), size (a + b) ≤ size a + size b) →\n                          (mul : ∀ (a b : A), size (a * b) ≤ size a * size b) →\n                            motive\n                              { size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul }) →\n                motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.ctorIdx",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    {inst : Ring A} →\n      {inst_1 : Semiring R} → {inst_2 : PartialOrder R} → Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → ℕ"
+    },
+    {
+      "axioms": [],
+      "kind": "constructor",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] →\n        [inst_2 : PartialOrder R] →\n          (size : A → R) →\n            (∀ (a : A), 0 ≤ size a) →\n              size 0 = 0 →\n                size 1 ≤ 1 →\n                  (∀ (a b : A), size (a + b) ≤ size a + size b) →\n                    (∀ (a b : A), size (a * b) ≤ size a * size b) → Adiabatic.ChoiceReduction.SubmultiplicativeSize A R"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk._flat_ctor",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] →\n        [inst_2 : PartialOrder R] →\n          (size : A → R) →\n            (∀ (a : A), 0 ≤ size a) →\n              size 0 = 0 →\n                size 1 ≤ 1 →\n                  (∀ (a b : A), size (a + b) ≤ size a + size b) →\n                    (∀ (a b : A), size (a * b) ≤ size a * size b) → Adiabatic.ChoiceReduction.SubmultiplicativeSize A R"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk.inj",
+      "type": "∀ {A : Type u_1} {R : Type u_2} {inst : Ring A} {inst_1 : Semiring R} {inst_2 : PartialOrder R} {size : A → R}\n  {nonneg : ∀ (a : A), 0 ≤ size a} {zero : size 0 = 0} {one : size 1 ≤ 1}\n  {add : ∀ (a b : A), size (a + b) ≤ size a + size b} {mul : ∀ (a b : A), size (a * b) ≤ size a * size b}\n  {size_1 : A → R} {nonneg_1 : ∀ (a : A), 0 ≤ size_1 a} {zero_1 : size_1 0 = 0} {one_1 : size_1 1 ≤ 1}\n  {add_1 : ∀ (a b : A), size_1 (a + b) ≤ size_1 a + size_1 b}\n  {mul_1 : ∀ (a b : A), size_1 (a * b) ≤ size_1 a * size_1 b},\n  { size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul } =\n      { size := size_1, nonneg := nonneg_1, zero := zero_1, one := one_1, add := add_1, mul := mul_1 } →\n    size = size_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk.injEq",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] (size : A → R)\n  (nonneg : ∀ (a : A), 0 ≤ size a) (zero : size 0 = 0) (one : size 1 ≤ 1)\n  (add : ∀ (a b : A), size (a + b) ≤ size a + size b) (mul : ∀ (a b : A), size (a * b) ≤ size a * size b)\n  (size_1 : A → R) (nonneg_1 : ∀ (a : A), 0 ≤ size_1 a) (zero_1 : size_1 0 = 0) (one_1 : size_1 1 ≤ 1)\n  (add_1 : ∀ (a b : A), size_1 (a + b) ≤ size_1 a + size_1 b)\n  (mul_1 : ∀ (a b : A), size_1 (a * b) ≤ size_1 a * size_1 b),\n  ({ size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul } =\n      { size := size_1, nonneg := nonneg_1, zero := zero_1, one := one_1, add := add_1, mul := mul_1 }) =\n    (size = size_1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk.noConfusion",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    {inst : Ring A} →\n      {inst_1 : Semiring R} →\n        {inst_2 : PartialOrder R} →\n          {P : Sort u} →\n            {size : A → R} →\n              {nonneg : ∀ (a : A), 0 ≤ size a} →\n                {zero : size 0 = 0} →\n                  {one : size 1 ≤ 1} →\n                    {add : ∀ (a b : A), size (a + b) ≤ size a + size b} →\n                      {mul : ∀ (a b : A), size (a * b) ≤ size a * size b} →\n                        {size' : A → R} →\n                          {nonneg' : ∀ (a : A), 0 ≤ size' a} →\n                            {zero' : size' 0 = 0} →\n                              {one' : size' 1 ≤ 1} →\n                                {add' : ∀ (a b : A), size' (a + b) ≤ size' a + size' b} →\n                                  {mul' : ∀ (a b : A), size' (a * b) ≤ size' a * size' b} →\n                                    { size := size, nonneg := nonneg, zero := zero, one := one, add := add,\n                                          mul := mul } =\n                                        { size := size', nonneg := nonneg', zero := zero', one := one', add := add',\n                                          mul := mul' } →\n                                      (size ≍ size' → P) → P"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mk.sizeOf_spec",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [inst_3 : SizeOf A]\n  [inst_4 : SizeOf R] (size : A → R) (nonneg : ∀ (a : A), 0 ≤ size a) (zero : size 0 = 0) (one : size 1 ≤ 1)\n  (add : ∀ (a b : A), size (a + b) ≤ size a + size b) (mul : ∀ (a b : A), size (a * b) ≤ size a * size b),\n  sizeOf { size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul } =\n    1 + sizeOf zero + sizeOf one"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.mul",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R]\n  (self : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a b : A), self.size (a * b) ≤ self.size a * self.size b"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.noConfusion",
+      "type": "{P : Sort u} →\n  {A : Type u_1} →\n    {R : Type u_2} →\n      {inst : Ring A} →\n        {inst_1 : Semiring R} →\n          {inst_2 : PartialOrder R} →\n            {t : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R} →\n              {A' : Type u_1} →\n                {R' : Type u_2} →\n                  {inst' : Ring A'} →\n                    {inst'_1 : Semiring R'} →\n                      {inst'_2 : PartialOrder R'} →\n                        {t' : Adiabatic.ChoiceReduction.SubmultiplicativeSize A' R'} →\n                          A = A' →\n                            R = R' →\n                              inst ≍ inst' →\n                                inst_1 ≍ inst'_1 →\n                                  inst_2 ≍ inst'_2 →\n                                    t ≍ t' → Adiabatic.ChoiceReduction.SubmultiplicativeSize.noConfusionType P t t'"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.noConfusionType",
+      "type": "Sort u →\n  {A : Type u_1} →\n    {R : Type u_2} →\n      [inst : Ring A] →\n        [inst_1 : Semiring R] →\n          [inst_2 : PartialOrder R] →\n            Adiabatic.ChoiceReduction.SubmultiplicativeSize A R →\n              {A' : Type u_1} →\n                {R' : Type u_2} →\n                  [inst' : Ring A'] →\n                    [inst'_1 : Semiring R'] →\n                      [inst'_2 : PartialOrder R'] → Adiabatic.ChoiceReduction.SubmultiplicativeSize A' R' → Sort u"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.nonneg",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R]\n  (self : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a : A), 0 ≤ self.size a"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.one",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R]\n  (self : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R), self.size 1 ≤ 1"
+    },
+    {
+      "axioms": [],
+      "kind": "recursor",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.rec",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] →\n        [inst_2 : PartialOrder R] →\n          {motive : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → Sort u} →\n            ((size : A → R) →\n                (nonneg : ∀ (a : A), 0 ≤ size a) →\n                  (zero : size 0 = 0) →\n                    (one : size 1 ≤ 1) →\n                      (add : ∀ (a b : A), size (a + b) ≤ size a + size b) →\n                        (mul : ∀ (a b : A), size (a * b) ≤ size a * size b) →\n                          motive { size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul }) →\n              (t : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) → motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.recOn",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] →\n        [inst_2 : PartialOrder R] →\n          {motive : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → Sort u} →\n            (t : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) →\n              ((size : A → R) →\n                  (nonneg : ∀ (a : A), 0 ≤ size a) →\n                    (zero : size 0 = 0) →\n                      (one : size 1 ≤ 1) →\n                        (add : ∀ (a b : A), size (a + b) ≤ size a + size b) →\n                          (mul : ∀ (a b : A), size (a * b) ≤ size a * size b) →\n                            motive\n                              { size := size, nonneg := nonneg, zero := zero, one := one, add := add, mul := mul }) →\n                motive t"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.size",
+      "type": "{A : Type u_1} →\n  {R : Type u_2} →\n    [inst : Ring A] →\n      [inst_1 : Semiring R] → [inst_2 : PartialOrder R] → Adiabatic.ChoiceReduction.SubmultiplicativeSize A R → A → R"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.SubmultiplicativeSize.zero",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R]\n  (self : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R), self.size 0 = 0"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.SurjectionSectionSelector",
+      "type": "Type (u + 1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.SurjectionSectionSelector.nonemptySelector",
+      "type": "Adiabatic.ChoiceReduction.SurjectionSectionSelector → Adiabatic.ChoiceReduction.NonemptySelector"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.SurjectionSectionSelector.nonemptySelector._proof_1",
+      "type": "∀ (A : Type u_1), Nonempty A → ∀ (b : PUnit.{u_1 + 1}), ∃ a, (fun x => PUnit.unit) a = b"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.SurjectionSplitting",
+      "type": "Prop"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.SurjectionSplitting.familyChoice",
+      "type": "Adiabatic.ChoiceReduction.SurjectionSplitting → Adiabatic.ChoiceReduction.FamilyChoice"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.UniqueWitnessSelector",
+      "type": "Type (u + 1)"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.UniqueWitnessSelector.bijectiveInverses",
+      "type": "Adiabatic.ChoiceReduction.UniqueWitnessSelector → Adiabatic.ChoiceReduction.BijectiveInverseSelector"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.UniqueWitnessSelector.bijectiveInverses._proof_1",
+      "type": "∀ (A B : Type u_1) (f : A → B), Function.Bijective f → ∀ (b : B), ∃! a, f a = b"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.UniqueWitnessSelector.bijectiveInverses._proof_2",
+      "type": "∀ (select : Adiabatic.ChoiceReduction.UniqueWitnessSelector) (A B : Type u_1) (f : A → B) (hf : Function.Bijective f),\n  Function.LeftInverse (fun b => ↑((fun b => select A (fun a => f a = b) ⋯) b)) f ∧\n    Function.RightInverse (fun b => ↑((fun b => select A (fun a => f a = b) ⋯) b)) f"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct",
+      "type": "{A : Type u_1} → [Monoid A] → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct._sunfold",
+      "type": "{A : Type u_1} → [Monoid A] → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct._unsafe_rec",
+      "type": "{A : Type u_1} → [Monoid A] → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct.match_1",
+      "type": "(motive : ℕ → Sort u_1) → (x : ℕ) → (Unit → motive 0) → ((n : ℕ) → motive n.succ) → motive x"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct_error_le",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  (s : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a b : ℕ → A) (n : ℕ),\n  (∀ k < n, s.size (a k) ≤ 1) →\n    (∀ k < n, s.size (b k) ≤ 1) →\n      s.size (Adiabatic.ChoiceReduction.chronologicalProduct a n - Adiabatic.ChoiceReduction.chronologicalProduct b n) ≤\n        Adiabatic.ChoiceReduction.initialSum (fun k => s.size (a k - b k)) n"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct_error_le_mul",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  (s : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a b : ℕ → A) (ε : R) (n : ℕ),\n  (∀ k < n, s.size (a k) ≤ 1) →\n    (∀ k < n, s.size (b k) ≤ 1) →\n      (∀ k < n, s.size (a k - b k) ≤ ε) →\n        s.size\n            (Adiabatic.ChoiceReduction.chronologicalProduct a n - Adiabatic.ChoiceReduction.chronologicalProduct b n) ≤\n          ↑n * ε"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct_error_le_sum",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  (s : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a b : ℕ → A) (ε : ℕ → R) (n : ℕ),\n  (∀ k < n, s.size (a k) ≤ 1) →\n    (∀ k < n, s.size (b k) ≤ 1) →\n      (∀ k < n, s.size (a k - b k) ≤ ε k) →\n        s.size\n            (Adiabatic.ChoiceReduction.chronologicalProduct a n - Adiabatic.ChoiceReduction.chronologicalProduct b n) ≤\n          Adiabatic.ChoiceReduction.initialSum ε n"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct_size_le_one",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  (s : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a : ℕ → A) (n : ℕ),\n  (∀ k < n, s.size (a k) ≤ 1) → s.size (Adiabatic.ChoiceReduction.chronologicalProduct a n) ≤ 1"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.chronologicalProduct_sub",
+      "type": "∀ {A : Type u_1} [inst : Ring A] (a b : ℕ → A) (n : ℕ),\n  Adiabatic.ChoiceReduction.chronologicalProduct a n - Adiabatic.ChoiceReduction.chronologicalProduct b n =\n    Adiabatic.ChoiceReduction.forcedEvolution a\n      (fun k => (a k - b k) * Adiabatic.ChoiceReduction.chronologicalProduct b k) n"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.commutatorFromInverse",
+      "type": "{A : Type u_1} → [inst : Ring A] → (H P : A) → A → Adiabatic.ChoiceReduction.ExplicitInverse (H + P) → A"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.commutatorFromInverse_equation",
+      "type": "∀ {A : Type u_1} [inst : Ring A] {H P dP : A} (r : Adiabatic.ChoiceReduction.ExplicitInverse (H + P)),\n  P * P = P →\n    H * P = 0 →\n      P * H = 0 →\n        H * Adiabatic.ChoiceReduction.commutatorFromInverse H P dP r -\n            Adiabatic.ChoiceReduction.commutatorFromInverse H P dP r * H =\n          Adiabatic.katoGenerator P dP"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.domainPrefix_size_le",
+      "type": "∀ {B : Type u_2} {R : Type u_4} [inst : Ring B] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R} (b : ℕ → B) (β : ℕ → R) (n : ℕ),\n  (∀ k < n, domain.size (b k) ≤ β k) →\n    domain.size (Adiabatic.ChoiceReduction.chronologicalProduct b n) ≤\n      Adiabatic.ChoiceReduction.chronologicalProduct β n"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteSelection",
+      "name": "Adiabatic.ChoiceReduction.exists_fin_function",
+      "type": "∀ {B : Type u_1} {n : ℕ} (p : Fin n → B → Prop), (∀ (i : Fin n), ∃ x, p i x) → ∃ f, ∀ (i : Fin n), p i (f i)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteSelection",
+      "name": "Adiabatic.ChoiceReduction.exists_fin_selection",
+      "type": "∀ (n : ℕ) (B : Fin n → Type u_1) (p : (i : Fin n) → B i → Prop),\n  (∀ (i : Fin n), ∃ x, p i x) → ∃ f, ∀ (i : Fin n), p i (f i)"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.familyChoice_iff_surjectionSplitting",
+      "type": "Adiabatic.ChoiceReduction.FamilyChoice ↔ Adiabatic.ChoiceReduction.SurjectionSplitting"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.forcedEvolution",
+      "type": "{A : Type u_1} → [Ring A] → (ℕ → A) → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.forcedEvolution._sunfold",
+      "type": "{A : Type u_1} → [Ring A] → (ℕ → A) → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.forcedEvolution._unsafe_rec",
+      "type": "{A : Type u_1} → [Ring A] → (ℕ → A) → (ℕ → A) → ℕ → A"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.forcedEvolution_size_le",
+      "type": "∀ {A : Type u_1} {R : Type u_2} [inst : Ring A] [inst_1 : Semiring R] [inst_2 : PartialOrder R] [IsOrderedRing R]\n  (s : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R) (a e : ℕ → A) (n : ℕ),\n  (∀ k < n, s.size (a k) ≤ 1) →\n    s.size (Adiabatic.ChoiceReduction.forcedEvolution a e n) ≤\n      Adiabatic.ChoiceReduction.initialSum (fun k => s.size (e k)) n"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.initialSum",
+      "type": "{R : Type u_1} → [AddMonoid R] → (ℕ → R) → ℕ → R"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.initialSum._sunfold",
+      "type": "{R : Type u_1} → [AddMonoid R] → (ℕ → R) → ℕ → R"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.initialSum._unsafe_rec",
+      "type": "{R : Type u_1} → [AddMonoid R] → (ℕ → R) → ℕ → R"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.initialSum_const",
+      "type": "∀ {R : Type u_2} [inst : Semiring R] (c : R) (n : ℕ), Adiabatic.ChoiceReduction.initialSum (fun x => c) n = ↑n * c"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.FiniteProducts",
+      "name": "Adiabatic.ChoiceReduction.initialSum_le",
+      "type": "∀ {R : Type u_2} [inst : Semiring R] [inst_1 : PartialOrder R] [IsOrderedRing R] (f g : ℕ → R) (n : ℕ),\n  (∀ k < n, f k ≤ g k) → Adiabatic.ChoiceReduction.initialSum f n ≤ Adiabatic.ChoiceReduction.initialSum g n"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.inverse_difference",
+      "type": "∀ {A : Type u_1} [inst : Ring A] {a b : A} (r : Adiabatic.ChoiceReduction.ExplicitInverse a)\n  (s : Adiabatic.ChoiceReduction.ExplicitInverse b), r.value - s.value = r.value * (b - a) * s.value"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction",
+      "type": "{K : Type u_1} →\n  {D : Type u_2} →\n    {E : Type u_3} →\n      [inst : Semiring K] →\n        [inst_1 : AddCommGroup D] →\n          [inst_2 : AddCommGroup E] →\n            [inst_3 : _root_.Module K D] →\n              [inst_4 : _root_.Module K E] → Adiabatic.ChoiceReduction.MixedAction (E →ₗ[K] E) (D →ₗ[K] D) (D →ₗ[K] E)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_1",
+      "type": "∀ {K : Type u_1} [inst : Semiring K], RingHomCompTriple (RingHom.id K) (RingHom.id K) (RingHom.id K)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_2",
+      "type": "∀ {K : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x : D →ₗ[K] E), 1 ∘ₗ x = x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_3",
+      "type": "∀ {K : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x : D →ₗ[K] E), x ∘ₗ 1 = x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_4",
+      "type": "∀ {K : Type u_1} {D : Type u_3} {E : Type u_2} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x x_1 : E →ₗ[K] E) (x_2 : D →ₗ[K] E),\n  (x * x_1) ∘ₗ x_2 = x ∘ₗ x_1 ∘ₗ x_2"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_5",
+      "type": "∀ {K : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x : D →ₗ[K] E) (x_1 x_2 : D →ₗ[K] D),\n  x ∘ₗ (x_1 * x_2) = (x ∘ₗ x_1) ∘ₗ x_2"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_6",
+      "type": "∀ {K : Type u_1} {D : Type u_3} {E : Type u_2} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x : E →ₗ[K] E) (x_1 : D →ₗ[K] E) (x_2 : D →ₗ[K] D),\n  x ∘ₗ x_1 ∘ₗ x_2 = (x ∘ₗ x_1) ∘ₗ x_2"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_7",
+      "type": "∀ {K : Type u_1} {D : Type u_3} {E : Type u_2} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (a : E →ₗ[K] E) (x y : D →ₗ[K] E),\n  a ∘ₗ (x + y) = a ∘ₗ x + a ∘ₗ y"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMapMixedAction._proof_8",
+      "type": "∀ {K : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] (x x_1 : D →ₗ[K] E) (x_2 : D →ₗ[K] D),\n  (x + x_1) ∘ₗ x_2 = x ∘ₗ x_2 + x_1 ∘ₗ x_2"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.linearMap_mixedProduct_error_le",
+      "type": "∀ {K : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Semiring K] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module K D] [inst_4 : _root_.Module K E] {R : Type u_4} [inst_5 : Semiring R]\n  [inst_6 : PartialOrder R] [IsOrderedRing R] {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize (E →ₗ[K] E) R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize (D →ₗ[K] D) R}\n  (s : Adiabatic.ChoiceReduction.MixedSize Adiabatic.ChoiceReduction.linearMapMixedAction physical domain)\n  (j : D →ₗ[K] E) (a : ℕ → E →ₗ[K] E) (b : ℕ → D →ₗ[K] D) (ε β : ℕ → R) (n : ℕ),\n  (∀ k < n, physical.size (a k) ≤ 1) →\n    (∀ k < n, s.size (a k ∘ₗ j - j ∘ₗ b k) ≤ ε k) →\n      (∀ k < n, domain.size (b k) ≤ β k) →\n        s.size\n            (Adiabatic.ChoiceReduction.chronologicalProduct a n ∘ₗ j -\n              j ∘ₗ Adiabatic.ChoiceReduction.chronologicalProduct b n) ≤\n          Adiabatic.ChoiceReduction.initialSum (fun k => ε k * Adiabatic.ChoiceReduction.chronologicalProduct β k) n"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.linear_inverse_difference",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Ring R] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] {A B : D →ₗ[R] E}\n  (r : Adiabatic.ChoiceReduction.ExplicitLinearInverse A) (s : Adiabatic.ChoiceReduction.ExplicitLinearInverse B),\n  r.inverse - s.inverse = (r.inverse ∘ₗ (B - A)) ∘ₗ s.inverse"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.linear_map_sub",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : Ring R] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] (f : D →ₗ[R] E) (x y : D), f (x - y) = f x - f y"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ExplicitInverse",
+      "name": "Adiabatic.ChoiceReduction.linear_resolvent_identity",
+      "type": "∀ {R : Type u_1} {D : Type u_2} {E : Type u_3} [inst : CommRing R] [inst_1 : AddCommGroup D] [inst_2 : AddCommGroup E]\n  [inst_3 : _root_.Module R D] [inst_4 : _root_.Module R E] (H j : D →ₗ[R] E) (z w : R)\n  (r : Adiabatic.ChoiceReduction.ExplicitLinearInverse (H - z • j))\n  (s : Adiabatic.ChoiceReduction.ExplicitLinearInverse (H - w • j)),\n  r.inverse - s.inverse = (z - w) • (r.inverse ∘ₗ j) ∘ₗ s.inverse"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.localMixedDefect",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] → [inst_2 : AddCommGroup M] → Adiabatic.ChoiceReduction.MixedAction A B M → M → A → B → M"
+    },
+    {
+      "axioms": [],
+      "kind": "definition",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError",
+      "type": "{A : Type u_1} →\n  {B : Type u_2} →\n    {M : Type u_3} →\n      [inst : Monoid A] →\n        [inst_1 : Monoid B] →\n          [inst_2 : AddCommGroup M] → Adiabatic.ChoiceReduction.MixedAction A B M → M → (ℕ → A) → (ℕ → B) → ℕ → M"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_le",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R] [IsOrderedRing R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (s : Adiabatic.ChoiceReduction.MixedSize act physical domain) (j : M) (a : ℕ → A) (b : ℕ → B) (n : ℕ),\n  (∀ k < n, physical.size (a k) ≤ 1) →\n    s.size (Adiabatic.ChoiceReduction.mixedProductError act j a b n) ≤\n      Adiabatic.ChoiceReduction.initialSum\n        (fun k =>\n          s.size (Adiabatic.ChoiceReduction.localMixedDefect act j (a k) (b k)) *\n            domain.size (Adiabatic.ChoiceReduction.chronologicalProduct b k))\n        n"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_le_bounds",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R] [IsOrderedRing R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (s : Adiabatic.ChoiceReduction.MixedSize act physical domain) (j : M) (a : ℕ → A) (b : ℕ → B) (ε γ : ℕ → R) (n : ℕ),\n  (∀ k < n, physical.size (a k) ≤ 1) →\n    (∀ k < n, s.size (Adiabatic.ChoiceReduction.localMixedDefect act j (a k) (b k)) ≤ ε k) →\n      (∀ k < n, domain.size (Adiabatic.ChoiceReduction.chronologicalProduct b k) ≤ γ k) →\n        s.size (Adiabatic.ChoiceReduction.mixedProductError act j a b n) ≤\n          Adiabatic.ChoiceReduction.initialSum (fun k => ε k * γ k) n"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_le_local_bounds",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R] [IsOrderedRing R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (s : Adiabatic.ChoiceReduction.MixedSize act physical domain) (j : M) (a : ℕ → A) (b : ℕ → B) (ε β : ℕ → R) (n : ℕ),\n  (∀ k < n, physical.size (a k) ≤ 1) →\n    (∀ k < n, s.size (Adiabatic.ChoiceReduction.localMixedDefect act j (a k) (b k)) ≤ ε k) →\n      (∀ k < n, domain.size (b k) ≤ β k) →\n        s.size (Adiabatic.ChoiceReduction.mixedProductError act j a b n) ≤\n          Adiabatic.ChoiceReduction.initialSum (fun k => ε k * Adiabatic.ChoiceReduction.chronologicalProduct β k) n"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_le_uniform",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} {R : Type u_4} [inst : Ring A] [inst_1 : Ring B]\n  [inst_2 : AddCommGroup M] [inst_3 : Semiring R] [inst_4 : PartialOrder R] [IsOrderedRing R]\n  {act : Adiabatic.ChoiceReduction.MixedAction A B M} {physical : Adiabatic.ChoiceReduction.SubmultiplicativeSize A R}\n  {domain : Adiabatic.ChoiceReduction.SubmultiplicativeSize B R}\n  (s : Adiabatic.ChoiceReduction.MixedSize act physical domain) (j : M) (a : ℕ → A) (b : ℕ → B) (ε K : R) (n : ℕ),\n  (∀ k < n, physical.size (a k) ≤ 1) →\n    (∀ k < n, s.size (Adiabatic.ChoiceReduction.localMixedDefect act j (a k) (b k)) ≤ ε) →\n      (∀ k < n, domain.size (Adiabatic.ChoiceReduction.chronologicalProduct b k) ≤ K) →\n        s.size (Adiabatic.ChoiceReduction.mixedProductError act j a b n) ≤ ↑n * (ε * K)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_succ",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (act : Adiabatic.ChoiceReduction.MixedAction A B M) (j : M) (a : ℕ → A) (b : ℕ → B) (n : ℕ),\n  Adiabatic.ChoiceReduction.mixedProductError act j a b (n + 1) =\n    act.left (a n) (Adiabatic.ChoiceReduction.mixedProductError act j a b n) +\n      act.right (Adiabatic.ChoiceReduction.localMixedDefect act j (a n) (b n))\n        (Adiabatic.ChoiceReduction.chronologicalProduct b n)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.MixedProducts",
+      "name": "Adiabatic.ChoiceReduction.mixedProductError_zero",
+      "type": "∀ {A : Type u_1} {B : Type u_2} {M : Type u_3} [inst : Monoid A] [inst_1 : Monoid B] [inst_2 : AddCommGroup M]\n  (act : Adiabatic.ChoiceReduction.MixedAction A B M) (j : M) (a : ℕ → A) (b : ℕ → B),\n  Adiabatic.ChoiceReduction.mixedProductError act j a b 0 = 0"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.nonemptySelector_iff_surjectionSections",
+      "type": "Nonempty Adiabatic.ChoiceReduction.NonemptySelector ↔ Nonempty Adiabatic.ChoiceReduction.SurjectionSectionSelector"
+    },
+    {
+      "axioms": [],
+      "kind": "theorem",
+      "module": "Adiabatic.ChoiceReduction.ChoicePrinciples",
+      "name": "Adiabatic.ChoiceReduction.uniqueWitnessSelector_iff_bijectiveInverses",
+      "type": "Nonempty Adiabatic.ChoiceReduction.UniqueWitnessSelector ↔ Nonempty Adiabatic.ChoiceReduction.BijectiveInverseSelector"
+    }
+  ],
+  "verified_at_utc": "2026-09-13T22:05:15.251359+00:00",
+  "base_commit": "81c3ce272dcdb3b2cd7c1f7465c83b036755b35e",
+  "checks": {
+    "lake --wfail build": "passed (3331 jobs; project and dependency build artifacts reused where current)",
+    "python3 checks/check_proofs.py": "passed (68 sources; all 1152 project declarations; 69 named public reports)",
+    "lake env lean checks/ChoiceReductionAxioms.lean": "passed (all 189 new declarations)",
+    "python3 -m unittest discover -s checks -p 'test_*.py'": "passed (15 tests; includes 8 strict-audit tests with compiled rejection fixtures)",
+    "LEAN_NUM_THREADS=1 lake env leanchecker Adiabatic": "passed",
+    "lake env lean checks/TraceChoice.lean": "passed (51 dependency queries; 4 axiom diagnostics)",
+    "citation validation": "passed against official CFF 1.2.0 JSON Schema, including exact author fields",
+    "baseline preservation": "58 existing Lean files byte-for-byte unchanged; public Adiabatic.lean adds imports; original audit/checker/tests and dependency pins unchanged"
+  },
+  "full_theorem": {
+    "name": "Adiabatic.Unbounded.common_domain_adiabatic_theorem",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "statement_unchanged": true,
+    "proof_unchanged": true
+  },
+  "library_module_count": 65,
+  "lean_source_count": 68,
+  "all_project_declarations_audited": 1152,
+  "citation_validation": {
+    "schema": "https://citation-file-format.github.io/1.2.0/schema.json",
+    "schema_sha256": "0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b",
+    "given_names": "Neil Yuanting",
+    "family_names": "Li",
+    "repository_code": "https://github.com/N-Y-L/quantum-adiabatic-lean"
+  },
+  "source_sha256": {
+    "Adiabatic.lean": "56aa858daabbb9e3efc01b8da769aa34c3a9b7183576ecd06891a458f6d50d5f",
+    "Adiabatic/Bounds.lean": "bb2ceab0f87d07a7430b07a23897289f2430df5eeb2ccffb4d9ec1f496f4da02",
+    "Adiabatic/ChoiceReduction/ChoicePrinciples.lean": "36a4aefc79c86747f83f81b7b50bf339ac1e53e0b3ec80fc422b31260a89d829",
+    "Adiabatic/ChoiceReduction/ExplicitInverse.lean": "e3745f809b257a9655ec35dc025628bf73cafffa0ed2772cc4af39a3935a6dbb",
+    "Adiabatic/ChoiceReduction/FiniteProducts.lean": "ccf9a3517d1e481765b3e20e9e08449cfd8f7984443b5cca44da2d832307268d",
+    "Adiabatic/ChoiceReduction/FiniteSelection.lean": "2a24718a5b0ef1d4268e488aa4aa617557eb13864f29d6926a138fb96356fe89",
+    "Adiabatic/ChoiceReduction/LiftObstruction.lean": "4d756fa8f822235739da19e7c941d7bac14cc2b1b71108e07fe7eddac71453d9",
+    "Adiabatic/ChoiceReduction/MixedProducts.lean": "63e31959659297149db22a3643f79d905b16ca1b83f267b4209d33a3af9b3630",
+    "Adiabatic/ChoiceReduction.lean": "318f9329497d94d55dc1d7824d0cd3db4b43cedce9f498694259834f146fd775",
+    "Adiabatic/CommutatorTheorem.lean": "c64fdda742b1ff07e152ba04c86680bc320f1f2f517a74744196bf2a65f48282",
+    "Adiabatic/Comparison.lean": "6a71cbf920d20a3197a02305f1ae1b4e2339cd4d1824bdbcfc25f639eff8c1e3",
+    "Adiabatic/Evolution.lean": "ab85d7513e7b82054c797605b7f602eececa6f631be53022be9e5524dc46b5b8",
+    "Adiabatic/Examples.lean": "e0a8a6eaf60363b73e13d0ea3385a5aca72ae722e146a43954af445bf47d94d9",
+    "Adiabatic/Infinite/CommutatorTheorem.lean": "a454b09c421801af69d496654bf501148cdde9541963d20a42f200ad25ed46ab",
+    "Adiabatic/Infinite/RieszCommutator.lean": "ee04b8c258c1a72424f2b1647962557ef0eb731d555b4b56423b9b950183a1de",
+    "Adiabatic/Infinite/RieszProjection.lean": "2045fe8f9c879fa721bc3e3eca846024046f25792b739e997f4265c2a528d594",
+    "Adiabatic/Infinite/SpectralTheorem.lean": "e6856a70fb788da5ee90aa60542be3d72d439793d9abb20958f95126ad5c7a4e",
+    "Adiabatic/Infinite/Unitary.lean": "eb9a13ac58441c8461f761d344582b8c19ff6bc391a3b03c7281f3e65319ed48",
+    "Adiabatic/Leakage.lean": "d18a700005328778fd4ecc8c5efd1e97d09992700e3ff622e4a9aaa2d5103c04",
+    "Adiabatic/MainTheorem.lean": "3345c9b8e237e2ccd211e2ef910e2d85dfe5b7f8b5156fdd6b521519b7246260",
+    "Adiabatic/Projection.lean": "056f9a16d8fbdd08731dcd19fd78a86f6e4cb59b54f9b7c078834a7b0a41594f",
+    "Adiabatic/ProjectionDistance.lean": "15dc00b9d40848cbb600cc57aa276f100883b281095ac5fececa429c5a9bc5df",
+    "Adiabatic/Propagator.lean": "f014f9b63821443b45481740e2c93fc4f57d550638833fc92af1c34906103ed7",
+    "Adiabatic/ReducedResolvent.lean": "355b82674aac9d3ecd2b1bd1cd61ae72fb06d3c99109034414d841a95ee81e00",
+    "Adiabatic/Regularity.lean": "8ae203b72e6784d3730afff72290ee573b8b7ec2fce02a8fb527e87768009bf6",
+    "Adiabatic/Schrodinger.lean": "38611f8fdecc65c6a6b3c2a317aad90ad729770dfee536305aa3704d2f50972b",
+    "Adiabatic/SpectralGap.lean": "aa6c8ab1a62d80c0f6b51fd55196703a09eab6292af6b58262ad3886ee9d137f",
+    "Adiabatic/Statement.lean": "d061b38a086ad279bc11be2c5e3ae2dc985f85d63434da389762eef6ed2dd2b9",
+    "Adiabatic/Transport.lean": "772c03d71abde80155884359978a28a19d41d7c8f95ad4a89f2c19efb695649b",
+    "Adiabatic/Unbounded/Autonomous.lean": "28094c7280170ca65dc8ff843d5e27afc299f61287b5133f0f34b2998ba2aafe",
+    "Adiabatic/Unbounded/BoundedPerturbation.lean": "75218ee591169684948327079d4329902b4c272245f4fce71f89cc672257adf4",
+    "Adiabatic/Unbounded/CommutatorTheorem.lean": "9157d31a003fad597a019760910288eb656e9b7cd22b3b4803d8f072711a53de",
+    "Adiabatic/Unbounded/Comparison.lean": "eb8474eca93738510dc965d16a1043a286d19985bc467563c27cb37b595f9675",
+    "Adiabatic/Unbounded/ContourIndependence.lean": "25155b0a1b43fcfc7181883484c9914f2ee9776ca0f3d6253e519ca2d2c91cd4",
+    "Adiabatic/Unbounded/Domain.lean": "62566e28ae9242907a21f53fcb67c5530232366777016f4f34c8e1ec568f4b2a",
+    "Adiabatic/Unbounded/Evolution.lean": "8a49be57238a1c18ba3c1c4637c390ed96b17a5e43be61c847fd7ab9c6773509",
+    "Adiabatic/Unbounded/FrozenApproximation.lean": "8ec438ff7c0a1e12fdf74aa2709fd89ec109bdd824db926725e7ce5cdfbd1e48",
+    "Adiabatic/Unbounded/FrozenEvolution.lean": "14ff239988e9e72849cff21f2639f466b4d8daefda72b718437c4907c891bb3f",
+    "Adiabatic/Unbounded/FrozenGraphBounds.lean": "b8b0250b0cfd85d197e72e429813a9fc1eea9da02b951092e53fc198f52bc999",
+    "Adiabatic/Unbounded/GappedCommutator.lean": "f716e76617ea51a3be1e79061100dc1492bdb6acc25ba8859f20b3f9f32c62b7",
+    "Adiabatic/Unbounded/GappedReduction.lean": "83333eb84aa083768ff67b67091c549cecab1914556f75c9991c4913bba477d3",
+    "Adiabatic/Unbounded/GappedSpectralTheorem.lean": "6f1ca1b2f5677c93fda63cecca5e1ef6304f5baf6c74d220dd55333e9d7625de",
+    "Adiabatic/Unbounded/GlobalCommutator.lean": "0d49bfde63eb91b286129684cfec96c5305dbda349ed0df62b1ea9f4a8cc4fd9",
+    "Adiabatic/Unbounded/GraphBounds.lean": "85b4d78513d4805469ba0ff1f9d5eeac25bf44e00891c2c45b73caaf85c8232a",
+    "Adiabatic/Unbounded/GraphLimit.lean": "2c36d4fccc7908bc7e2864766ec4d60aac84713bd27fd27889b743ed741f49df",
+    "Adiabatic/Unbounded/HilbertGraphConvergence.lean": "3ef28b20d9b375c4b62e6bd0b6d41784a2d5b6624d47e377e0429645c0d570cb",
+    "Adiabatic/Unbounded/MainTheorem.lean": "7d1910ec652bbcacb7a62f2f1590d79b6746e315e4122f17eb37f3473c6a2211",
+    "Adiabatic/Unbounded/MovingBand.lean": "d70ac3795bf6d3d7d0dd0cd2369cdb4d6191aca5be1a660d5312c4b20c379339",
+    "Adiabatic/Unbounded/Nonautonomous.lean": "72b4fb80c3e6b5ed71730d6823a5b4753f113439469866ecbe74bc804cba1a9a",
+    "Adiabatic/Unbounded/NonautonomousDomain.lean": "f0115048d68b49968fbd58caf8a4992c1339e76c0f5ea5e0bf3cad3fa9d6b73b",
+    "Adiabatic/Unbounded/Perturbation.lean": "bc1b8d81e5dea6681f51a52d084276f2a3990d84e2e0c34ec83e06c1129ee217",
+    "Adiabatic/Unbounded/Propagator.lean": "d5faf1b516645e33a4b0b14c39bfe72027d274edfdc990558675b5ea4ad35c16",
+    "Adiabatic/Unbounded/Resolvent.lean": "3a98c2d17a65a44bb30a4945a75c2f055cfb15208e4be618e58e387b71d10e1f",
+    "Adiabatic/Unbounded/ResolventApproximation.lean": "d3c2eda60e5cda80c5a6c1e401a3d72e157a38aeaf0b88632e73a807092dd25d",
+    "Adiabatic/Unbounded/ResolventSpectrum.lean": "7fc153e0206ad9b439cb78b35bfb84daadcf2d500ce24ff4dabf792f7017ff57",
+    "Adiabatic/Unbounded/RieszCommutator.lean": "d2e9f1739b787c8daafdf2fd18154bf528d52e0ace952c28006d70e3cab7bce1",
+    "Adiabatic/Unbounded/RieszProjection.lean": "6a7da90609754ee2d1fedec99a0f7ba88b544a884aaf40c7c6d96074a2172c14",
+    "Adiabatic/Unbounded/RightPropagator.lean": "9332fca457079bd8f6b08419ebfa014d89afff58d2188d4022c5042b3ea462e5",
+    "Adiabatic/Unbounded/SmoothGluing.lean": "e118e98bbae5fb1f195a7a1c131e8db6a347ad1afcabbc5f0e675477cf6d138b",
+    "Adiabatic/Unbounded/Statement.lean": "c4da3e76d1f8176e8d4c9023751cd662cdfdfe06a273e496bbd28bd19bcc7d39",
+    "Adiabatic/Unbounded/StrongCalculus.lean": "d0ce57588fe573b61345b7dde3cc538d69e3b1f0646ac9f3fb9f6008fea5e673",
+    "Adiabatic/Unbounded/StrongEstimate.lean": "1c5a2974e8c229e428aae60422d74b3ed1bd3ecd2e97dfe9308ff91489866cdc",
+    "Adiabatic/Unbounded/TimeSlicing.lean": "a536ec13a83a8b7e694c012aa998cf5827c135ce69a424f8c7afcc6109cc3fd6",
+    "Adiabatic/Unbounded/Transport.lean": "6f07b0696a80f1290fd46551cd93c4f8e6e69da8a8a0f42e5dd7c0fe22c37d4f",
+    "Adiabatic/Unbounded/UniformComparison.lean": "55348076e1e9d5744948226607cae994209b6c48ac043df5aae8d2f5ec502042",
+    "checks/Axioms.lean": "41f20c40c68d380871f4cd2a8eda24015ac14bd54d0ddc9c301668ab54884c7b",
+    "checks/ChoiceReductionAxioms.lean": "ba2c0e8cd18239fec4a46162acab511c9cbee2f861d0dbe5d89b07db00b884ed",
+    "checks/TraceChoice.lean": "a1a615722cb91b40f2f9ffa5adefd4438d8f40cf6e3370841aa90abfdc5452e7",
+    "checks/check_proofs.py": "a9bba019751363ef226f12ca80a6c568f96c6549f6a71524c3839981eb4a910b",
+    "checks/test_check_proofs.py": "69e9cf2e62d4da20d4221d9b038fea3f4a98d1c2779c6bbc0f25e53064f9fa24",
+    "checks/test_choice_reduction_audit.py": "f27e7980c5a60e142dfef8c0936078daa07bb950cbff656609a70f1a82c2b801",
+    ".github/workflows/lean.yml": "28cc74bd3be4b6baaff3e6982c5128217b5b40f5b37a05bbe43bf252e86b9d0b",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    "lakefile.toml": "a7129b09641f7eed46b47869f4a3129f6126c104d24ba90d3b2359ce280f86f0",
+    "lake-manifest.json": "20da362617baffb81c80cdb105c1f769c0d4d81c10e2fbe797a9af5c5456a65d",
+    "CITATION.cff": "bed371fa777eadb906990c8709505fe90320392cd44fc24b6437271b3c045a8a"
+  },
+  "mathematical_notes": {
+    "source": "docs/choice-reduction.md",
+    "lean_formalized": false
+  }
+}

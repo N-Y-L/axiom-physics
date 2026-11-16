@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this formalization, cite the repository and the commit used."
+title: "Quantum adiabatic theorem in Lean"
+type: software
+repository-code: "https://github.com/N-Y-L/quantum-adiabatic-lean"
+version: 0.1.0
+authors:
+  - given-names: "Neil Yuanting"
+    family-names: "Li"
+license: Apache-2.0
+abstract: >-
+  Lean 4 formalization of the uniformly gapped quantum adiabatic theorem
+  for possibly unbounded self-adjoint Hamiltonians on a common domain in
+  an arbitrary complex Hilbert space. It constructs the spectral projection
+  and strong unitary evolution and proves uniform operator-norm
+  projection-distance and leakage estimates of C/T.
